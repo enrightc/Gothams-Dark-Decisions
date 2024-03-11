@@ -1,0 +1,65 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    background-image: url("/assets/images/gotham-cityscape.webp");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center 12%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: black;
+}
+
+.hidden {
+    display: none;
+}
+
+main {
+    display: flex;
+    width: 700px;
+
+    padding: 25px 30px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    flex-shrink: 0;
+    border-radius: 20px;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(12.5px);
+    color: white;
+}
+
+#intro {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+}
+
+.start-btn {
+    display: flex;
+    height: 61px;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    background: #30F;
+    border: #30F;
+    width: 193px;
+    height: 40px;
+    color: #FFF;
+    text-align: center;
+    font-family: Inter;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px; 
+    letter-spacing: 1.98px;  
+}
