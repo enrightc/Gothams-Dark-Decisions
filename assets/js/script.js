@@ -128,6 +128,8 @@ function revelation() {
 function results() {
     $("#game-container").addClass("hidden");
     $("#results-container").removeClass("hidden");
+
+    $("p.character").append(userPersonality);
 }
 
 function endHeroPath() {
