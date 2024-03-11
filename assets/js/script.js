@@ -4,10 +4,12 @@ $(document).ready(function() {
 
 // Essential elements
 const answerButtonsElement = $('#answer-box');
-let Batman = 0;
+let  Batman = 0;
 let Robin = 0;
 let RedHood = 0;
 let Batgirl = 0;
+
+let userPersonality;
 
 
 //START GAME--------------------------------------------------------------------------
@@ -78,8 +80,8 @@ function nextHeroQuestion(index) {
     // Attach event listener to handle user response
     $(".hero-ans-btn").on("click", function() {
         const personality = $(this).data("personality");
-        console.log(personality)
         
+
         // Increment Batman score only if the clicked button has the personality "Batman"
         if (personality === "Batman") {
             Batman++; // Increment Batman score
@@ -94,23 +96,46 @@ function nextHeroQuestion(index) {
             Batgirl++;
             console.log("Batgirl score", Batgirl)
         }
-
+        
         // Move to the next hero question or end the path if there are no more questions
         currentHeroQuestionIndex++;
         if (currentHeroQuestionIndex < heroQuestions.length) {
             nextHeroQuestion(currentHeroQuestionIndex);
         } else {
             // No more hero questions, end the hero path
-            endHeroPath();
+            results();
         }
+
+        revelation() 
     });
 }
 
+function revelation() {
+    let maxScore = Math.max(Batman, Robin, RedHood, Batgirl);
+    if (maxScore === Batman) {
+        userPersonality = "Batman";
+    } else if (maxScore === Robin) {
+        userPersonality = "Robin";
+    } else if (maxScore === RedHood) {
+        userPersonality = "Red Hood";
+    } else if (maxScore === Batgirl) {
+        userPersonality = "Batgirl";
+    }
+    console.log("You are", userPersonality)
+}
+
+
+function results() {
+    $("#game-container").addClass("hidden");
+    $("#results-container").removeClass("hidden");
+}
 
 function endHeroPath() {
     console.log("Out of Hero questions");
 }
- 
+
+
+
 
 
 //QUESTIONS--------------------------------------------------------------------------
