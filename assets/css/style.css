@@ -69,3 +69,35 @@ main {
     text-align: center;
     max-width: 500px;
 }
+
+#answer-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 20px;
+}
+
+.ans-btn {
+    height: 61px;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    background: #30F;
+    border: #30F;
+    width: auto;
+    height: auto;
+    color: #FFF;
+    text-align: center;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 16px; 
+    letter-spacing: 1.98px;  
+}
+
+.ans-btn:hover {
+    background-color: #4e7fff;
+    color: white;
+}
