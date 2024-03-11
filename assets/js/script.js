@@ -53,134 +53,186 @@ const firstQuestion = [
     }
 ];
 
-// Hero Question
+// Hero Questions
 const heroQuestions = [
     {
-        questionNumber: 1,
-        question: "You accept the stranger's help and follow them to a hidden room filled with newspaper clippings, photographs, and documents. They reveal that you were once a renowned detective, but your memory loss has left you vulnerable. How do you react to this revelation?",
-        answers: [
-            {
-                answerNumber: 1,
-                text: "Embrace your past and begin piecing together the clues to uncover the truth (Batman)",
-                score: 6,
-                personality: "Batman"
-            },
-            {
-                answerNumber: 2,
-                text: "Seek further proof before fully accepting your identity as a detective (Nightwing)",
-                score: 5,
-                personality: "Nightwing"
-            },
-            {
-                answerNumber: 3,
-                text: "Express gratitude for the stranger's help and offer to assist them in their own investigations (Batgirl)",
-                score: 4,
-                personality: "Batgirl"
-            },
-            {
-                answerNumber: 4,
-                text: "Remain skeptical and continue searching for answers on your own (Red Hood)",
-                score: 3,
-                personality: "Red Hood"
-            },
-            {
-                answerNumber: 5,
-                text: "Use the information to your advantage, planning your next move with cunning precision (Robin)",
-                score: 2,
-                personality: "Robin"
-            },
-            {
-                answerNumber: 6,
-                text: "Laugh off the revelation, dismissing the importance of your past in favor of living in the present (Batwoman)",
-                score: 1,
-                personality: "Batwoman"
-            }
-        ]
-    },
-    {
         questionNumber: 2,
-        question: "As you delve deeper into the mystery of your identity, you uncover a trail of clues leading to a notorious criminal organization operating in the shadows of Gotham. How do you choose to confront this threat?",
+        question: "Embracing Your Past: You accept the stranger's help and follow them to a hidden room filled with newspaper clippings, photographs, and documents. They reveal that you were once a renowned detective, but your memory loss has left you vulnerable. How do you react to this revelation?",
         answers: [
             {
                 answerNumber: 1,
-                text: "Gather evidence and build a case against the organization, using your intellect and cunning to outsmart them (Batman)",
-                score: 6,
+                text: "Embrace your past and begin piecing together the clues to uncover the truth.",
+                score: 4,
                 personality: "Batman"
             },
             {
                 answerNumber: 2,
-                text: "Confront the organization head-on, using your skills and determination to bring them to justice (Nightwing)",
-                score: 5,
-                personality: "Nightwing"
-            },
-            {
-                answerNumber: 3,
-                text: "Seek assistance from trusted allies or other heroes to take down the criminal organization (Robin)",
-                score: 4,
+                text: "Seek further proof before fully accepting your identity as a detective.",
+                score: 3,
                 personality: "Robin"
             },
             {
-                answerNumber: 4,
-                text: "Infiltrate the organization from within, using stealth and deception to dismantle it from the inside (Red Hood)",
-                score: 3,
+                answerNumber: 3,
+                text: "Express gratitude for the stranger's help and offer to assist them in their own investigations.",
+                score: 2,
                 personality: "Red Hood"
             },
             {
-                answerNumber: 5,
-                text: "Manipulate the situation to your advantage, playing both sides to achieve your own goals (Batgirl)",
-                score: 2,
-                personality: "Batgirl"
-            },
-            {
-                answerNumber: 6,
-                text: "Take a more diplomatic approach, seeking to negotiate with the organization to avoid unnecessary violence (Batwoman)",
+                answerNumber: 4,
+                text: "Remain skeptical and continue searching for answers on your own.",
                 score: 1,
-                personality: "Batwoman"
+                personality: "Batgirl"
             }
         ]
     },
     {
         questionNumber: 3,
-        question: "The final confrontation with the leader of the criminal organization takes place in a deserted warehouse on the outskirts of Gotham. How do you approach this dangerous encounter?",
+        question: "Unraveling the Mystery: As you delve deeper into the mystery of your identity, you uncover a trail of clues leading to a notorious criminal organization operating in the shadows of Gotham. How do you choose to confront this threat?",
         answers: [
             {
                 answerNumber: 1,
-                text: "Engage in a battle of wits, using your intellect and deductive reasoning to outsmart your opponent (Batman)",
-                score: 6,
+                text: "Gather evidence and build a case against the organization, using your intellect and cunning to outsmart them.",
+                score: 4,
                 personality: "Batman"
             },
             {
                 answerNumber: 2,
-                text: "Prepare for a physical confrontation, knowing that only one of you will emerge victorious (Nightwing)",
-                score: 5,
-                personality: "Nightwing"
-            },
-            {
-                answerNumber: 3,
-                text: "Call upon allies for backup, knowing that strength lies in numbers (Robin)",
-                score: 4,
+                text: "Confront the organization head-on, using your skills and determination to bring them to justice.",
+                score: 3,
                 personality: "Robin"
             },
             {
-                answerNumber: 4,
-                text: "Confront the leader alone, prepared to face whatever challenges lie ahead (Red Hood)",
-                score: 3,
+                answerNumber: 3,
+                text: "Seek assistance from trusted allies or other heroes to take down the criminal organization.",
+                score: 2,
                 personality: "Red Hood"
             },
             {
-                answerNumber: 5,
-                text: "Use your agility and cunning to gain the upper hand in the confrontation (Batgirl)",
-                score: 2,
+                answerNumber: 4,
+                text: "Infiltrate the organization from within, using stealth and deception to dismantle it from the inside.",
+                score: 1,
                 personality: "Batgirl"
+            }
+        ]
+    },
+    {
+        questionNumber: 4,
+        question: "The Water Supply Threat: While investigating, you overhear a conversation revealing that a criminal gang plans to poison Gotham's water supply. How do you choose to respond?",
+        answers: [
+            {
+                answerNumber: 1,
+                text: "Immediately inform the authorities and devise a plan to stop the poisoning.",
+                score: 4,
+                personality: "Batman"
             },
             {
-                answerNumber: 6,
-                text: "Negotiate with the leader, seeking a peaceful resolution to the conflict (Batwoman)",
+                answerNumber: 2,
+                text: "Gather evidence to expose the plot and rally public support against the criminals.",
+                score: 3,
+                personality: "Robin"
+            },
+            {
+                answerNumber: 3,
+                text: "Infiltrate the gang's hideout to gather intelligence and thwart their plans.",
+                score: 2,
+                personality: "Red Hood"
+            },
+            {
+                answerNumber: 4,
+                text: "Utilize your technological expertise to hack into the gang's communication channels and disrupt their operation.",
                 score: 1,
-                personality: "Batwoman"
+                personality: "Batgirl"
+            }
+        ]
+    },
+    {
+        questionNumber: 5,
+        question: "Infiltrating the Enemy Hideout: You learn the location of the criminal organization's hideout and must decide how to approach it. How do you proceed?",
+        answers: [
+            {
+                answerNumber: 1,
+                text: "Conduct surveillance to gather information and assess the enemy's strength before taking action.",
+                score: 4,
+                personality: "Batman"
+            },
+            {
+                answerNumber: 2,
+                text: "Formulate a strategic plan to infiltrate the hideout and neutralize the threat.",
+                score: 3,
+                personality: "Robin"
+            },
+            {
+                answerNumber: 3,
+                text: "Launch a surprise attack on the hideout, catching the criminals off guard.",
+                score: 2,
+                personality: "Red Hood"
+            },
+            {
+                answerNumber: 4,
+                text: "Utilize your agility and stealth to sneak into the hideout undetected.",
+                score: 1,
+                personality: "Batgirl"
+            }
+        ]
+    },
+    {
+        questionNumber: 6,
+        question: "Rescuing Hostages: While investigating the hideout, you discover innocent hostages being held captive by the criminals. How do you proceed?",
+        answers: [
+            {
+                answerNumber: 1,
+                text: "Strategize a plan to rescue the hostages while minimizing collateral damage.",
+                score: 4,
+                personality: "Batman"
+            },
+            {
+                answerNumber: 2,
+                text: "Coordinate with your allies to execute a swift and efficient rescue operation.",
+                score: 3,
+                personality: "Robin"
+            },
+            {
+                answerNumber: 3,
+                text: "Take decisive action to neutralize the threat and free the hostages.",
+                score: 2,
+                personality: "Red Hood"
+            },
+            {
+                answerNumber: 4,
+                text: "Use your agility and stealth to navigate the hideout and rescue the hostages undetected.",
+                score: 1,
+                personality: "Batgirl"
+            }
+        ]
+    },
+    {
+        questionNumber: 7,
+        question: "Final Confrontation: After freeing the hostages, you face the leader of the criminal organization in a final showdown. How do you approach this dangerous encounter?",
+        answers: [
+            {
+                answerNumber: 1,
+                text: "Utilize your intellect and strategic planning to outwit the leader and bring them to justice.",
+                score: 4,
+                personality: "Batman"
+            },
+            {
+                answerNumber: 2,
+                text: "Engage in a physical battle, determined to defeat the leader and end their reign of terror.",
+                score: 3,
+                personality: "Robin"
+            },
+            {
+                answerNumber: 3,
+                text: "Call upon your allies for support, knowing that together, you can overcome any challenge.",
+                score: 2,
+                personality: "Red Hood"
+            },
+            {
+                answerNumber: 4,
+                text: "Confront the leader alone, prepared to face whatever dangers may arise.",
+                score: 1,
+                personality: "Batgirl"
             }
         ]
     }
 ];
-
-    
