@@ -30,8 +30,36 @@ function showFirstQuestion(firstQuestion) {
     button.addClass('ans-btn');
     // Append the button to the answerButtonsElement
     answerButtonsElement.append(button);
-    });
-}
+ 
+    $(".ans-btn").on("click", function() {
+        if (answer.personality === "hero") {
+            showHeroQuestions()
+        } else if (answer.personality === "villain") {
+            showVillainquestions()
+        }
+    })
+    })
+};
+
+//Show Hero Question--------------------------------------------------------------------------
+
+// https://www.khanacademy.org/computing/computer-programming/html-js-jquery/dom-events-with-jquery/pt/adding-event-listeners-with-jquery
+function showHeroQuestions() {
+    $('#question-box').text(heroQuestions[0].question);
+
+    const answerButtonsElement = $('#answer-box');
+    // Loop through your answer data and create button elements
+    heroQuestions[0].answers.forEach(answer => {
+    // Create a button element
+    const button = $('<button></button>');
+    // Set button text
+    button.text(answer.text);
+    // Add a class to the button
+    button.addClass('ans-btn');
+    // Append the button to the answerButtonsElement
+    answerButtonsElement.append(button);
+    })
+};
 
 //QUESTIONS--------------------------------------------------------------------------
 // Branch Question
