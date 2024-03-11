@@ -2,6 +2,13 @@ $(document).ready(function() {
     $("main").fadeIn(2500);
 });
 
+// Essential elements
+const answerButtonsElement = $('#answer-box');
+let Batman = 0;
+let Robin = 0;
+let RedHood = 0;
+let Batgirl = 0;
+
 
 //START GAME--------------------------------------------------------------------------
 $(document).ready(function() {
@@ -20,7 +27,7 @@ function startGame() {
 function showFirstQuestion(firstQuestion) {
     $('#question-box').text(firstQuestion[0].question);
 
-    const answerButtonsElement = $('#answer-box');
+    
     // Loop through the answers and create button elements
     firstQuestion[0].answers.forEach(answer => {
     // Create a button element
@@ -52,23 +59,28 @@ function startHeroPath() {
 }
 
 function nextHeroQuestion(index) {
+    // Collects the hero question object from the heroQuestions array.
     const question = heroQuestions[index];
+    // Sets the text of the element to text of current question.
     $('#question-box').text(question.question);
 
-    const answerButtonsElement = $('#answer-box');
+    // Clear previous answer buttons
     answerButtonsElement.empty();
 
     question.answers.forEach(answer => {
         const button = $('<button></button>');
         button.text(answer.text);
         button.addClass('hero-ans-btn');
-        
+        button.data('personality', answer.personality); // Add data attribute for personality
         answerButtonsElement.append(button);
     });
 
     // Attach event listener to handle user response
     $(".hero-ans-btn").on("click", function() {
-       
+        const personality = $(this).data("personality");
+        
+        console.log(personality)
+        
 
         // Move to the next hero question or end the path if there are no more questions
         currentHeroQuestionIndex++;
@@ -81,9 +93,12 @@ function nextHeroQuestion(index) {
     });
 }
 
+
 function endHeroPath() {
-    console.log("Hero path ended");
+    console.log("Out of Hero questions");
 }
+ 
+
 
 //QUESTIONS--------------------------------------------------------------------------
 // Branch Question
