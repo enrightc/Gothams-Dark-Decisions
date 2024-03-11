@@ -78,9 +78,22 @@ function nextHeroQuestion(index) {
     // Attach event listener to handle user response
     $(".hero-ans-btn").on("click", function() {
         const personality = $(this).data("personality");
-        
         console.log(personality)
         
+        // Increment Batman score only if the clicked button has the personality "Batman"
+        if (personality === "Batman") {
+            Batman++; // Increment Batman score
+            console.log("Batman score:", Batman);
+        } else if (personality === "Robin") {
+            Robin++;
+            console.log("Robin score", Robin)
+        } else if (personality === "Red Hood") {
+            RedHood++;
+            console.log("Red Hood score", RedHood)
+        } else if (personality === "Batgirl") {
+            Batgirl++;
+            console.log("Batgirl score", Batgirl)
+        }
 
         // Move to the next hero question or end the path if there are no more questions
         currentHeroQuestionIndex++;
