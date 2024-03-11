@@ -2,6 +2,7 @@ $(document).ready(function() {
     $("main").fadeIn(2500);
 });
 
+
 //START GAME--------------------------------------------------------------------------
 $(document).ready(function() {
     // Event listener for the Start button
@@ -32,34 +33,57 @@ function showFirstQuestion(firstQuestion) {
     answerButtonsElement.append(button);
  
     $(".ans-btn").on("click", function() {
+        console.log("Button clicked");
         if (answer.personality === "hero") {
-            showHeroQuestions()
+            startHeroPath()
         } else if (answer.personality === "villain") {
-            showVillainquestions()
+            startVillainPath()
         }
     })
     })
 };
 
-//Show Hero Question--------------------------------------------------------------------------
+//Start Hero Path--------------------------------------------------------------------------
+let currentHeroQuestionIndex = 0;
 
-// https://www.khanacademy.org/computing/computer-programming/html-js-jquery/dom-events-with-jquery/pt/adding-event-listeners-with-jquery
-function showHeroQuestions() {
-    $('#question-box').text(heroQuestions[0].question);
+function startHeroPath() {
+    // Display the first hero question
+    nextHeroQuestion(currentHeroQuestionIndex);
+}
+
+function nextHeroQuestion(index) {
+    const question = heroQuestions[index];
+    $('#question-box').text(question.question);
 
     const answerButtonsElement = $('#answer-box');
-    // Loop through your answer data and create button elements
-    heroQuestions[0].answers.forEach(answer => {
-    // Create a button element
-    const button = $('<button></button>');
-    // Set button text
-    button.text(answer.text);
-    // Add a class to the button
-    button.addClass('ans-btn');
-    // Append the button to the answerButtonsElement
-    answerButtonsElement.append(button);
-    })
-};
+    answerButtonsElement.empty();
+
+    question.answers.forEach(answer => {
+        const button = $('<button></button>');
+        button.text(answer.text);
+        button.addClass('hero-ans-btn');
+        
+        answerButtonsElement.append(button);
+    });
+
+    // Attach event listener to handle user response
+    $(".hero-ans-btn").on("click", function() {
+       
+
+        // Move to the next hero question or end the path if there are no more questions
+        currentHeroQuestionIndex++;
+        if (currentHeroQuestionIndex < heroQuestions.length) {
+            nextHeroQuestion(currentHeroQuestionIndex);
+        } else {
+            // No more hero questions, end the hero path
+            endHeroPath();
+        }
+    });
+}
+
+function endHeroPath() {
+    console.log("Hero path ended");
+}
 
 //QUESTIONS--------------------------------------------------------------------------
 // Branch Question
