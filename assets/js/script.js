@@ -1,3 +1,4 @@
+// Add fadeIn transition to quiz introduction.
 $(document).ready(function() {
     $("main").fadeIn(2500);
 });
@@ -10,7 +11,7 @@ let RedHood = 0;
 let Batgirl = 0;
 
 let userPersonality;
-
+let currentHeroQuestionIndex = 0;
 
 //START GAME--------------------------------------------------------------------------
 $(document).ready(function() {
@@ -19,42 +20,50 @@ $(document).ready(function() {
 });
 
 function startGame() {
-    // Hide the start button and the intro, and show the game container
+    // Hide the start button and the intro, show the game container and call showFirstQuestion function.
     $("#start-btn, #intro").addClass("hidden");
     $("#game-container").removeClass("hidden");
     showFirstQuestion(firstQuestion);
 }
 
 //Show Branch Question--------------------------------------------------------------------------
+//Show Branch Question--------------------------------------------------------------------------
 function showFirstQuestion(firstQuestion) {
+    // use jQuery .text() method to set text content of question-box element to text of first question
     $('#question-box').text(firstQuestion[0].question);
 
     
-    // Loop through the answers and create button elements
+    // Display Answer: Adapted from https://hackr.io/blog/how-to-build-a-javascript-quiz-app
+    // Loop through the answers and create button elements using foreach() with arrow function
     firstQuestion[0].answers.forEach(answer => {
-    // Create a button element
+    // Create a button element with jQuery
     const button = $('<button></button>');
     // Set button text
     button.text(answer.text);
     // Add a class to the button
     button.addClass('ans-btn');
+    // Add data attribute for personality
+    button.data('personality', answer.personality); 
     // Append the button to the answerButtonsElement
     answerButtonsElement.append(button);
- 
+    });
+
+    // Add event to .ans-btn
     $(".ans-btn").on("click", function() {
-        console.log("Button clicked");
-        if (answer.personality === "hero") {
+        const personality = $(this).data("personality");
+        // Check the personality property of the answer.
+        if (personality === "hero") {
             startHeroPath()
-        } else if (answer.personality === "villain") {
+            console.log(personality)
+        } else {
             startVillainPath()
+            console.log(personality)
         }
-    })
+    
     })
 };
 
 //Start Hero Path--------------------------------------------------------------------------
-let currentHeroQuestionIndex = 0;
-
 function startHeroPath() {
     // Display the first hero question
     nextHeroQuestion(currentHeroQuestionIndex);
@@ -66,9 +75,10 @@ function nextHeroQuestion(index) {
     // Sets the text of the element to text of current question.
     $('#question-box').text(question.question);
 
-    // Clear previous answer buttons
+    // Clear previous answer buttons using .empty method
     answerButtonsElement.empty();
 
+    // display Answers using forEach with arrow function.
     question.answers.forEach(answer => {
         const button = $('<button></button>');
         button.text(answer.text);
@@ -81,7 +91,6 @@ function nextHeroQuestion(index) {
     $(".hero-ans-btn").on("click", function() {
         const personality = $(this).data("personality");
         
-
         // Increment Batman score only if the clicked button has the personality "Batman"
         if (personality === "Batman") {
             Batman++; // Increment Batman score
@@ -92,7 +101,7 @@ function nextHeroQuestion(index) {
         } else if (personality === "Red Hood") {
             RedHood++;
             console.log("Red Hood score", RedHood)
-        } else if (personality === "Batgirl") {
+        } else {
             Batgirl++;
             console.log("Batgirl score", Batgirl)
         }
@@ -124,7 +133,6 @@ function revelation() {
     console.log("You are", userPersonality)
 }
 
-
 function results() {
     $("#game-container").addClass("hidden");
     $("#results-container").removeClass("hidden");
@@ -135,11 +143,7 @@ function results() {
 function endHeroPath() {
     console.log("Out of Hero questions");
 }
-
-
-
-
-
+ 
 //QUESTIONS--------------------------------------------------------------------------
 // Branch Question
 const firstQuestion = [
