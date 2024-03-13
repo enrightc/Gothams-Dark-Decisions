@@ -291,7 +291,7 @@ const heroQuestions = [
             },
             {
                 answerNumber: 3,
-                text: "Express gratitude for the stranger's help and offer to assist them in their own investigations.",
+                text: "Express gratitude for the stranger's help but make it clear that you work alone, preferring to handle matters your own way.",
                 score: 2,
                 personality: "Hero",
                 character: "Red Hood"
@@ -308,32 +308,32 @@ const heroQuestions = [
     {
         title: "Chapter 3: Unravelling the Mystery",
         questionNumber: 3,
-        question: "Unraveling the Mystery: As you delve deeper into the mystery of your identity, you uncover a trail of clues leading to a notorious criminal organization operating in the shadows of Gotham. How do you choose to confront this threat?",
+        question: "Unraveling the Mystery: As you delve deeper into the mystery of your identity, you uncover a trail of clues leading to a notorious criminal organisation operating in the shadows of Gotham. How do you choose to confront this threat?",
         answers: [
             {
                 answerNumber: 1,
-                text: "Gather evidence and build a case against the organization, using your intellect and cunning to outsmart them.",
+                text: "Gather evidence and build a case against the organisation, using your intellect and cunning to outsmart them.",
                 score: 4,
                 personality: "Hero",
                 character: "Batman"
             },
             {
                 answerNumber: 2,
-                text: "Confront the organization head-on, using your skills and determination to bring them to justice.",
+                text: "Confront the organisation head-on, using your combat skills to dismantle them and put an end to their criminal activities.",
                 score: 3,
+                personality: "Hero",
+                character: "Red Hood"
+            },
+            {
+                answerNumber: 3,
+                text: "Seek assistance from trusted allies or other heroes to take down the criminal organisation.",
+                score: 2,
                 personality: "Hero",
                 character: "Robin"
             },
             {
-                answerNumber: 3,
-                text: "Seek assistance from trusted allies or other heroes to take down the criminal organization.",
-                score: 2,
-                personality: "Hero",
-                character: "REed Hood"
-            },
-            {
                 answerNumber: 4,
-                text: "Infiltrate the organization from within, using stealth and deception to dismantle it from the inside.",
+                text: "Infiltrate the organisation from within, using stealth and deception to dismantle it from the inside.",
                 score: 1,
                 personality: "Hero",
                 character: "Batgirl"
@@ -347,7 +347,7 @@ const heroQuestions = [
         answers: [
             {
                 answerNumber: 1,
-                text: "Immediately inform the authorities and devise a plan to stop the poisoning.",
+                text: "Immediately mobilise your resources to stop the poisoning, utilising your network and investigative skills to uncover the gang's operation and dismantle it from within.",
                 score: 4,
                 personality: "Hero",
                 character: "Batman"
@@ -368,7 +368,7 @@ const heroQuestions = [
             },
             {
                 answerNumber: 4,
-                text: "Utilize your technological expertise to hack into the gang's communication channels and disrupt their operation.",
+                text: "Utilise your technological expertise to hack into the gang's communication channels and disrupt their operation.",
                 score: 1,
                 personality: "Hero",
                 character: "Batgirl"
@@ -378,7 +378,7 @@ const heroQuestions = [
     {
         title: "Chapter 5: Infiltrating the Enemy Hideout",
         questionNumber: 5,
-        question: "You learn the location of the criminal organization's hideout and must decide how to approach it. How do you proceed?",
+        question: "You learn the location of the criminal organisation's hideout and must decide how to approach it. How do you proceed?",
         answers: [
             {
                 answerNumber: 1,
@@ -389,7 +389,7 @@ const heroQuestions = [
             },
             {
                 answerNumber: 2,
-                text: "Formulate a strategic plan to infiltrate the hideout and neutralize the threat.",
+                text: "Formulate a strategic plan to infiltrate the hideout and neutralise the threat.",
                 score: 3,
                 personality: "Hero",
                 character: "Robin"
@@ -403,7 +403,7 @@ const heroQuestions = [
             },
             {
                 answerNumber: 4,
-                text: "Utilize your agility and stealth to sneak into the hideout undetected.",
+                text: "Utilise your agility and stealth to sneak into the hideout undetected.",
                 score: 1,
                 personality: "Hero",
                 character: "Batgirl"
@@ -417,7 +417,7 @@ const heroQuestions = [
         answers: [
             {
                 answerNumber: 1,
-                text: "Strategize a plan to rescue the hostages while minimizing collateral damage.",
+                text: "Strategise a plan to rescue the hostages while minimising collateral damage.",
                 score: 4,
                 personality: "Hero",
                 character: "Red Hood"
@@ -431,7 +431,7 @@ const heroQuestions = [
             },
             {
                 answerNumber: 3,
-                text: "Take decisive action to neutralize the threat and free the hostages.",
+                text: "Take decisive action to neutralizs the threat and free the hostages, accepting that there maybe collaleral damage.",
                 score: 2,
                 personality: "Hero",
                 character: "Red Hood"
@@ -446,13 +446,48 @@ const heroQuestions = [
         ]
     },
     {
-        title: "Chapter 7: The Final Confrontation",
-        questionNumber: 7,
-        question: "After freeing the hostages, you face the leader of the criminal organization in a final showdown. How do you approach this dangerous encounter?",
+        title: "Chapter 7: Escaping the Villain's Lair",
+        questionNumber: 2,
+        question: "After freeing the hostages you are captured by the villainous mastermind, you find yourself imprisoned in their elaborate and heavily guarded lair. How do you plan your daring escape?",
         answers: [
             {
                 answerNumber: 1,
-                text: "Utilize your intellect and strategic planning to outwit the leader and bring them to justice.",
+                text: "Use your keen detective skills to uncover weaknesses in the lair's security system and exploit them to break free.",
+                score: 4,
+                personality: "Hero",
+                character: "Batman"
+            },
+            {
+                answerNumber: 2,
+                text: "Overpower your guards with swift and decisive combat techniques, seizing their weapons and using them to fight your way out.",
+                score: 3,
+                personality: "Hero",
+                character: "Red Hood"
+            },
+            {
+                answerNumber: 3,
+                text: "Create a diversion by sabotaging the lair's infrastructure, causing chaos and confusion that allows you to slip away unnoticed.",
+                score: 2,
+                personality: "Hero",
+                character: "Robin"
+            },
+            {
+                answerNumber: 4,
+                text: "Utilise your acrobatic agility to navigate the perilous obstacles of the lair, finding hidden passages and escape routes to freedom.",
+                score: 1,
+                personality: "Hero",
+                character: "Batgirl"
+            }
+        ]
+    },
+    {
+        title: "Chapter 8: The Final Confrontation",
+        questionNumber: 7,
+        question: "After escaping you face the leader of the criminal organisation in a final showdown. How do you approach this dangerous encounter?",
+        answers: [
+            {
+                answerNumber: 1,
+                text: "Utilise your intellect and strategic planning to outwit the leader and bring them to justice.",
                 score: 4,
                 personality: "Hero",
                 character: "Batman"
@@ -462,14 +497,14 @@ const heroQuestions = [
                 text: "Engage in a physical battle, determined to defeat the leader and end their reign of terror.",
                 score: 3,
                 personality: "Hero",
-                character: "Robin"
+                character: "Red Hood"
             },
             {
                 answerNumber: 3,
                 text: "Call upon your allies for support, knowing that together, you can overcome any challenge.",
                 score: 2,
                 personality: "Hero",
-                character: "Red Hood"
+                character: "Robin"
             },
             {
                 answerNumber: 4,
