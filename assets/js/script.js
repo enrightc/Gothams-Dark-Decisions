@@ -5,14 +5,19 @@ $(document).ready(function() {
 
 // Essential elements
 const answerButtonsElement = $('#answer-box');
-let  Batman = 0;
+let Batman = 0;
 let Robin = 0;
 let RedHood = 0;
 let Batgirl = 0;
+let theJoker = 0;
+let thePenguin = 0;
+let Bane = 0;
+let Catwoman = 0;
 
-let userPersonality;
 let currentHeroQuestionIndex = 0;
 let currentVillainQuestionIndex = 0;
+
+let userCharacter;
 
 
 //START GAME--------------------------------------------------------------------------
@@ -90,22 +95,22 @@ function nextHeroQuestion(index) {
         const button = $('<button></button>');
         button.text(answer.text);
         button.addClass('hero-ans-btn');
-        button.data('personality', answer.personality); // Add data attribute for personality
+        button.data('character', answer.character); // Add data attribute for personality
         answerButtonsElement.append(button);
     });
 
     // Attach event listener to handle user response
     $(".hero-ans-btn").on("click", function() {
-        const personality = $(this).data("personality");
+        const character = $(this).data("character");
         
         // Increment Batman score only if the clicked button has the personality "Batman"
-        if (personality === "Batman") {
+        if (character === "Batman") {
             Batman++; // Increment Batman score
             console.log("Batman score:", Batman);
-        } else if (personality === "Robin") {
+        } else if (character === "Robin") {
             Robin++;
             console.log("Robin score", Robin)
-        } else if (personality === "Red Hood") {
+        } else if (character === "Red Hood") {
             RedHood++;
             console.log("Red Hood score", RedHood)
         } else {
@@ -121,41 +126,19 @@ function nextHeroQuestion(index) {
             // No more hero questions, end the hero path
             results();
         }
-
-        revelation() 
     });
 }
 
-function revelation() {
-    let maxScore = Math.max(Batman, Robin, RedHood, Batgirl);
-    if (maxScore === Batman) {
-        userPersonality = "Batman";
-    } else if (maxScore === Robin) {
-        userPersonality = "Robin";
-    } else if (maxScore === RedHood) {
-        userPersonality = "Red Hood";
-    } else if (maxScore === Batgirl) {
-        userPersonality = "Batgirl";
-    }
-    console.log("You are", userPersonality)
-}
 
-function results() {
-    $("#game-container").addClass("hidden");
-    $("#results-container").removeClass("hidden");
 
-    $("p.character").append(userPersonality);
-}
 
-function endHeroPath() {
-    console.log("Out of Hero questions");
-}
  
 
 
 //Start Villain Path--------------------------------------------------------------------------
 function startVillainPath() {
     // Display the first hero question
+    console.log(currentVillainQuestionIndex);
     nextVillainQuestion(currentVillainQuestionIndex);
 };
 
@@ -166,8 +149,6 @@ function nextVillainQuestion(index) {
     $('#title').text(question.title);
     $('#question-box').text(question.question);
     
-   
-
     // Clear previous answer buttons using .empty method
     answerButtonsElement.empty();
 
@@ -175,19 +156,80 @@ function nextVillainQuestion(index) {
     question.answers.forEach(answer => {
         const button = $('<button></button>');
         button.text(answer.text);
-        button.addClass('hero-ans-btn');
-        button.data('personality', answer.personality); // Add data attribute for personality
+        button.addClass('villain-ans-btn');
+        button.data('character', answer.character); // Add data attribute for personality
         answerButtonsElement.append(button);
     });
-}
- 
 
+    // Attach event listener to handle user response
+    $(".villain-ans-btn").on("click", function() {
+        const character = $(this).data("character");
+        
+        // Increment Batman score only if the clicked button has the personality "Batman"
+        if (character === "The Joker") {
+            theJoker++; // Increment Batman score
+            console.log("The Joker score:", theJoker);
+        } else if (character === "The Penquin") {
+            thePenguin++;
+            console.log("The Penguin score", thePenguin)
+        } else if (character === "Bane") {
+            Bane++;
+            console.log("Bane score", Bane)
+        } else {
+            Catwoman++;
+            console.log("Catwoman score", Catwoman)
+        }
+        
+        // Move to the next hero question or end the path if there are no more questions
+        currentVillainQuestionIndex++;
+        if (currentVillainQuestionIndex < villainQuestions.length) {
+            nextVillainQuestion(currentVillainQuestionIndex);
+        } else {
+            // No more hero questions, end the hero path
+            results();
+        }
+    });
+}
+
+
+function results() {
+    $("#game-container").addClass("hidden");
+    $("#results-container").removeClass("hidden");
+
+    revelation();
+
+    $("p.character").append(userCharacter);
+
+    
+}
+
+function revelation() {
+    let maxScore = Math.max(Batman, Robin, RedHood, Batgirl,theJoker, thePenguin, Bane, Catwoman);
+    if (maxScore === Batman) {
+        userCharacter = "Batman";
+    } else if (maxScore === Robin) {
+        userCharacter = "Robin";
+    } else if (maxScore === RedHood) {
+        userCharacter = "Red Hood";
+    } else if (maxScore === Batgirl) {
+        userCharacter = "Batgirl";
+    } else if (maxScore === theJoker) {
+        userCharacter = "The Joker"; 
+    } else if (maxScore === thePenguin) {
+        userCharacter = "The PEnguin";
+    } else if (maxScore === Bane) {
+        userCharacter = "Bane";
+    } else if (maxScore === Catwoman) {
+        userCharacter = "Catwoman";
+    }
+    console.log("You are", userCharacter)
+}
 
 //QUESTIONS--------------------------------------------------------------------------
 // Branch Question
 const firstQuestion = [
     {
-        title: "The Choice",
+        title: "Chapter 1:The Choice",
         question: "As the figure approaches, you see a glint of concern in their eyes. They offer you a hand and ask, 'Are you alright? You seem lost.' How do you respond?",
         answers: [
             {
@@ -215,25 +257,29 @@ const heroQuestions = [
                 answerNumber: 1,
                 text: "Embrace your past and begin piecing together the clues to uncover the truth.",
                 score: 4,
-                personality: "Batman"
+                personality: "Hero",
+                character: "Batman"
             },
             {
                 answerNumber: 2,
                 text: "Seek further proof before fully accepting your identity as a detective.",
                 score: 3,
-                personality: "Robin"
+                personality: "Hero",
+                character: "Robin"
             },
             {
                 answerNumber: 3,
                 text: "Express gratitude for the stranger's help and offer to assist them in their own investigations.",
                 score: 2,
-                personality: "Red Hood"
+                personality: "Hero",
+                character: "Red Hood"
             },
             {
                 answerNumber: 4,
                 text: "Remain skeptical and continue searching for answers on your own.",
                 score: 1,
-                personality: "Batgirl"
+                personality: "Hero",
+                character: "Batgirl"
             }
         ]
     },
@@ -246,25 +292,29 @@ const heroQuestions = [
                 answerNumber: 1,
                 text: "Gather evidence and build a case against the organization, using your intellect and cunning to outsmart them.",
                 score: 4,
-                personality: "Batman"
+                personality: "Hero",
+                character: "Batman"
             },
             {
                 answerNumber: 2,
                 text: "Confront the organization head-on, using your skills and determination to bring them to justice.",
                 score: 3,
-                personality: "Robin"
+                personality: "Hero",
+                character: "Robin"
             },
             {
                 answerNumber: 3,
                 text: "Seek assistance from trusted allies or other heroes to take down the criminal organization.",
                 score: 2,
-                personality: "Red Hood"
+                personality: "Hero",
+                character: "REed Hood"
             },
             {
                 answerNumber: 4,
                 text: "Infiltrate the organization from within, using stealth and deception to dismantle it from the inside.",
                 score: 1,
-                personality: "Batgirl"
+                personality: "Hero",
+                character: "Batgirl"
             }
         ]
     },
@@ -277,25 +327,29 @@ const heroQuestions = [
                 answerNumber: 1,
                 text: "Immediately inform the authorities and devise a plan to stop the poisoning.",
                 score: 4,
-                personality: "Batman"
+                personality: "Hero",
+                character: "Batman"
             },
             {
                 answerNumber: 2,
                 text: "Gather evidence to expose the plot and rally public support against the criminals.",
                 score: 3,
-                personality: "Robin"
+                personality: "Hero",
+                character: "Robin"
             },
             {
                 answerNumber: 3,
                 text: "Infiltrate the gang's hideout to gather intelligence and thwart their plans.",
                 score: 2,
-                personality: "Red Hood"
+                personality: "Hero",
+                character: "Red Hood"
             },
             {
                 answerNumber: 4,
                 text: "Utilize your technological expertise to hack into the gang's communication channels and disrupt their operation.",
                 score: 1,
-                personality: "Batgirl"
+                personality: "Hero",
+                character: "Batgirl"
             }
         ]
     },
@@ -308,25 +362,29 @@ const heroQuestions = [
                 answerNumber: 1,
                 text: "Conduct surveillance to gather information and assess the enemy's strength before taking action.",
                 score: 4,
-                personality: "Batman"
+                personality: "Hero",
+                character: "Batman"
             },
             {
                 answerNumber: 2,
                 text: "Formulate a strategic plan to infiltrate the hideout and neutralize the threat.",
                 score: 3,
-                personality: "Robin"
+                personality: "Hero",
+                character: "Robin"
             },
             {
                 answerNumber: 3,
                 text: "Launch a surprise attack on the hideout, catching the criminals off guard.",
                 score: 2,
-                personality: "Red Hood"
+                personality: "Hero",
+                character: "Red Hood"
             },
             {
                 answerNumber: 4,
                 text: "Utilize your agility and stealth to sneak into the hideout undetected.",
                 score: 1,
-                personality: "Batgirl"
+                personality: "Hero",
+                character: "Batgirl"
             }
         ]
     },
@@ -339,25 +397,29 @@ const heroQuestions = [
                 answerNumber: 1,
                 text: "Strategize a plan to rescue the hostages while minimizing collateral damage.",
                 score: 4,
-                personality: "Batman"
+                personality: "Hero",
+                character: "Red Hood"
             },
             {
                 answerNumber: 2,
                 text: "Coordinate with your allies to execute a swift and efficient rescue operation.",
                 score: 3,
-                personality: "Robin"
+                personality: "Hero",
+                character: "Robin"
             },
             {
                 answerNumber: 3,
                 text: "Take decisive action to neutralize the threat and free the hostages.",
                 score: 2,
-                personality: "Red Hood"
+                personality: "Hero",
+                character: "Red Hood"
             },
             {
                 answerNumber: 4,
                 text: "Use your agility and stealth to navigate the hideout and rescue the hostages undetected.",
                 score: 1,
-                personality: "Batgirl"
+                personality: "Hero",
+                character: "Batgirl"
             }
         ]
     },
@@ -370,25 +432,29 @@ const heroQuestions = [
                 answerNumber: 1,
                 text: "Utilize your intellect and strategic planning to outwit the leader and bring them to justice.",
                 score: 4,
-                personality: "Batman"
+                personality: "Hero",
+                character: "Batman"
             },
             {
                 answerNumber: 2,
                 text: "Engage in a physical battle, determined to defeat the leader and end their reign of terror.",
                 score: 3,
-                personality: "Robin"
+                personality: "Hero",
+                character: "Robin"
             },
             {
                 answerNumber: 3,
                 text: "Call upon your allies for support, knowing that together, you can overcome any challenge.",
                 score: 2,
-                personality: "Red Hood"
+                personality: "Hero",
+                character: "Red Hood"
             },
             {
                 answerNumber: 4,
                 text: "Confront the leader alone, prepared to face whatever dangers may arise.",
                 score: 1,
-                personality: "Batgirl"
+                personality: "Hero",
+                character: "Batgirl"
             }
         ]
     }
@@ -405,28 +471,28 @@ const villainQuestions = [
                 text: "Use manipulation and deception to manipulate others and seize control.",
                 score: 4,
                 personality: "Villain",
-                Character: "The Penguin"
+                character: "The Penguin"
             },
             {
                 answerNumber: 2,
                 text: "Employ brute force and intimidation to crush anyone who stands in your way.",
                 score: 3,
                 personality: "Villain",
-                Character: "Bane"
+                character: "Bane"
             },
             {
                 answerNumber: 3,
                 text: "Form alliances with other powerful villains to expand your influence and territory.",
                 score: 2,
                 personality: "Villain",
-                Character: "The Joker"
+                character: "The Joker"
             },
             {
                 answerNumber: 4,
                 text: "Utilize your intellect to outsmart your rivals and secure your position as the city's most feared villain.",
                 score: 1,
                 personality: "Villain",
-                Character: "Catwoman"
+                character: "Catwoman"
             }
         ]
     },
@@ -439,7 +505,7 @@ const villainQuestions = [
                 text: "Use manipulation and deception to manipulate others and seize control.",
                 score: 4,
                 personality: "Villain",
-                Character: "The Penguin"
+                character: "The Penguin"
             },
             {
                 answerNumber: 2,
@@ -453,14 +519,14 @@ const villainQuestions = [
                 text: "Form alliances with other powerful villains to expand your influence and territory. ",
                 score: 2,
                 personality: "Villain",
-                Character: "The Joker"
+                character: "The Joker"
             },
             {
                 answerNumber: 4,
                 text: "Utilize your intellect to outsmart your rivals and secure your position as the city's most feared villain. ",
                 score: 1,
                 personality: "Villain",
-                Character: "Catwoman"
+                character: "Catwoman"
             }
         ]
     },
@@ -473,88 +539,88 @@ const villainQuestions = [
                 text: "Rule through fear and intimidation, crushing any dissent with ruthless efficiency. ",
                 score: 4,
                 personality: "Villain",
-                Character: "Bane"
+                character: "Bane"
             },
             {
                 answerNumber: 2,
                 text: "Establish a network of loyal followers and enforcers to enforce your will. ",
                 score: 3,
                 personality: "Villain",
-                Character: "The Penguin"
+                character: "The Penguin"
             },
             {
                 answerNumber: 3,
                 text: "Exploit the city's weaknesses and vulnerabilities to maintain your control. ",
                 score: 2,
                 personality: "Villain",
-                Character: "Catwoman"
+                character: "Catwoman"
             },
             {
                 answerNumber: 4,
                 text: "Stay one step ahead of your enemies, using your cunning and intellect to outmaneuver them at every turn. ",
                 score: 1,
                 personality: "Villain",
-                Character: "The Joker"
+                character: "The Joker"
             }
         ]
     },
     {
-        title: "Chapter 6: Expanding Your Influence",
+        title: "Chapter 5: Expanding Your Influence",
         question: "As you solidify your control over Gotham's underworld, you seek to expand your influence beyond the city limits. How do you plan to extend your reach and establish dominance in neighboring territories?",
         answers: [
             {
                 answerNumber: 1,
                 text: "Manipulate local authorities and criminal organizations to bend to your will, using your persuasive skills to gain control.",
                 personality: "Villain",
-                Character: "The Penquin"
+                character: "The Penquin"
             },
             {
                 answerNumber: 2,
                 text: "Conquer neighboring territories through sheer force and intimidation, crushing opposition with overwhelming power.",
                 personality: "Villain",
-                Character: "Bane"
+                character: "Bane"
             },
             {
                 answerNumber: 3,
                 text: "Forge alliances with other influential villains in neighboring cities, pooling resources and manpower to achieve mutual goals.",
                 personality: "Villain",
-                Character: "Catwoman"
+                character: "Catwoman"
             },
             {
                 answerNumber: 4,
                 text: "Create chaos and disorder in neighboring territories, destabilizing existing power structures to pave the way for your ascension.",
                 personality: "Villain",
-                Character: "The Joker"
+                character: "The Joker"
             }
         ]
     },
     {
-        Title: "Chapter 8: The Final Confrontation",
+        title: "Chapter 6: The Final Confrontation",
         question: "As the heroes close in on your stronghold, you prepare for one last epic battle to determine the fate of Gotham. How do you intend to emerge victorious and solidify your legacy as the city's ultimate villain?",
         answers: [
             {
                 answerNumber: 1,
                 text: "Unleash chaos and mayhem upon the city, disrupting the heroes' plans and plunging Gotham into darkness.",
                 personality: "Villain",
-                Character: "The Joker"
+                character: "The Joker"
             },
             {
                 answerNumber: 2,
                 text: "Engage the heroes in a brutal showdown, using your brute strength and combat prowess to overpower them.",
                 personality: "Villain",
-                Character: "Bane"
+                character: "Bane"
             },
             {
                 answerNumber: 3,
                 text: "Outmaneuver the heroes at every turn, exploiting their weaknesses and vulnerabilities to gain the upper hand.",
                 personality: "Villain",
-                Character: "Catwoman"
+                character: "Catwoman"
             },
             {
                 answerNumber: 4,
                 text: "Challenge the heroes to a final showdown of intellect and strategy, pitting your cunning mind against their unwavering determination.",
                 personality: "Villain",
-                Character: "The Penquin"
+                character: "The Penquin"
             }
         ]
     }
