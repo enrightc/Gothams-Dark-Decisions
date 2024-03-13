@@ -1,6 +1,6 @@
 // Add fadeIn transition to quiz introduction.
 $(document).ready(function() {
-    $("main").fadeIn(2500);
+    $("main").fadeIn(3000);
 });
 
 // Essential elements

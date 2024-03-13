@@ -40,6 +40,17 @@ main {
     max-width: 500px;
 }
 
+h1 {
+    padding-bottom: 20px;
+}
+
+p {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 25px; 
+}
+
 .btn {
     height: 61px;
     padding: 10px;
