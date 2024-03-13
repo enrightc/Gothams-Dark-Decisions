@@ -30,7 +30,9 @@ function startGame() {
 //Show Branch Question--------------------------------------------------------------------------
 function showFirstQuestion(firstQuestion) {
     // use jQuery .text() method to set text content of question-box element to text of first question
+    $('#title').text(firstQuestion[0].title);
     $('#question-box').text(firstQuestion[0].question);
+    
 
     
     // Display Answer: Adapted from https://hackr.io/blog/how-to-build-a-javascript-quiz-app
@@ -73,7 +75,10 @@ function nextHeroQuestion(index) {
     // Collects the hero question object from the heroQuestions array.
     const question = heroQuestions[index];
     // Sets the text of the element to text of current question.
+    $('#title').text(question.title);
     $('#question-box').text(question.question);
+    
+   
 
     // Clear previous answer buttons using .empty method
     answerButtonsElement.empty();
@@ -148,6 +153,7 @@ function endHeroPath() {
 // Branch Question
 const firstQuestion = [
     {
+        title: "The Choice",
         question: "As the figure approaches, you see a glint of concern in their eyes. They offer you a hand and ask, 'Are you alright? You seem lost.' How do you respond?",
         answers: [
             {
@@ -167,8 +173,9 @@ const firstQuestion = [
 // Hero Questions
 const heroQuestions = [
     {
+        title: "Chapter 2: Embracing Your Past",
         questionNumber: 2,
-        question: "Embracing Your Past: You accept the stranger's help and follow them to a hidden room filled with newspaper clippings, photographs, and documents. They reveal that you were once a renowned detective, but your memory loss has left you vulnerable. How do you react to this revelation?",
+        question: "You accept the stranger's help and follow them to a hidden room filled with newspaper clippings, photographs, and documents. They reveal that you were once a renowned detective, but your memory loss has left you vulnerable. How do you react to this revelation?",
         answers: [
             {
                 answerNumber: 1,
@@ -197,6 +204,7 @@ const heroQuestions = [
         ]
     },
     {
+        title: "Chapter 3: Unravelling the Mystery",
         questionNumber: 3,
         question: "Unraveling the Mystery: As you delve deeper into the mystery of your identity, you uncover a trail of clues leading to a notorious criminal organization operating in the shadows of Gotham. How do you choose to confront this threat?",
         answers: [
@@ -227,8 +235,9 @@ const heroQuestions = [
         ]
     },
     {
+        title: "Chapter 4: The Water Supply Threat",
         questionNumber: 4,
-        question: "The Water Supply Threat: While investigating, you overhear a conversation revealing that a criminal gang plans to poison Gotham's water supply. How do you choose to respond?",
+        question: "While investigating, you overhear a conversation revealing that a criminal gang plans to poison Gotham's water supply. How do you choose to respond?",
         answers: [
             {
                 answerNumber: 1,
@@ -257,8 +266,9 @@ const heroQuestions = [
         ]
     },
     {
+        title: "Chapter 5: Infiltrating the Enemy Hideout",
         questionNumber: 5,
-        question: "Infiltrating the Enemy Hideout: You learn the location of the criminal organization's hideout and must decide how to approach it. How do you proceed?",
+        question: "You learn the location of the criminal organization's hideout and must decide how to approach it. How do you proceed?",
         answers: [
             {
                 answerNumber: 1,
@@ -287,8 +297,9 @@ const heroQuestions = [
         ]
     },
     {
+        title: "Chapter 6: Rescuing the Hostages",
         questionNumber: 6,
-        question: "Rescuing Hostages: While investigating the hideout, you discover innocent hostages being held captive by the criminals. How do you proceed?",
+        question: "While investigating the hideout, you discover innocent hostages being held captive by the criminals. How do you proceed?",
         answers: [
             {
                 answerNumber: 1,
@@ -317,8 +328,9 @@ const heroQuestions = [
         ]
     },
     {
+        title: "Chapter 7: The Final Confrontation",
         questionNumber: 7,
-        question: "Final Confrontation: After freeing the hostages, you face the leader of the criminal organization in a final showdown. How do you approach this dangerous encounter?",
+        question: "After freeing the hostages, you face the leader of the criminal organization in a final showdown. How do you approach this dangerous encounter?",
         answers: [
             {
                 answerNumber: 1,
