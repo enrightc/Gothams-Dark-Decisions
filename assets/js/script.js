@@ -157,6 +157,28 @@ function endHeroPath() {
 function startVillainPath() {
     // Display the first hero question
     nextVillainQuestion(currentVillainQuestionIndex);
+};
+
+function nextVillainQuestion(index) {
+    // Collects the hero question object from the heroQuestions array.
+    const question = villainQuestions[index];
+    // Sets the text of the element to text of current question.
+    $('#title').text(question.title);
+    $('#question-box').text(question.question);
+    
+   
+
+    // Clear previous answer buttons using .empty method
+    answerButtonsElement.empty();
+
+    // display Answers using forEach with arrow function.
+    question.answers.forEach(answer => {
+        const button = $('<button></button>');
+        button.text(answer.text);
+        button.addClass('hero-ans-btn');
+        button.data('personality', answer.personality); // Add data attribute for personality
+        answerButtonsElement.append(button);
+    });
 }
  
 
