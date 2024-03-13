@@ -225,6 +225,28 @@ function revelation() {
     console.log("You are", userCharacter)
 }
 
+//Voiceover--------------------------------------------------------------------------
+document.getElementById("play-pause").addEventListener("click", function(){
+    var audio = document.getElementById('voiceover');
+    if(this.className == 'is-playing'){
+        this.className = "";
+        this.textContent = "▶"; // Play symbol
+        audio.pause();
+    } else {
+        this.className = "is-playing";
+        this.textContent = "❚❚"; // Pause symbol
+        audio.play();
+    }
+});
+
+// Set the initial content to the play symbol
+document.getElementById("play-pause").textContent = "▶";
+
+
+
+
+
+
 //QUESTIONS--------------------------------------------------------------------------
 // Branch Question
 const firstQuestion = [
