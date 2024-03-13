@@ -12,6 +12,8 @@ let Batgirl = 0;
 
 let userPersonality;
 let currentHeroQuestionIndex = 0;
+let currentVillainQuestionIndex = 0;
+
 
 //START GAME--------------------------------------------------------------------------
 $(document).ready(function() {
@@ -149,6 +151,16 @@ function endHeroPath() {
     console.log("Out of Hero questions");
 }
  
+
+
+//Start Villain Path--------------------------------------------------------------------------
+function startVillainPath() {
+    // Display the first hero question
+    nextVillainQuestion(currentVillainQuestionIndex);
+}
+ 
+
+
 //QUESTIONS--------------------------------------------------------------------------
 // Branch Question
 const firstQuestion = [
@@ -355,6 +367,172 @@ const heroQuestions = [
                 text: "Confront the leader alone, prepared to face whatever dangers may arise.",
                 score: 1,
                 personality: "Batgirl"
+            }
+        ]
+    }
+];
+
+// Villain Questions
+const villainQuestions = [
+    {
+        title: "Chapter 2: The Villain's Path",
+        question: "You choose to decline the stranger's offer, preferring to rely on your own instincts and resources. As you explore the dark alleys of Gotham, a sense of power begins to course through you. You realize that you possess abilities beyond those of ordinary men and women, and you are determined to use them to carve out your own path in this city of shadows.",
+        answers: [
+            {
+                answerNumber: 1,
+                text: "Use manipulation and deception to manipulate others and seize control.",
+                score: 4,
+                personality: "Villain",
+                Character: "The Penguin"
+            },
+            {
+                answerNumber: 2,
+                text: "Employ brute force and intimidation to crush anyone who stands in your way.",
+                score: 3,
+                personality: "Villain",
+                Character: "Bane"
+            },
+            {
+                answerNumber: 3,
+                text: "Form alliances with other powerful villains to expand your influence and territory.",
+                score: 2,
+                personality: "Villain",
+                Character: "The Joker"
+            },
+            {
+                answerNumber: 4,
+                text: "Utilize your intellect to outsmart your rivals and secure your position as the city's most feared villain.",
+                score: 1,
+                personality: "Villain",
+                Character: "Catwoman"
+            }
+        ]
+    },
+    {
+        title: "Chapter 3: Embracing the Darkness",
+        question: "You find yourself drawn to the darker side of Gotham, where crime and corruption reign supreme. Instead of fighting against it, you decide to embrace the darkness, using your newfound powers to rise to the top of the criminal underworld. How do you plan to establish your dominance?",
+        answers: [
+            {
+                answerNumber: 1,
+                text: "Use manipulation and deception to manipulate others and seize control.",
+                score: 4,
+                personality: "Villain",
+                Character: "The Penguin"
+            },
+            {
+                answerNumber: 2,
+                text: "Employ brute force and intimidation to crush anyone who stands in your way. ",
+                score: 3,
+                personality: "Villain",
+                Character: "Bane"
+            },
+            {
+                answerNumber: 3,
+                text: "Form alliances with other powerful villains to expand your influence and territory. ",
+                score: 2,
+                personality: "Villain",
+                Character: "The Joker"
+            },
+            {
+                answerNumber: 4,
+                text: "Utilize your intellect to outsmart your rivals and secure your position as the city's most feared villain. ",
+                score: 1,
+                personality: "Villain",
+                Character: "Catwoman"
+            }
+        ]
+    },
+    {
+        title: "Chapter 4: The Reign of Terror",
+        question: "With your power firmly established, you set about imposing your will upon the city. Your name strikes fear into the hearts of Gotham's citizens, and your enemies tremble at the sound of your footsteps. How do you maintain your iron grip on the city?",
+        answers: [
+            {
+                answerNumber: 1,
+                text: "Rule through fear and intimidation, crushing any dissent with ruthless efficiency. ",
+                score: 4,
+                personality: "Villain",
+                Character: "Bane"
+            },
+            {
+                answerNumber: 2,
+                text: "Establish a network of loyal followers and enforcers to enforce your will. ",
+                score: 3,
+                personality: "Villain",
+                Character: "The Penguin"
+            },
+            {
+                answerNumber: 3,
+                text: "Exploit the city's weaknesses and vulnerabilities to maintain your control. ",
+                score: 2,
+                personality: "Villain",
+                Character: "Catwoman"
+            },
+            {
+                answerNumber: 4,
+                text: "Stay one step ahead of your enemies, using your cunning and intellect to outmaneuver them at every turn. ",
+                score: 1,
+                personality: "Villain",
+                Character: "The Joker"
+            }
+        ]
+    },
+    {
+        title: "Chapter 6: Expanding Your Influence",
+        question: "As you solidify your control over Gotham's underworld, you seek to expand your influence beyond the city limits. How do you plan to extend your reach and establish dominance in neighboring territories?",
+        answers: [
+            {
+                answerNumber: 1,
+                text: "Manipulate local authorities and criminal organizations to bend to your will, using your persuasive skills to gain control.",
+                personality: "Villain",
+                Character: "The Penquin"
+            },
+            {
+                answerNumber: 2,
+                text: "Conquer neighboring territories through sheer force and intimidation, crushing opposition with overwhelming power.",
+                personality: "Villain",
+                Character: "Bane"
+            },
+            {
+                answerNumber: 3,
+                text: "Forge alliances with other influential villains in neighboring cities, pooling resources and manpower to achieve mutual goals.",
+                personality: "Villain",
+                Character: "Catwoman"
+            },
+            {
+                answerNumber: 4,
+                text: "Create chaos and disorder in neighboring territories, destabilizing existing power structures to pave the way for your ascension.",
+                personality: "Villain",
+                Character: "The Joker"
+            }
+        ]
+    },
+    {
+        Title: "Chapter 8: The Final Confrontation",
+        question: "As the heroes close in on your stronghold, you prepare for one last epic battle to determine the fate of Gotham. How do you intend to emerge victorious and solidify your legacy as the city's ultimate villain?",
+        answers: [
+            {
+                answerNumber: 1,
+                text: "Unleash chaos and mayhem upon the city, disrupting the heroes' plans and plunging Gotham into darkness.",
+                personality: "Villain",
+                Character: "The Joker"
+            },
+            {
+                answerNumber: 2,
+                text: "Engage the heroes in a brutal showdown, using your brute strength and combat prowess to overpower them.",
+                personality: "Villain",
+                Character: "Bane"
+            },
+            {
+                answerNumber: 3,
+                text: "Outmaneuver the heroes at every turn, exploiting their weaknesses and vulnerabilities to gain the upper hand.",
+                personality: "Villain",
+                Character: "Catwoman"
+            },
+            {
+                answerNumber: 4,
+                text: "Challenge the heroes to a final showdown of intellect and strategy, pitting your cunning mind against their unwavering determination.",
+                personality: "Villain",
+                Character: "The Penquin"
             }
         ]
     }
