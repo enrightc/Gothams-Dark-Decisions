@@ -13,12 +13,10 @@ let theJoker = 0;
 let thePenguin = 0;
 let Bane = 0;
 let Catwoman = 0;
-
 let currentHeroQuestionIndex = 0;
 let currentVillainQuestionIndex = 0;
-
 let userCharacter;
-
+let personality;
 
 //START GAME--------------------------------------------------------------------------
 $(document).ready(function() {
@@ -34,13 +32,10 @@ function startGame() {
 }
 
 //Show Branch Question--------------------------------------------------------------------------
-//Show Branch Question--------------------------------------------------------------------------
 function showFirstQuestion(firstQuestion) {
     // use jQuery .text() method to set text content of question-box element to text of first question
     $('#title').text(firstQuestion[0].title);
     $('#question-box').text(firstQuestion[0].question);
-    
-
     
     // Display Answer: Adapted from https://hackr.io/blog/how-to-build-a-javascript-quiz-app
     // Loop through the answers and create button elements using foreach() with arrow function
@@ -59,7 +54,7 @@ function showFirstQuestion(firstQuestion) {
 
     // Add event to .ans-btn
     $(".ans-btn").on("click", function() {
-        const personality = $(this).data("personality");
+        personality = $(this).data("personality");
         // Check the personality property of the answer.
         if (personality === "hero") {
             startHeroPath()
@@ -85,8 +80,6 @@ function nextHeroQuestion(index) {
     $('#title').text(question.title);
     $('#question-box').text(question.question);
     
-   
-
     // Clear previous answer buttons using .empty method
     answerButtonsElement.empty();
 
@@ -128,12 +121,6 @@ function nextHeroQuestion(index) {
         }
     });
 }
-
-
-
-
- 
-
 
 //Start Villain Path--------------------------------------------------------------------------
 function startVillainPath() {
@@ -191,16 +178,18 @@ function nextVillainQuestion(index) {
     });
 }
 
-
 function results() {
     $("#game-container").addClass("hidden");
     $("#results-container").removeClass("hidden");
-
+    if (personality === "hero") {
+        $(".hero-revelation").removeClass("hidden");
+    } else {
+        $(".villain-revelation").removeClass("hidden");
+    }
+ 
     revelation();
 
     $("p.character").append(userCharacter);
-
-    
 }
 
 function revelation() {
@@ -226,6 +215,7 @@ function revelation() {
 }
 
 //Voiceover--------------------------------------------------------------------------
+// from Alon Zilberman on stackflow
 document.getElementById("play-pause").addEventListener("click", function(){
     var audio = document.getElementById('voiceover');
     if(this.className == 'is-playing'){
@@ -241,10 +231,6 @@ document.getElementById("play-pause").addEventListener("click", function(){
 
 // Set the initial content to the play symbol
 document.getElementById("play-pause").textContent = "▶";
-
-
-
-
 
 
 //QUESTIONS--------------------------------------------------------------------------
