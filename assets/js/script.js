@@ -205,7 +205,7 @@ function revelation() {
     } else if (maxScore === theJoker) {
         userCharacter = "The Joker"; 
     } else if (maxScore === thePenguin) {
-        userCharacter = "The PEnguin";
+        userCharacter = "The Penguin";
     } else if (maxScore === Bane) {
         userCharacter = "Bane";
     } else if (maxScore === Catwoman) {
