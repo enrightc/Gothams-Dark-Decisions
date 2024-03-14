@@ -51,29 +51,27 @@ p {
     line-height: 25px; 
 }
 
-.btn {
-    height: 61px;
-    padding: 10px;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    background: #30F;
-    border: #30F;
-    width: 193px;
-    height: 40px;
-    color: #FFF;
-    text-align: center;
-    font-family: Inter;
-    font-size: 22px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 24px; 
-    letter-spacing: 1.98px;  
+
+    button {
+        background-color: #1A1A1A; 
+        color: #FFFFFF; 
+        border: 2px solid #FFFFFF; 
+        padding: 10px 20px;
+        font-size: 16px; 
+        line-height: 1.2;
 }
 
-.start-btn:hover {
-    background-color: #4e7fff;
-    color: white;
+button:hover {
+    background-color: #FFD700; 
+    color: #000000; 
+}
+
+.hero-ans-btn:hover {
+    background-color: #0056b3; /* Darker blue background on hover */
+}
+
+.villain-ans-btn:hover {
+    background-color: #cc0000; /* Darker red background on hover */
 }
 
 #game-container {
@@ -82,36 +80,12 @@ p {
 }
 
 #answer-box {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 20px;
 }
 
-.ans-btn {
-    height: 61px;
-    padding: 10px;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    background: #30F;
-    border: #30F;
-    width: auto;
-    height: auto;
-    color: #FFF;
-    text-align: center;
-    font-family: Inter;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 16px; 
-    letter-spacing: 1.98px;  
-}
 
-.ans-btn:hover {
-    background-color: #4e7fff;
-    color: white;
-}
 
 .play.btn {
     height: 25px;
