@@ -67,27 +67,89 @@ To get started with Gotham's Dark Decisions, simply visit the website and click 
 
 Visit Gotham's Dark Decisions website here [Gothams Dark Decisions](PUT LIVE LINK HERE)
 
+## Experience
+  - Choose Your Path: Begin your journey by deciding whether you'll walk the path of a hero or embrace the allure of the darkness as a villain.
+  - Interactive Quiz: Answer a series of questions designed to reveal your true nature and uncover your place within the Batman universe.
+  - Bat family or Villain: Based on your choices, discover which member of the Bat family you most closely resemble, or which infamous Batman villain shares your traits.
+  - Engaging Experience: Immerse yourself in the dark and atmospheric world of Gotham City, brought to life through intriguing questions and stunning visuals.
+  
+
+
 ## Overall Website Aim
+Gotham's Dark Decisions aims to truly immerse users in the captivating world of Batman, providing an interactive platform for exploring their own heroic or villainous nature. Through engaging and thought-provoking questions, users will embark on a journey of self-discovery within the rich and atmospheric backdrop of Gotham City. The primary goal is to entertain and engage Batman enthusiasts, offering them a unique and immersive experience that celebrates the iconic characters and themes of the Batman universe. Additionally, it aims to provide users with valuable insights into their own personalities and the complex dynamics of heroism and villainy, all while fostering a sense of excitement and intrigue. Whether users are long time fans or newcomers to the world of Batman, Gotham's Dark Decisions invites them to explore, discover, and embrace their inner hero or villain.
 
 
 ## External User Goals
-
+  - Explore Heroic or Villainous Paths: Users are eager to explore their heroic or villainous tendencies through engaging questions and scenarios.
+  - Discover Bat family or Villain Identity: Users aim to uncover which member of the Bat family they resemble or which notorious Batman villain shares their traits.
+  - Experience the Atmosphere of Gotham: Users seek to immerse themselves in the dark and atmospheric world of Gotham City, enjoying thought-provoking questions and stunning visuals.
+  - Engage with the Batman Universe: Users are excited to engage with the iconic characters and themes of the Batman universe.
 
 ## Website Owners Goals
+  - Build User Engagement: Create a highly engaging and interactive experience for users, encouraging them to spend more time on the website and try out different paths of the quiz.
+  - Establish Brand Authority: The site owner aims to position the website as a leading authority on Batman-related personality quizzes, attracting fans and enthusiasts seeking entertainment and insights into the iconic characters and themes.
 
-
+## Target Audience
+  - People who enjoy the Batman franchise.
+  - People who enjoy reading graphic novels.
+  - People who enjoy taking personality quizzes.
 
 ## User Story
 
-- First-time User
+- As a first-time user
+  - I want to be able to start the quiz by clicking on a "Begin Quiz" button.
+  - I want to be presented with a question asking if I prefer to be a hero or a villain in the Batman universe.
+  - If I choose "hero," I want to be presented with questions that help determine which member of the Batfamily I am most like.
+  - If I choose "villain," I want to be presented with questions that help determine which Batman villain I am most like.
+  - I want each question to be presented one at a time, with clear instructions on how to proceed to the next question.
+  - I want to be able to select my answer from multiple choice options.
+  - I want to see my progress through the quiz, such as how many questions I have answered and how many are remaining.
+  - I want to receive my results at the end of the quiz, telling me which member of the Bat-family or which Batman villain I am most like.
+  - I want the quiz to be visually appealing and in line with the Batman theme through the use of images, colours, and fonts.
+- As a returning user
+  - I want to have the option to retake the quiz if I want to try different answers.
 
-  
+# LOGIC OVERVIEW
+The Gotham's Dark Decision quiz is a JavaScript-powered frontend website designed to immerse users in the captivating world of Batman. However, to ensure accessibility and comprehension for a broader audience, the code has been translated into plain English. This transparency provides users with insight into the application's functionality and structure without requiring programming knowledge, fostering trust and engagement.
 
-- Returning User
 
+1. Fade In Transition: When the document is ready, the main content fades in gradually over 3 seconds using jQuery.
 
-- Frequent User
-  
+2. Essential Elements:
+   - Key elements such as answer buttons, character scores, and current question indexes are initialized.
+   - Initial scores for Batman, Robin, Red Hood, Batgirl, The Joker, The Penguin, Bane, and Catwoman are set to 0.
+   - Variables for current hero and villain question indexes, user character, and personality are declared.
+
+3. Start Game Function: Clicking the start button initiates the game by hiding the start button and intro, displaying the game container, and showing the first question.
+
+4. showFirstQuestion Function: Responsible for displaying the first quiz question, allowing users to choose between hero or villain paths.
+    - Sets the text of question title and box elements to match the first question.
+    - Creates answer buttons for each option, associating personality data with each button.
+    - Attaches event listeners to handle user responses, initiating either the hero or villain path.
+
+5. Start Hero/Villain Path Functions: Initiates the hero or villain path based on the user's choice.
+
+6. Next Hero/Villain Question Functions: Displays subsequent hero or villain questions, updates scores based on user answers, and progresses through the quiz.
+    - Retrieves the next question object and sets question text elements accordingly. 
+    - Clears previous answer buttons and displays new answer options.
+    - Handles user responses, incrementing corresponding character scores and advancing to the next question or displaying results.
+
+7. Results Function: Shows the results container, determines the user's character based on score calculations, and displays the corresponding character revelation.
+    - Hides the game container and reveals the results container.
+    - Displays specific content based on whether the user's personality is hero or villain.
+    - Calls the revelation function to determine the user's character. 
+    - Appends the user's character result to the webpage.
+   
+8. Revelation Function: Calculates the user's character based on the highest score and assigns the corresponding character name.
+    - Determines the maximum score among character variables and assigns the corresponding character name to the user.
+
+9. Voiceover Function: Toggles the play/pause button for an audio voiceover.
+
+10. Questions: Define arrays containing hero and villain questions, each with titles, questions, and multiple-choice answers, tailored to each character's path. The showFirstQuestion 
+    function directs users down either the hero or villain path based on their initial response.
+    - If the user's answer leads to the hero path, subsequent questions are drawn from the heroQuestions array.
+    - Conversely, if the user's answer leads to the villain path, questions are drawn from the villainQuestions array.
+      
 
 # DESIGN
 
@@ -149,7 +211,7 @@ The bug related to the incorrect access of answer personality types has been fix
 
 ### Known Bugs (unresolved)
 
-#### Hover State Reset After Modal Closure
+
 
 
 # TECHNOLOGY
@@ -160,6 +222,15 @@ The bug related to the incorrect access of answer personality types has been fix
 - CSS: Utilised for the styling and layout of the site.
 
 ## Frameworks, Libraries and Programs Used
+- jQuery: Used for HTML manipulation, event handling and animations/transitions.
+- Elevanlabs: AI voice generator used for narrtation in intro. 
+- Squoosh: To reduce file size of images.
+- Responsinator: Used to assess responsiveness of website across various device sizes.
+- Figma: Used to create wireframe images.
+- Chrome Dev Tools: For testing responsiveness and fine-tuning.
+- W3C: Used for validating HTML and CSS.
+- Github pages: Used for hosting the deployed website.
+- Gitpod: Used for development as a cloud-based Integrtated Development Environment (IDE).
 
 
 # TESTING
