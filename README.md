@@ -221,23 +221,35 @@ To launch the project, GitHub Pages was employed as the deployment platform. The
 
 
 ## Resources
-
-- Code Institute learning material
+- Code Institute learning material:
+  - JavaScript-Specific Core Concepts - JavaScript Functions & Objects 
   - JQuery Library - Writing Less JavaScript  JQuery Introduction 
-        - Changing HTML/CSS with jQuery 
-        - JQuery Effects
-        - The Importance of this
-        - Events in JQuery
+    - Changing HTML/CSS with jQuery 
+    - JQuery Effects
+    - The Importance of this
+    - Events in JQuery
+  - JavaScript-Specific Core Concepts - JavaScript Flow Control
+    - if/else statements
+    - Multiple Conditions
+  - JavaScript-Specific Core Concepts - Working With JavaScript Data Structures
 
-- For help setting the text content of selected elements and displaying questions: [w3 schools - jQuery text() Method](https://www.w3schools.com/jquery/html_text.asp) [Accessed 11th March, 2024].
+- For help understanding basic quiz functions I used the following resources:
+  - [How to Build a Quiz App with Javascript for Beginners](https://hackr.io/blog/how-to-build-a-javascript-quiz-app) by Robert Johns 22nd Feb 2024. [Accessed 1st March 2024].
+  - [Build a Quiz App With JavaScript](https://www.youtube.com/watch?v=riDzcEQbX6k&t=1450s) by Web Dev Simplified [Accessed 2nd March].
 
-- For help understanding basic quiz functions: [How to Build a Quiz App with Javascript for Beginners](https://hackr.io/blog/how-to-build-a-javascript-quiz-app) by Robert Johns 22nd Feb 2024. [Accessed 1st March 2024].
+- The following resources were used to understand JavaScript concepts and create kep componenets of functions:
+  -  [w3 schools - JavaScript Array forEach()](https://www.w3schools.com/jsref/jsref_foreach.asp) [Accessed 11th March, 2024].
 
-- For help understanding foreach(): [w3 schools - JavaScript Array forEach()](https://www.w3schools.com/jsref/jsref_foreach.asp) [Accessed 11th March, 2024].
+  - [JavaScript forEach()](https://www.programiz.com/javascript/forEach). [Accessed 11th March, 2024].
 
-- For help understanding forEach with Arrow Functions: [JavaScript forEach()](https://www.programiz.com/javascript/forEach). [Accessed 11th March, 2024].
+  - [jQuery .empty()](https://api.jquery.com/empty/). [Accessed 11th March, 2024].
 
-- Removing previous text from elements [jQuery .empty()](https://api.jquery.com/empty/). [Accessed 11th March, 2024].
+  - [How to make an audio play/pause button?](https://stackoverflow.com/questions/44358480/how-to-make-an-audio-play-pause-button). [Accessed 14th March, 2024].
+
+ - [JavaScript Math max() Method](https://www.w3schools.com/jsref/jsref_max.asp).
+
+  - [JavaScript Math max() Method](https://www.geeksforgeeks.org/javascript-math-max-method/).
+
 
 ## Acknowledgements
 
