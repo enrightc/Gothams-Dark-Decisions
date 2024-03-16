@@ -21,15 +21,25 @@ let personality;
 //START GAME--------------------------------------------------------------------------
 $(document).ready(function() {
     // Event listener for the Start button
-    $("#start-btn").on("click", startGame);
+    $("#start-btn").on("click", function() {
+        startGame(); // Calls the startGame function when the start button is clicked
+    });
 });
 
 function startGame() {
-    // Hide the start button and the intro, show the game container and call showFirstQuestion function.
-    $("#start-btn, #intro").addClass("hidden");
-    $("#game-container").removeClass("hidden");
-    showFirstQuestion(firstQuestion);
+    // Fade out the main container
+    $("main").fadeOut(2000, function() {
+        // Hide the intro
+        $("#intro").addClass("hidden");
+        // Fade in the main container
+        $("main").fadeIn(1000);
+        // Show the game container
+        $("#game-container").removeClass("hidden");
+        // Call showFirstQuestion function to display the first question
+        showFirstQuestion(firstQuestion);
+    });
 }
+
 
 //Show Branch Question--------------------------------------------------------------------------
 function showFirstQuestion(firstQuestion) {
@@ -60,7 +70,7 @@ function showFirstQuestion(firstQuestion) {
             startHeroPath()
             console.log(personality)
         } else {
-            startVillainPath()
+            startVillainPath();
             console.log(personality)
         }
     
@@ -69,58 +79,67 @@ function showFirstQuestion(firstQuestion) {
 
 //Start Hero Path--------------------------------------------------------------------------
 function startHeroPath() {
-    // Display the first hero question
+    // Display the first hero question with a fade-in effect
     nextHeroQuestion(currentHeroQuestionIndex);
 }
 
 function nextHeroQuestion(index) {
-    // Collects the hero question object from the heroQuestions array.
-    const question = heroQuestions[index];
-    // Sets the text of the element to text of current question.
-    $('#title').text(question.title);
-    $('#question-box').text(question.question);
-    
-    // Clear previous answer buttons using .empty method
-    answerButtonsElement.empty();
+    // Fade out the main container
+    $("main").fadeOut(1000, function() {
+        // Collects the hero question object from the heroQuestions array.
+        const question = heroQuestions[index];
 
-    // display Answers using forEach with arrow function.
-    question.answers.forEach(answer => {
-        const button = $('<button></button>');
-        button.text(answer.text);
-        button.addClass('hero-ans-btn');
-        button.data('character', answer.character); // Add data attribute for personality
-        answerButtonsElement.append(button);
-    });
+        // Sets the text of the element to text of current question.
+        $('#title').text(question.title);
+        $('#question-box').text(question.question);
+        
+        // Clear previous answer buttons using .empty method
+        answerButtonsElement.empty();
 
-    // Attach event listener to handle user response
-    $(".hero-ans-btn").on("click", function() {
-        const character = $(this).data("character");
-        
-        // Increment Batman score only if the clicked button has the personality "Batman"
-        if (character === "Batman") {
-            Batman++; // Increment Batman score
-            console.log("Batman score:", Batman);
-        } else if (character === "Robin") {
-            Robin++;
-            console.log("Robin score", Robin)
-        } else if (character === "Red Hood") {
-            RedHood++;
-            console.log("Red Hood score", RedHood)
-        } else {
-            Batgirl++;
-            console.log("Batgirl score", Batgirl)
-        }
-        
-        // Move to the next hero question or end the path if there are no more questions
-        currentHeroQuestionIndex++;
-        if (currentHeroQuestionIndex < heroQuestions.length) {
-            nextHeroQuestion(currentHeroQuestionIndex);
-        } else {
-            // No more hero questions, end the hero path
-            results();
-        }
+        // display Answers using forEach with arrow function.
+        question.answers.forEach(answer => {
+            const button = $('<button></button>');
+            button.text(answer.text);
+            button.addClass('hero-ans-btn');
+            button.data('character', answer.character); // Add data attribute for personality
+            answerButtonsElement.append(button);
+        });
+
+        // Attach event listener to handle user response
+        $(".hero-ans-btn").on("click", function() {
+            const character = $(this).data("character");
+            
+            // Increment Batman score only if the clicked button has the personality "Batman"
+            if (character === "Batman") {
+                Batman++; // Increment Batman score
+                console.log("Batman score:", Batman);
+            } else if (character === "Robin") {
+                Robin++;
+                console.log("Robin score", Robin)
+            } else if (character === "Red Hood") {
+                RedHood++;
+                console.log("Red Hood score", RedHood)
+            } else {
+                Batgirl++;
+                console.log("Batgirl score", Batgirl)
+            }
+            
+            // Move to the next hero question or end the path if there are no more questions
+            currentHeroQuestionIndex++;
+            if (currentHeroQuestionIndex < heroQuestions.length) {
+                // Call nextHeroQuestion recursively with a fade-in effect
+                nextHeroQuestion(currentHeroQuestionIndex);
+            } else {
+                // No more hero questions, end the hero path
+                results();
+            }
+        });
+
+        // Fade in the main container
+        $("main").fadeIn(1000);
     });
 }
+
 
 //Start Villain Path--------------------------------------------------------------------------
 function startVillainPath() {
@@ -130,6 +149,8 @@ function startVillainPath() {
 };
 
 function nextVillainQuestion(index) {
+    // Fade out the main container
+    $("main").fadeOut(1000, function() {
     // Collects the hero question object from the heroQuestions array.
     const question = villainQuestions[index];
     // Sets the text of the element to text of current question.
@@ -176,9 +197,16 @@ function nextVillainQuestion(index) {
             results();
         }
     });
+
+     // Fade in the main container
+     $("main").fadeIn(1000);
+    });
 }
 
+//Results Function--------------------------------------------------------------------------
+
 function results() {
+    $("main").fadeOut(1000, function() {
     $("#game-container").addClass("hidden");
     $("#results-container").removeClass("hidden");
     if (personality === "hero") {
@@ -186,6 +214,9 @@ function results() {
     } else {
         $(".villain-revelation").removeClass("hidden");
     }
+    $("main").fadeIn(1000);
+    });
+
  
     revelation();
 
@@ -239,6 +270,7 @@ const firstQuestion = [
     {
         title: "Chapter 1:The Choice",
         question: "As the figure approaches, you see a glint of concern in their eyes. They offer you a hand and ask, 'Are you alright? You seem lost.' How do you respond?",
+        image: "assets/images/the-choice.webp",
         answers: [
             {
                 answerNumber: 1,
@@ -259,7 +291,8 @@ const heroQuestions = [
     {
         title: "Chapter 2: Embracing Your Past",
         questionNumber: 2,
-        question: "You accept the stranger's help and follow them to a hidden room filled with newspaper clippings, photographs, and documents. They reveal that you were once a renowned detective, but your memory loss has left you vulnerable. How do you react to this revelation?",
+        question: "You accept the stranger's help and follow them to a hidden room filled with newspaper clippings, photographs, and documents. They reveal that you were once a renowned detective, but your memory loss has left you vulnerable. How do you react to this revelation?",image: "assets/images/the-choice.webp",
+        image: "assets/images/hidden-room.webp",
         answers: [
             {
                 answerNumber: 1,
