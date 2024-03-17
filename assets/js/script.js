@@ -96,7 +96,7 @@ function nextHeroQuestion(index) {
         $('#title').text(question.title);
         $('#question-box').text(question.question);
 
-        // Set the background image of the body. Adapted from Satpal (Stackflow user; see references).
+         // Set the background image of the body. Adapted from Satpal (Stackflow user; see references).
         $('body').css('background-image', 'url("' + question.image + '")');
         
         // Clear previous answer buttons using .empty method
@@ -162,6 +162,9 @@ function nextVillainQuestion(index) {
     // Sets the text of the element to text of current question.
     $('#title').text(question.title);
     $('#question-box').text(question.question);
+
+     // Set the background image of the body. Adapted from Satpal (Stackflow user; see references).
+     $('body').css('background-image', 'url("' + question.image + '")');
     
     // Clear previous answer buttons using .empty method
     answerButtonsElement.empty();
@@ -220,6 +223,7 @@ function results() {
         $('body').css('background-image', 'url("assets/images/hero-revelation-background.webp")');
     } else {
         $(".villain-revelation").removeClass("hidden");
+        $('body').css('background-image', 'url("assets/images/villain-revelation-background.webp")');
     }
     $("main").fadeIn(1000);
     });
@@ -277,7 +281,7 @@ document.getElementById("play-pause").textContent = "▶";
 // Branch Question
 const firstQuestion = [
     {
-        title: "Chapter 1:The Choice",
+        title: "Chapter 1: The Choice",
         question: "As the figure approaches, you see a glint of concern in their eyes. They offer you a hand and ask, 'Are you alright? You seem lost.' How do you respond?",
         background: "assets/images/chapter-1-the-choice.webp",
         answers: [
@@ -479,7 +483,7 @@ const heroQuestions = [
     },
     {
         title: "Chapter 7: Escaping the Villain's Lair",
-        questionNumber: 2,
+        questionNumber: 7,
         image: "assets/images/hero-chapter-7.webp",
         question: "After freeing the hostages you are captured by the villainous mastermind, you find yourself imprisoned in their elaborate and heavily guarded lair. How do you plan your daring escape?",
         answers: [
@@ -515,7 +519,7 @@ const heroQuestions = [
     },
     {
         title: "Chapter 8: The Final Confrontation",
-        questionNumber: 7,
+        questionNumber: 8,
         image: "assets/images/hero-chapter-8.webp",
         question: "After escaping you face the leader of the criminal organisation in a final showdown. How do you approach this dangerous encounter?",
         answers: [
@@ -556,6 +560,7 @@ const villainQuestions = [
     {
         title: "Chapter 2: The Rise of Darkness",
         question: "As you emerge from the shadows of Gotham's underworld, you realize the potential for power and control that lies within your grasp. How do you begin your journey to ascendancy?",
+        image: "assets/images/villain-chapter-2.webp",
         answers: [
             {
                 answerNumber: 1,
@@ -590,6 +595,7 @@ const villainQuestions = [
     {
         title: "Chapter 3: Hostage Crisis",
         question: "You've captured a group of hostages in your latest scheme. How do you use them to further your agenda and maintain control?",
+        image: "assets/images/villain-chapter-3.webp",
         answers: [
             {
                 answerNumber: 1,
@@ -658,6 +664,7 @@ const villainQuestions = [
     {
         title: "Chapter 5: Reign of Terror",
         question: "With Gotham firmly in your grip, you now seek to instill fear and obedience among its inhabitants. How do you maintain your iron rule over the city?",
+        image: "assets/images/villain-chapter-5.webp",
         answers: [
             {
                 answerNumber: 1,
@@ -722,6 +729,7 @@ const villainQuestions = [
     {
         title: "Chapter 7: Subjugation",
         question: "With the heroes defeated and Gotham firmly under your control, you now seek to crush any remaining resistance and assert your dominance over the city. How do you ensure that none dare oppose you?",
+        image: "assets/images/villain-chapter-7.webp",
         answers: [
             {
                 answerNumber: 1,
@@ -752,6 +760,7 @@ const villainQuestions = [
     {
         title: "Chapter 8: Eternal Darkness",
         question: "With your grip on power unchallenged and your dominion extending far beyond Gotham, you now seek to establish an eternal legacy of darkness and fear. How do you ensure that your reign of terror will endure for generations to come?",
+        image: "assets/images/villain-chapter-8.webp",
         answers: [
             {
                 answerNumber: 1,
