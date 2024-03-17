@@ -36,20 +36,23 @@ function startGame() {
         // Show the game container
         $("#game-container").removeClass("hidden");
         // Call showFirstQuestion function to display the first question
-        showFirstQuestion(firstQuestion);
+        showFirstQuestion(0);
     });
 }
 
 
 //Show Branch Question--------------------------------------------------------------------------
-function showFirstQuestion(firstQuestion) {
+function showFirstQuestion(index) {
+    const question = firstQuestion[index];
     // use jQuery .text() method to set text content of question-box element to text of first question
-    $('#title').text(firstQuestion[0].title);
-    $('#question-box').text(firstQuestion[0].question);
+    $('#title').text(question.title);
+    $('#question-box').text(question.question);
+    // Set the background image of the body
+    $('body').css('background-image', 'url("' + question.background + '")');
     
     // Display Answer: Adapted from https://hackr.io/blog/how-to-build-a-javascript-quiz-app
     // Loop through the answers and create button elements using foreach() with arrow function
-    firstQuestion[0].answers.forEach(answer => {
+    question.answers.forEach(answer => {
     // Create a button element with jQuery
     const button = $('<button></button>');
     // Set button text
@@ -92,6 +95,9 @@ function nextHeroQuestion(index) {
         // Sets the text of the element to text of current question.
         $('#title').text(question.title);
         $('#question-box').text(question.question);
+
+        // Set the background image of the body. Adapted from Satpal (Stackflow user; see references).
+        $('body').css('background-image', 'url("' + question.image + '")');
         
         // Clear previous answer buttons using .empty method
         answerButtonsElement.empty();
@@ -211,11 +217,14 @@ function results() {
     $("#results-container").removeClass("hidden");
     if (personality === "hero") {
         $(".hero-revelation").removeClass("hidden");
+        $('body').css('background-image', 'url("assets/images/hero-revelation-background.webp")');
     } else {
         $(".villain-revelation").removeClass("hidden");
     }
     $("main").fadeIn(1000);
     });
+
+    
 
  
     revelation();
@@ -270,7 +279,7 @@ const firstQuestion = [
     {
         title: "Chapter 1:The Choice",
         question: "As the figure approaches, you see a glint of concern in their eyes. They offer you a hand and ask, 'Are you alright? You seem lost.' How do you respond?",
-        image: "assets/images/the-choice.webp",
+        background: "assets/images/chapter-1-the-choice.webp",
         answers: [
             {
                 answerNumber: 1,
@@ -292,7 +301,7 @@ const heroQuestions = [
         title: "Chapter 2: Embracing Your Past",
         questionNumber: 2,
         question: "You accept the stranger's help and follow them to a hidden room filled with newspaper clippings, photographs, and documents. They reveal that you were once a renowned detective, but your memory loss has left you vulnerable. How do you react to this revelation?",image: "assets/images/the-choice.webp",
-        image: "assets/images/hidden-room.webp",
+        image: "assets/images/hero-chapter-2.webp",
         answers: [
             {
                 answerNumber: 1,
@@ -328,6 +337,7 @@ const heroQuestions = [
         title: "Chapter 3: Unravelling the Mystery",
         questionNumber: 3,
         question: "Unraveling the Mystery: As you delve deeper into the mystery of your identity, you uncover a trail of clues leading to a notorious criminal organisation operating in the shadows of Gotham. How do you choose to confront this threat?",
+        image: "assets/images/hero-chapter-3.webp",
         answers: [
             {
                 answerNumber: 1,
@@ -363,6 +373,7 @@ const heroQuestions = [
         title: "Chapter 4: The Water Supply Threat",
         questionNumber: 4,
         question: "While investigating, you overhear a conversation revealing that a criminal gang plans to poison Gotham's water supply. How do you choose to respond?",
+        image: "assets/images/hero-chapter-4.webp",
         answers: [
             {
                 answerNumber: 1,
@@ -398,6 +409,7 @@ const heroQuestions = [
         title: "Chapter 5: Infiltrating the Enemy Hideout",
         questionNumber: 5,
         question: "You learn the location of the criminal organisation's hideout and must decide how to approach it. How do you proceed?",
+        image: "assets/images/hero-chapter-5.webp",
         answers: [
             {
                 answerNumber: 1,
@@ -433,6 +445,7 @@ const heroQuestions = [
         title: "Chapter 6: Rescuing the Hostages",
         questionNumber: 6,
         question: "While investigating the hideout, you discover innocent hostages being held captive by the criminals. How do you proceed?",
+        image: "assets/images/hero-chapter-6.webp",
         answers: [
             {
                 answerNumber: 1,
@@ -467,6 +480,7 @@ const heroQuestions = [
     {
         title: "Chapter 7: Escaping the Villain's Lair",
         questionNumber: 2,
+        image: "assets/images/hero-chapter-7.webp",
         question: "After freeing the hostages you are captured by the villainous mastermind, you find yourself imprisoned in their elaborate and heavily guarded lair. How do you plan your daring escape?",
         answers: [
             {
@@ -502,6 +516,7 @@ const heroQuestions = [
     {
         title: "Chapter 8: The Final Confrontation",
         questionNumber: 7,
+        image: "assets/images/hero-chapter-8.webp",
         question: "After escaping you face the leader of the criminal organisation in a final showdown. How do you approach this dangerous encounter?",
         answers: [
             {

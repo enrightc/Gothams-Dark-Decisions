@@ -109,6 +109,7 @@ Gotham's Dark Decisions aims to truly immerse users in the captivating world of 
 - As a returning user
   - I want to have the option to retake the quiz if I want to try different answers.
 
+
 # LOGIC OVERVIEW
 The Gotham's Dark Decision quiz is a JavaScript-powered frontend website designed to immerse users in the captivating world of Batman. However, to ensure accessibility and comprehension for a broader audience, the code has been translated into plain English. This transparency provides users with insight into the application's functionality and structure without requiring programming knowledge, fostering trust and engagement.
 
@@ -308,19 +309,24 @@ To launch the project, GitHub Pages was employed as the deployment platform. The
   - [How to Build a Quiz App with Javascript for Beginners](https://hackr.io/blog/how-to-build-a-javascript-quiz-app) by Robert Johns 22nd Feb 2024. [Accessed 1st March 2024].
   - [Build a Quiz App With JavaScript](https://www.youtube.com/watch?v=riDzcEQbX6k&t=1450s) by Web Dev Simplified [Accessed 2nd March].
 
-- The following resources were used to understand JavaScript concepts and create kep componenets of functions:
+- The following resources were used to understand JavaScript concepts and create key componenets of functions:
   -  [w3 schools - JavaScript Array forEach()](https://www.w3schools.com/jsref/jsref_foreach.asp) [Accessed 11th March, 2024].
 
   - [JavaScript forEach()](https://www.programiz.com/javascript/forEach). [Accessed 11th March, 2024].
 
   - [jQuery .empty()](https://api.jquery.com/empty/). [Accessed 11th March, 2024].
 
-  - [How to make an audio play/pause button?](https://stackoverflow.com/questions/44358480/how-to-make-an-audio-play-pause-button). [Accessed 14th March, 2024].
+  - [How to make an audio play/pause button?](https://stackoverflow.com/questions/44358480/.      how-to-make-an-audio-play-pause-button). [Accessed 14th March, 2024].
 
  - [JavaScript Math max() Method](https://www.w3schools.com/jsref/jsref_max.asp).
 
   - [JavaScript Math max() Method](https://www.geeksforgeeks.org/javascript-math-max-method/).
 
+- [jQuery Callback for a fadeIn and fadeOut](https://stackoverflow.com/questions/35467008/jquery-callback-for-a-fadein-and-fadeout). [Accessed 15th March, 2024].
+
+- [jQuery fadeOut()](https://api.jquery.com/fadeOut/)
+
+- [set background image url from Array](https://stackoverflow.com/questions/19891835/set-background-image-url-from-array). Stackflow user SatPal posted on 10th November, 2013. [Accessed 15th March, 2024].
 
 ## Acknowledgements
 
