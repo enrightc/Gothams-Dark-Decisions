@@ -5,24 +5,28 @@ $(document).ready(function() {
 
 // Essential elements
 const answerButtonsElement = $('#answer-box');
-let Batman = 0;
-let Robin = 0;
-let RedHood = 0;
-let Batgirl = 0;
+let batman = 0;
+let robin = 0;
+let redHood = 0;
+let batgirl = 0;
 let theJoker = 0;
 let thePenguin = 0;
-let Bane = 0;
-let Catwoman = 0;
+let bane = 0;
+let catwoman = 0;
 let currentHeroQuestionIndex = 0;
 let currentVillainQuestionIndex = 0;
 let userCharacter;
 let personality;
 
+let startBlocked = false;
 //START GAME--------------------------------------------------------------------------
 $(document).ready(function() {
     // Event listener for the Start button
     $("#start-btn").on("click", function() {
-        startGame(); // Calls the startGame function when the start button is clicked
+        if (startBlocked == false){
+            startBlocked = true;
+            startGame(); // Calls the startGame function when the start button is clicked
+        }
     });
 });
 
@@ -117,17 +121,17 @@ function nextHeroQuestion(index) {
             
             // Increment Batman score only if the clicked button has the personality "Batman"
             if (character === "Batman") {
-                Batman++; // Increment Batman score
-                console.log("Batman score:", Batman);
+                batman++; // Increment Batman score
+                console.log("Batman score:", batman);
             } else if (character === "Robin") {
-                Robin++;
-                console.log("Robin score", Robin)
+                robin++;
+                console.log("Robin score", robin)
             } else if (character === "Red Hood") {
-                RedHood++;
-                console.log("Red Hood score", RedHood)
+                redHood++;
+                console.log("Red Hood score", redHood)
             } else {
-                Batgirl++;
-                console.log("Batgirl score", Batgirl)
+                batgirl++;
+                console.log("Batgirl score", batgirl)
             }
             
             // Move to the next hero question or end the path if there are no more questions
@@ -137,7 +141,7 @@ function nextHeroQuestion(index) {
                 nextHeroQuestion(currentHeroQuestionIndex);
             } else {
                 // No more hero questions, end the hero path
-                results();
+                revelation();
             }
         });
 
@@ -190,11 +194,11 @@ function nextVillainQuestion(index) {
             thePenguin++;
             console.log("The Penguin score", thePenguin)
         } else if (character === "Bane") {
-            Bane++;
-            console.log("Bane score", Bane)
+            bane++;
+            console.log("Bane score", bane)
         } else {
-            Catwoman++;
-            console.log("Catwoman score", Catwoman)
+            catwoman++;
+            console.log("Catwoman score", catwoman)
         }
         
         // Move to the next hero question or end the path if there are no more questions
@@ -203,7 +207,7 @@ function nextVillainQuestion(index) {
             nextVillainQuestion(currentVillainQuestionIndex);
         } else {
             // No more hero questions, end the hero path
-            results();
+            revelation();
         }
     });
 
@@ -212,12 +216,12 @@ function nextVillainQuestion(index) {
     });
 }
 
-//Results Function--------------------------------------------------------------------------
+//Revelation Function--------------------------------------------------------------------------
 
-function results() {
+function revelation() {
     $("main").fadeOut(1000, function() {
     $("#game-container").addClass("hidden");
-    $("#results-container").removeClass("hidden");
+    $("#revelation-container").removeClass("hidden");
     if (personality === "hero") {
         $(".hero-revelation").removeClass("hidden");
         $('body').css('background-image', 'url("assets/images/hero-revelation-background.webp")');
@@ -228,36 +232,62 @@ function results() {
     $("main").fadeIn(1000);
     });
 
-    
-
- 
-    revelation();
+    score();
 
     $("p.character").append(userCharacter);
 }
 
-function revelation() {
-    let maxScore = Math.max(Batman, Robin, RedHood, Batgirl,theJoker, thePenguin, Bane, Catwoman);
-    if (maxScore === Batman) {
+function score() {
+    let maxScore = Math.max(batman, robin, redHood, batgirl,theJoker, thePenguin, bane, catwoman);
+    if (maxScore === batman) {
         userCharacter = "Batman";
-    } else if (maxScore === Robin) {
+    } else if (maxScore === robin) {
         userCharacter = "Robin";
-    } else if (maxScore === RedHood) {
+    } else if (maxScore === redHood) {
         userCharacter = "Red Hood";
-    } else if (maxScore === Batgirl) {
+    } else if (maxScore === batgirl) {
         userCharacter = "Batgirl";
     } else if (maxScore === theJoker) {
         userCharacter = "The Joker"; 
     } else if (maxScore === thePenguin) {
         userCharacter = "The Penguin";
-    } else if (maxScore === Bane) {
+    } else if (maxScore === bane) {
         userCharacter = "Bane";
-    } else if (maxScore === Catwoman) {
+    } else if (maxScore === catwoman) {
         userCharacter = "Catwoman";
     }
     console.log("You are", userCharacter)
 }
 
+// Character Reveal--------------------------------------------------------------------------
+
+$(".reveal-btn").on("click", function() {
+    console.log(userCharacter)
+    displayResult();
+});
+
+
+
+function displayResult() {
+    $("main").fadeOut(2000, function() { 
+        $("#revelation-container").addClass("hidden");
+        $("#results").removeClass("hidden");
+
+        if (userCharacter === "Batman") {
+            $('h1.character-reveal').append('<h1>You Are Batman</h1>');
+            $('p.character-bio').append("<p>You are Gotham's legendary Dark Knight. With unparalleled detective skills and unwavering determination, you tirelessly fight against the city's criminal underworld. Your commitment to justice, coupled with your strategic brilliance and advanced technology, strikes fear into the hearts of evildoers. You embody the symbol of hope for Gotham, standing as its protector against the forces of darkness</p>");
+            $('img.character-headshot').attr('src', 'assets/images/batman-headshot.webp').attr('alt', 'Batman headshot'); 
+        } else if (userCharacter === "Robin") {
+            $('h1.character-reveal').append('<h1>You Are Robin</h1>');
+            $('p.character-bio').append("<p>You are the loyal and resourceful partner of Batman. With a strong sense of justice and a desire to make a difference, you navigate the streets of Gotham alongside the Dark Knight. Your agility, intellect, and unwavering dedication to the cause make you a valuable asset in the fight against crime. You bring a youthful energy and optimism to the hero's journey, inspiring hope in the city's darkest hours.</p>");
+            $('img.character-headshot').attr('src', 'assets/images/robin head-shot.webp').attr('alt', 'Robins headshot'); 
+        }
+
+
+
+        $("main").fadeIn(1000);
+    });
+};
 //Voiceover--------------------------------------------------------------------------
 // from Alon Zilberman on stackflow
 document.getElementById("play-pause").addEventListener("click", function(){
