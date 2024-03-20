@@ -328,5 +328,7 @@ To launch the project, GitHub Pages was employed as the deployment platform. The
 
 - [set background image url from Array](https://stackoverflow.com/questions/19891835/set-background-image-url-from-array). Stackflow user SatPal posted on 10th November, 2013. [Accessed 15th March, 2024].
 
+ - [JavaScript Refresh Page - How to Reload a Page in JS](https://www.freecodecamp.org/news/javascript-refresh-page-how-to-reload-a-page-in-js/). [Accessed 20th March, 2024].
+
 ## Acknowledgements
 

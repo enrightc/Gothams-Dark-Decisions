@@ -22,13 +22,6 @@ let startBlocked = false;
 
 
 
-
-
-
-
-
-
-
 //START GAME--------------------------------------------------------------------------
 $(document).ready(function() {
     // Event listener for the Start button
@@ -328,6 +321,13 @@ function displayResult() {
         $("main").fadeIn(1000);
     });
 };
+
+//Game Reset--------------------------------------------------------------------------
+
+$("#game-reset").on("click", function() {
+    window.location.reload();
+});
+
 //Voiceover--------------------------------------------------------------------------
 // from Alon Zilberman on stackflow
 document.getElementById("play-pause").addEventListener("click", function(){
