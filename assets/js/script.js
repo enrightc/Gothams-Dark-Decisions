@@ -19,6 +19,16 @@ let userCharacter;
 let personality;
 
 let startBlocked = false;
+
+
+
+
+
+
+
+
+
+
 //START GAME--------------------------------------------------------------------------
 $(document).ready(function() {
     // Event listener for the Start button
@@ -53,6 +63,9 @@ function showFirstQuestion(index) {
     $('#question-box').text(question.question);
     // Set the background image of the body
     $('body').css('background-image', 'url("' + question.background + '")');
+
+    // Display current quesiton number
+    $('#currentQuestion').text(question.questionNumber + " of 8");
     
     // Display Answer: Adapted from https://hackr.io/blog/how-to-build-a-javascript-quiz-app
     // Loop through the answers and create button elements using foreach() with arrow function
@@ -68,6 +81,7 @@ function showFirstQuestion(index) {
     // Append the button to the answerButtonsElement
     answerButtonsElement.append(button);
     });
+
 
     // Add event to .ans-btn
     $(".ans-btn").on("click", function() {
@@ -102,6 +116,9 @@ function nextHeroQuestion(index) {
 
          // Set the background image of the body. Adapted from Satpal (Stackflow user; see references).
         $('body').css('background-image', 'url("' + question.image + '")');
+
+        // Display current quesiton number
+        $('#currentQuestion').text(question.questionNumber + " of 8");
         
         // Clear previous answer buttons using .empty method
         answerButtonsElement.empty();
@@ -169,6 +186,9 @@ function nextVillainQuestion(index) {
 
      // Set the background image of the body. Adapted from Satpal (Stackflow user; see references).
      $('body').css('background-image', 'url("' + question.image + '")');
+
+     // Display current quesiton number
+    $('#currentQuestion').text(question.questionNumber + " of 8");
     
     // Clear previous answer buttons using .empty method
     answerButtonsElement.empty();
@@ -266,8 +286,6 @@ $(".reveal-btn").on("click", function() {
     displayResult();
 });
 
-
-
 function displayResult() {
     $("main").fadeOut(2000, function() { 
         $("#revelation-container").addClass("hidden");
@@ -281,9 +299,31 @@ function displayResult() {
             $('h1.character-reveal').append('<h1>You Are Robin</h1>');
             $('p.character-bio').append("<p>You are the loyal and resourceful partner of Batman. With a strong sense of justice and a desire to make a difference, you navigate the streets of Gotham alongside the Dark Knight. Your agility, intellect, and unwavering dedication to the cause make you a valuable asset in the fight against crime. You bring a youthful energy and optimism to the hero's journey, inspiring hope in the city's darkest hours.</p>");
             $('img.character-headshot').attr('src', 'assets/images/robin head-shot.webp').attr('alt', 'Robins headshot'); 
+        } else if (userCharacter === "Red Hood") {
+            $('h1.character-reveal').append('<h1>You Are Red Hood</h1>');
+            $('p.character-bio').append("<p>You are Gotham's conflicted anti-hero. Driven by a desire for vengeance and redemption, you walk a fine line between justice and revenge. Your combat skills and willingness to do whatever it takes to achieve your goals make you a formidable force against the city's criminals. Despite your troubled past, you strive to protect the innocent and bring a sense of justice to Gotham's streets.</p>");
+            $('img.character-headshot').attr('src', 'assets/images/redHood-headshot.webp').attr('alt', 'Red Hoods headshot'); 
+        } else if (userCharacter === "Batgirl") {
+            $('h1.character-reveal').append('<h1>You Are Batgirl</h1>');
+            $('p.character-bio').append("<p>Gotham's agile and resourceful vigilante. With a keen intellect and unmatched martial arts prowess, you fight alongside Batman to protect the city from harm. Your determination, bravery, and technological expertise make you a vital member of the Bat-family. Despite facing adversity and challenges, you remain steadfast in your mission to make Gotham a safer place for all its citizens.</p>");
+            $('img.character-headshot').attr('src', 'assets/images/batgirl-headshot.webp').attr('alt', 'Batgirl headshot'); 
+        } else if (userCharacter === "The Joker") {
+            $('h1.character-reveal').append('<h1>You Are The Joker</h1>');
+            $('p.character-bio').append("<p>Gotham's infamous agent of chaos. With a twisted sense of humor and a penchant for mayhem, you revel in causing chaos and confusion wherever you go. Your unpredictable nature and disregard for consequences make you a formidable adversary for Gotham's heroes, as you delight in pushing the city to its limits.</p>");
+            $('img.character-headshot').attr('src', 'assets/images/joker-headshot.webp').attr('alt', 'The Jokers headshot'); 
+        } else if (userCharacter === "The Penguin") {
+            $('h1.character-reveal').append('<h1>You Are The Penguin</h1>');
+            $('p.character-bio').append("<p>Gotham's cunning and resourceful crime lord. With a sharp mind and a knack for business, you thrive in the underworld of Gotham, using your wealth and influence to manipulate those around you. Your ability to adapt to any situation and exploit opportunities to your advantage makes you a force to be reckoned with, as you build your empire one scheme at a time.</p>");
+            $('img.character-headshot').attr('src', 'assets/images/penguin-headshot.webp').attr('alt', 'The Penguins headshot'); 
+        } else if (userCharacter === "Bane") {
+            $('h1.character-reveal').append('<h1>You Are Bane</h1>');
+            $('p.character-bio').append("<p>Gotham's ruthless and formidable mercenary. With brute strength and tactical genius, you seek to impose your will upon the city, crushing anyone who dares to oppose you. Your unwavering determination and sheer physical power make you a force of nature, as you seek to establish yourself as Gotham's ultimate ruler through fear and intimidation.</p>");
+            $('img.character-headshot').attr('src', 'assets/images/bane-headshot.webp').attr('alt', 'Banes headshot'); 
+        } else if (userCharacter === "Catwoman") {
+            $('h1.character-reveal').append('<h1>You Are Catwoman</h1>');
+            $('p.character-bio').append("<p>Gotham's agile and elusive thief. With a code of honour all your own, you walk the fine line between hero and villain, using your skills to survive in Gotham's dangerous streets. Your quick wit and cunning make you a formidable adversary, as you navigate the shadows of Gotham with grace and style, always looking out for yourself above all else.</p>");
+            $('img.character-headshot').attr('src', 'assets/images/catwoman-headshot.webp').attr('alt', 'Catwomans headshot'); 
         }
-
-
 
         $("main").fadeIn(1000);
     });
@@ -312,6 +352,7 @@ document.getElementById("play-pause").textContent = "▶";
 const firstQuestion = [
     {
         title: "Chapter 1: The Choice",
+        questionNumber: 1,
         question: "As the figure approaches, you see a glint of concern in their eyes. They offer you a hand and ask, 'Are you alright? You seem lost.' How do you respond?",
         background: "assets/images/chapter-1-the-choice.webp",
         answers: [
@@ -589,6 +630,7 @@ const heroQuestions = [
 const villainQuestions = [
     {
         title: "Chapter 2: The Rise of Darkness",
+        questionNumber: 2,
         question: "As you emerge from the shadows of Gotham's underworld, you realize the potential for power and control that lies within your grasp. How do you begin your journey to ascendancy?",
         image: "assets/images/villain-chapter-2.webp",
         answers: [
@@ -624,6 +666,7 @@ const villainQuestions = [
     },
     {
         title: "Chapter 3: Hostage Crisis",
+        questionNumber: 3,
         question: "You've captured a group of hostages in your latest scheme. How do you use them to further your agenda and maintain control?",
         image: "assets/images/villain-chapter-3.webp",
         answers: [
@@ -659,6 +702,7 @@ const villainQuestions = [
     },
     {
         title: "Chapter 4: Evading Capture",
+        questionNumber: 4,
         question: "As law enforcement closes in on your location, how do you evade capture?",
         answers: [
             {
@@ -693,6 +737,7 @@ const villainQuestions = [
     },
     {
         title: "Chapter 5: Reign of Terror",
+        questionNumber: 5,
         question: "With Gotham firmly in your grip, you now seek to instill fear and obedience among its inhabitants. How do you maintain your iron rule over the city?",
         image: "assets/images/villain-chapter-5.webp",
         answers: [
@@ -728,6 +773,7 @@ const villainQuestions = [
     },
     {
         title: "Chapter 6: Final Showdown",
+        questionNumber: 6,
         question: "As the heroes rally to challenge your reign of terror, you prepare for a final confrontation to determine the fate of Gotham. How do you intend to emerge victorious and solidify your legacy as the city's ultimate villain?",
         answers: [
             {
@@ -758,6 +804,7 @@ const villainQuestions = [
     },
     {
         title: "Chapter 7: Subjugation",
+        questionNumber: 7,
         question: "With the heroes defeated and Gotham firmly under your control, you now seek to crush any remaining resistance and assert your dominance over the city. How do you ensure that none dare oppose you?",
         image: "assets/images/villain-chapter-7.webp",
         answers: [
@@ -789,6 +836,7 @@ const villainQuestions = [
     },
     {
         title: "Chapter 8: Eternal Darkness",
+        questionNumber: 8,
         question: "With your grip on power unchallenged and your dominion extending far beyond Gotham, you now seek to establish an eternal legacy of darkness and fear. How do you ensure that your reign of terror will endure for generations to come?",
         image: "assets/images/villain-chapter-8.webp",
         answers: [
