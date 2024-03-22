@@ -22,6 +22,10 @@ let startBlocked = false;
 
 
 
+
+
+
+
 //START GAME--------------------------------------------------------------------------
 $(document).ready(function() {
     // Event listener for the Start button

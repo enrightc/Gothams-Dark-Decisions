@@ -75,6 +75,35 @@ button:focus {
     background-color: #cc0000; /* Darker red background on hover */
 }
 
+
+.controls {
+    position: relative;
+}
+
+.start-btn {
+    margin: auto;
+}
+
+.help-btn {
+    position: absolute;
+    right: 0px;
+    border: none;
+    border-radius: 100%;
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+}
+
+.help-btn a {
+    color: white;
+    text-decoration: none;
+}
+
+.play.btn {
+    height: 25px;
+    width: 25px;
+}
+
 #game-container {
     text-align: center;
     width: 100%;
@@ -89,10 +118,7 @@ button:focus {
     margin-top: 20px;
 }
 
-.play.btn {
-    height: 25px;
-    width: 25px;
-}
+
 
 .character-description {
     display: flex;
@@ -104,3 +130,4 @@ button:focus {
     width: 245px;
     height: 245px;
 }
+
