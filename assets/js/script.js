@@ -1,6 +1,6 @@
 // Add fadeIn transition to quiz introduction.
 $(document).ready(function() {
-    $("main").fadeIn(3000);
+    $("main").fadeIn(2500);
 });
 
 // Essential elements
@@ -24,12 +24,15 @@ let startBlocked = false;
 $(document).ready(function() {
     // Event listener for the Start button
     $("#start-btn").on("click", function() {
+       
         if (startBlocked == false){
             startBlocked = true;
             startGame(); // Calls the startGame function when the start button is clicked
         }
     });
 });
+
+
 
 function startGame() {
     // Fade out the main container
@@ -42,6 +45,7 @@ function startGame() {
         $("#game-container").removeClass("hidden");
         // Call showFirstQuestion function to display the first question
         showFirstQuestion(0);
+       
     });
 }
 
@@ -57,6 +61,8 @@ function showFirstQuestion(index) {
 
     // Display current quesiton number
     $('#currentQuestion').text(question.questionNumber + " of 8");
+
+    
     
     // Display Answer: Adapted from https://hackr.io/blog/how-to-build-a-javascript-quiz-app
     // Loop through the answers and create button elements using foreach() with arrow function
@@ -339,7 +345,7 @@ $("#game-reset").on("click", function() {
 document.getElementById("play-pause").addEventListener("click", function(){
     var audio = document.getElementById('voiceover');
     if(this.className == 'is-playing'){
-        this.className = "";
+        this.className = "is-paused";
         this.textContent = "▶"; // Play symbol
         audio.pause();
     } else {
