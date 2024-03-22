@@ -53,6 +53,7 @@ p {
     line-height: 25px; 
 }
 
+/* ----------------------------------------------------- Buttons */
 button {
     background-color: #1A1A1A; 
     color: #FFFFFF; 
@@ -62,19 +63,39 @@ button {
     line-height: 1.2;
 }
 
-button:focus {
+.start-btn:hover{
+    background-color: #c9ad11; 
+    color: #000000; 
+}
+
+.start-btn:focus {
     background-color: #FFD700; 
     color: #000000; 
 }
 
-.hero-ans-btn:focus {
-    background-color: #0056b3; /* Darker blue background on hover */
+.ans-btn:hover {
+    border-color: #c9ad11; 
 }
 
-.villain-ans-btn:focus {
-    background-color: #cc0000; /* Darker red background on hover */
+.ans-btn.selected {
+    background-color: #FFD700; 
+    color: #000000; 
 }
 
+.hero-ans-btn:hover {
+    border-color: #0056b3;
+}
+.hero-ans-btn.selected {
+    background-color: #0056b3; 
+}
+
+.villain-ans-btn:hover {
+    border-color:  #cc0000;
+}
+
+.villain-ans-btn.selected {
+    background-color: #cc0000; 
+}
 
 .controls {
     position: relative;
@@ -99,10 +120,16 @@ button:focus {
     text-decoration: none;
 }
 
+.help-btn:hover {
+    color: #FFD700; 
+}
+
 .play.btn {
     height: 25px;
     width: 25px;
 }
+
+
 
 #game-container {
     text-align: center;
@@ -118,8 +145,7 @@ button:focus {
     margin-top: 20px;
 }
 
-
-
+/* --------------------------------------------------- Results */
 .character-description {
     display: flex;
     flex-direction: row;

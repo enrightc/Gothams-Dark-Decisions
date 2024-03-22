@@ -316,19 +316,23 @@ To launch the project, GitHub Pages was employed as the deployment platform. The
 
   - [jQuery .empty()](https://api.jquery.com/empty/). [Accessed 11th March, 2024].
 
-  - [How to make an audio play/pause button?](https://stackoverflow.com/questions/44358480/.      how-to-make-an-audio-play-pause-button). [Accessed 14th March, 2024].
+  - [How to make an audio play/pause button?](https://stackoverflow.com/questions/44358480/.how-to-make-an-audio-play-pause-button). [Accessed 14th March, 2024].
 
- - [JavaScript Math max() Method](https://www.w3schools.com/jsref/jsref_max.asp).
+  - [JavaScript Math max() Method](https://www.w3schools.com/jsref/jsref_max.asp).
 
   - [JavaScript Math max() Method](https://www.geeksforgeeks.org/javascript-math-max-method/).
 
-- [jQuery Callback for a fadeIn and fadeOut](https://stackoverflow.com/questions/35467008/jquery-callback-for-a-fadein-and-fadeout). [Accessed 15th March, 2024].
+  - [jQuery Callback for a fadeIn and fadeOut](https://stackoverflow.com/questions/35467008/jquery-callback-for-a-fadein-and-fadeout). [Accessed 15th March, 2024].
 
-- [jQuery fadeOut()](https://api.jquery.com/fadeOut/)
+  - [jQuery fadeOut()](https://api.jquery.com/fadeOut/)
 
-- [set background image url from Array](https://stackoverflow.com/questions/19891835/set-background-image-url-from-array). Stackflow user SatPal posted on 10th November, 2013. [Accessed 15th March, 2024].
+  - [set background image url from Array](https://stackoverflow.com/questions/19891835/set-background-image-url-from-array). Stackflow user SatPal posted on 10th November, 2013. [Accessed 15th March, 2024].
 
- - [JavaScript Refresh Page - How to Reload a Page in JS](https://www.freecodecamp.org/news/javascript-refresh-page-how-to-reload-a-page-in-js/). [Accessed 20th March, 2024].
+  - [JavaScript Refresh Page - How to Reload a Page in JS](https://www.freecodecamp.org/news/javascript-refresh-page-how-to-reload-a-page-in-js/). [Accessed 20th March, 2024].
+
+   - [jQuery Modal](https://www.jquerymodal.com/). [Accessed 21st March, 2024].
+
+
 
 ## Acknowledgements
 

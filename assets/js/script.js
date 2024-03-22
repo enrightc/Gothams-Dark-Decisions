@@ -20,12 +20,6 @@ let personality;
 
 let startBlocked = false;
 
-
-
-
-
-
-
 //START GAME--------------------------------------------------------------------------
 $(document).ready(function() {
     // Event listener for the Start button
@@ -91,7 +85,9 @@ function showFirstQuestion(index) {
             startVillainPath();
             console.log(personality)
         }
-    
+
+        $('.ans-btn').prop('disabled', true); 
+        $(this).addClass("selected"); // add selected class to users choice.
     })
 };
 
@@ -157,6 +153,9 @@ function nextHeroQuestion(index) {
                 // No more hero questions, end the hero path
                 revelation();
             }
+
+            $('.hero-ans-btn').prop('disabled', true); 
+            $(this).addClass("selected"); // add selected class to users choice.
         });
 
         // Fade in the main container
@@ -217,6 +216,9 @@ function nextVillainQuestion(index) {
             catwoman++;
             console.log("Catwoman score", catwoman)
         }
+
+        $('.villain-ans-btn').prop('disabled', true); 
+            $(this).addClass("selected"); // add selected class to users choice.
         
         // Move to the next hero question or end the path if there are no more questions
         currentVillainQuestionIndex++;
