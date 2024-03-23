@@ -3,7 +3,7 @@ $(document).ready(function() {
     $("main").fadeIn(2500);
 });
 
-// Essential elements
+// Essential elements-----------------------------------------------------------------
 const answerButtonsElement = $('#answer-box');
 let batman = 0;
 let robin = 0;
@@ -24,6 +24,7 @@ let startBlocked = false;
 $(document).ready(function() {
     // Event listener for the Start button
     $("#start-btn").on("click", function() {
+        // prevent multiple clicks of start button
         if (startBlocked == false){
             startBlocked = true;
             startGame(); // Calls the startGame function when the start button is clicked
