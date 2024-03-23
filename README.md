@@ -56,8 +56,6 @@
   - [Acknowledgements](#acknowledgements)
 
 # INTRODUCTION
-
-
 Welcome to Gotham's Dark Decisions - the interactive frontend website that plunges you into the captivating world of Batman. In this immersive experience, users will embark on a thrilling journey of self-discovery, exploring their inner hero or villain through a series of thought-provoking questions.
 
 Gotham's Dark Decisions is more than just a personality quiz - it's a portal to the heart of Gotham City, where shadows reign and the line between good and evil is constantly blurred. Inspired by the rich lore of Batman, this project invites users to explore their own identity within the context of Gotham's complex universe.
@@ -73,7 +71,11 @@ Visit Gotham's Dark Decisions website here [Gothams Dark Decisions](PUT LIVE LIN
   - Bat family or Villain: Based on your choices, discover which member of the Bat family you most closely resemble, or which infamous Batman villain shares your traits.
   - Engaging Experience: Immerse yourself in the dark and atmospheric world of Gotham City, brought to life through intriguing questions and stunning visuals.
   
-
+## Project Rationale
+Unlike traditional personality quizzes, which often feel static and detached, Gotham's Dark Decisions offers an interactive journey for players. By answering thought-provoking questions, players actively participate in shaping their own narrative within the Batman universe.
+Through engaging with the quiz, players uncover which Batman character's personality traits resonate most with their own. Whether they lean towards the righteousness of a hero or the complexity of a villain, each player's result reflects their unique characteristics.
+To enhance the experience, the quiz incorporates elements reminiscent of reading a Batman graphic novel. With chapters guiding players through the narrative, transition effects mimic turning pages, and changing backgrounds immerse players in the world of Gotham City.
+The goal of Gotham's Dark Decisions is to captivate players and draw them deeper into the world of Batman. By combining interactive elements, storytelling techniques, and engaging visuals, the quiz aims to provide an unforgettable experience that resonates with fans of the Dark Knight.
 
 ## Overall Website Aim
 Gotham's Dark Decisions aims to truly immerse users in the captivating world of Batman, providing an interactive platform for exploring their own heroic or villainous nature. Through engaging and thought-provoking questions, users will embark on a journey of self-discovery within the rich and atmospheric backdrop of Gotham City. The primary goal is to entertain and engage Batman enthusiasts, offering them a unique and immersive experience that celebrates the iconic characters and themes of the Batman universe. Additionally, it aims to provide users with valuable insights into their own personalities and the complex dynamics of heroism and villainy, all while fostering a sense of excitement and intrigue. Whether users are long time fans or newcomers to the world of Batman, Gotham's Dark Decisions invites them to explore, discover, and embrace their inner hero or villain.
@@ -90,9 +92,9 @@ Gotham's Dark Decisions aims to truly immerse users in the captivating world of 
   - Establish Brand Authority: The site owner aims to position the website as a leading authority on Batman-related personality quizzes, attracting fans and enthusiasts seeking entertainment and insights into the iconic characters and themes.
 
 ## Target Audience
-  - People who enjoy the Batman franchise.
+  - Fans the Batman franchise.
   - People who enjoy reading graphic novels.
-  - People who enjoy taking personality quizzes.
+  - Personality quiz enthusiasts.
 
 ## User Story
 
@@ -182,7 +184,7 @@ The Gotham's Dark Decision quiz is a JavaScript-powered frontend website designe
 
 # BUGS
 
-### Fixed Bugs
+## Fixed Bugs
 ### Title: Incorrect Access of Answer Personality Types
 
 #### Issue:
@@ -208,6 +210,33 @@ When clicking on an answer button, only the corresponding personality type (hero
 
 #### Result:
 The bug related to the incorrect access of answer personality types has been fixed. Now, when clicking an answer button in the first question, only the corresponding hero or villain personality type is accessed, ensuring accurate quiz progression based on user choices.
+
+### Title: Hover Effect Persisting on Mobile Devices
+
+#### Issue:
+Hover effect on answer buttons persists on mobile devices, leading to an inconsistent user experience.
+
+#### Description:
+During testing of the quiz application on mobile devices, it was observed that after selecting an answer and progressing to the next question, the last selected answer button maintained its hover appearance. This behavior was inconsistent with the expected behavior and caused confusion among users.
+
+#### Expected Behavior:
+On mobile devices, the hover effect should not persist after an answer button is selected and the user progresses to the next question. This ensures a consistent and intuitive user experience across different devices.
+
+#### Steps to Reproduce:
+1. Access the quiz application on a mobile device.
+2. Start the quiz.
+3. Select an answer by tapping an answer button.
+4. Progress to the next question.
+5. Note that the last selected answer button maintains its hover appearance.
+
+#### Investigation and Solution:
+1. Reviewed the CSS styles for answer buttons to identify the source of the hover effect.
+2. Added media queries to the CSS file targeting smaller devices (e.g., mobile devices).
+3. Within the media queries, removed the hover effect for answer buttons to ensure it doesn't persist on mobile devices.
+4. Tested the modified CSS on various mobile devices to verify that the hover effect no longer persists after selecting an answer.
+
+#### Result:
+The issue related to the hover effect persisting on mobile devices has been resolved. Now, when selecting an answer and progressing to the next question on mobile devices, the hover appearance of the answer buttons is correctly removed, providing a consistent user experience.
 
 
 ### Known Bugs (unresolved)

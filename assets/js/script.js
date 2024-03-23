@@ -59,7 +59,6 @@ function showFirstQuestion(index) {
     $('#currentQuestion').text(question.questionNumber + " of 8");
 
     
-    
     // Display Answer: Adapted from https://hackr.io/blog/how-to-build-a-javascript-quiz-app
     // Loop through the answers and create button elements using foreach() with arrow function
     question.answers.forEach(answer => {
@@ -74,7 +73,6 @@ function showFirstQuestion(index) {
     // Append the button to the answerButtonsElement
     answerButtonsElement.append(button);
     });
-
 
     // Add event to .ans-btn
     $(".ans-btn").on("click", function() {
@@ -164,7 +162,6 @@ function nextHeroQuestion(index) {
         $("main").fadeIn(1000);
     });
 }
-
 
 //Start Villain Path--------------------------------------------------------------------------
 function startVillainPath() {
@@ -353,7 +350,6 @@ document.getElementById("play-pause").addEventListener("click", function(){
 
 // Set the initial content to the play symbol
 document.getElementById("play-pause").textContent = "▶";
-
 
 //QUESTIONS--------------------------------------------------------------------------
 // Branch Question
