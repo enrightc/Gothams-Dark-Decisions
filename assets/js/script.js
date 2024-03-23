@@ -24,15 +24,12 @@ let startBlocked = false;
 $(document).ready(function() {
     // Event listener for the Start button
     $("#start-btn").on("click", function() {
-       
         if (startBlocked == false){
             startBlocked = true;
             startGame(); // Calls the startGame function when the start button is clicked
         }
     });
 });
-
-
 
 function startGame() {
     // Fade out the main container
@@ -45,10 +42,8 @@ function startGame() {
         $("#game-container").removeClass("hidden");
         // Call showFirstQuestion function to display the first question
         showFirstQuestion(0);
-       
     });
 }
-
 
 //Show Branch Question--------------------------------------------------------------------------
 function showFirstQuestion(index) {

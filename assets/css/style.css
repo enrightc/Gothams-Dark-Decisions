@@ -39,11 +39,25 @@ p {
     font-family: "Judson", serif; 
 }
 
+.heading {
+    max-width: 550px;
+    margin: auto;
+    margin-bottom:15px;
+    margin-top:20px;
+    text-align:center;
+}
+
+.para {
+    max-width: 550px;
+    margin: auto;
+    margin-bottom:30px;
+    text-align:center;
+}
+
 /* ----------------------------------------------------- Special */
 .hidden {
     display: none;
 }
-
 
 /* ----------------------------------------------------- Main */
 main {
@@ -70,24 +84,7 @@ main {
 #intro {
     text-align: center;
     width:100%;
-   
 }
-
-.intro-heading {
-    max-width: 550px;
-    margin: auto;
-    margin-bottom:15px;
-    margin-top:20px;
-    text-align:center;
-}
-
-.intro-para {
-    max-width: 550px;
-    margin: auto;
-    margin-bottom:30px;
-    text-align:center;
-}
-
 
 /* ----------------------------------------------------- Buttons */
 button {
@@ -105,7 +102,7 @@ button {
     letter-spacing:0.5px;
 }
 
-.start-btn {
+.game-control-btn {
     margin: auto;
     padding: 10px 50px;
     background-color: #FFD700;
@@ -116,6 +113,10 @@ button {
     color:black;
     margin-top:10px;
     margin-bottom:32px;
+}
+
+.game-control-btn:hover {
+    background-color: #ffd900c5;
 }
 
 .ans-btn:hover {
@@ -145,48 +146,12 @@ button {
     background-color: #cc0000; 
 }
 
-.reveal-btn {
-margin-left: auto;
-margin-right:auto;
-padding: 10px 50px;
-background-color: #FFD700;
-font-size:13px;
-font-weight:bold;
-letter-spacing:0.5px;
-border:none;
-color:black;
-margin-top:10px;
-margin-bottom:20px;
-}
-
-.reveal-btn:hover {
-    background-color: #ffd900c5;
-}
-
-#game-reset {
-margin-left: auto;
-margin-right:auto;
-padding: 10px 50px;
-background-color: #FFD700;
-font-size:13px;
-font-weight:bold;
-letter-spacing:0.5px;
-border:none;
-color:black;
-margin-top:10px;
-margin-bottom:20px;
-}
-
 #controls {
     position: relative;
     display:flex;
     justify-content: space-between;
     width:100%;
     margin-bottom:20px;
-}
-
-.help-btn:hover {
-    background-color: #ffd9001b; 
 }
 
 .help-btn {
@@ -253,7 +218,7 @@ margin-bottom:20px;
 }
 
 /* --------------------------------------------------- Revelation */
-.hero-revelation {
+.hero-revelation, .villain-revelation {
     text-align: center;
 }
 
