@@ -56,12 +56,11 @@
   - [Acknowledgements](#acknowledgements)
 
 # INTRODUCTION
-Welcome to Gotham's Dark Decisions - the interactive frontend website that plunges you into the captivating world of Batman. In this immersive experience, users will embark on a thrilling journey of self-discovery, exploring their inner hero or villain through a series of thought-provoking questions.
+Welcome to Gotham's Dark Decisions - the interactive frontend website that plunges you into the captivating world of Batman. In this immersive experience, users will embark on a thrilling journey of self-discovery, exploring their inner hero, or villain, through a series of thought-provoking questions.
 
 Gotham's Dark Decisions is more than just a personality quiz - it's a portal to the heart of Gotham City, where shadows reign and the line between good and evil is constantly blurred. Inspired by the rich lore of Batman, this project invites users to explore their own identity within the context of Gotham's complex universe.
 
 To get started with Gotham's Dark Decisions, simply visit the website and click on the "START button. From there, follow the prompts to navigate through the quiz and discover your fate within the Batman universe.
-
 
 Visit Gotham's Dark Decisions website here [Gothams Dark Decisions](PUT LIVE LINK HERE)
 

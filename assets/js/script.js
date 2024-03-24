@@ -367,7 +367,7 @@ const firstQuestion = [
             },
             {
                 answerNumber: 2,
-                text: "Politely decline, feeling uneasy about trusting a stranger in this unfamiliar place",
+                text: "Firmly reject the offer, wary of trusting strangers and determined to rely solely on your own cunning and resources.",
                 personality: "villain"
             }
         ]
@@ -456,7 +456,7 @@ const heroQuestions = [
         answers: [
             {
                 answerNumber: 1,
-                text: "Immediately mobilise your resources to stop the poisoning, utilising your network and investigative skills to uncover the gang's operation and dismantle it from within.",
+                text: "Immediately mobilise your resources to stop the poisoning, utilising your network and investigative skills to uncover the gang's operation and put an end to their scheme.",
                 score: 4,
                 personality: "Hero",
                 character: "Batman"
@@ -470,7 +470,7 @@ const heroQuestions = [
             },
             {
                 answerNumber: 3,
-                text: "Infiltrate the gang's hideout to gather intelligence and thwart their plans.",
+                text: "Use any force necessary to thwart their plans.",
                 score: 2,
                 personality: "Hero",
                 character: "Red Hood"
@@ -528,7 +528,7 @@ const heroQuestions = [
         answers: [
             {
                 answerNumber: 1,
-                text: "Strategise a plan to rescue the hostages while minimising collateral damage.",
+                text: "Use your agility and stealth to navigate the hideout and rescue the hostages undetected.",
                 score: 4,
                 personality: "Hero",
                 character: "Red Hood"
@@ -542,14 +542,14 @@ const heroQuestions = [
             },
             {
                 answerNumber: 3,
-                text: "Take decisive action to neutralizs the threat and free the hostages, accepting that there maybe collaleral damage.",
+                text: "Take decisive action to neutralise the threat and free the hostages, accepting that there maybe collaleral damage.",
                 score: 2,
                 personality: "Hero",
                 character: "Red Hood"
             },
             {
                 answerNumber: 4,
-                text: "Use your agility and stealth to navigate the hideout and rescue the hostages undetected.",
+                text: "Utilize advanced hacking skills to remotely access the hideout's security systems, disabling alarms and unlocking doors to facilitate the hostages' rescue.",
                 score: 1,
                 personality: "Hero",
                 character: "Batgirl"
@@ -621,7 +621,7 @@ const heroQuestions = [
             },
             {
                 answerNumber: 4,
-                text: "Confront the leader alone, prepared to face whatever dangers may arise.",
+                text: "Hack into the leader's security systems, gathering intel and weakening their defenses before staging a calculated ambush.",
                 score: 1,
                 personality: "Hero",
                 character: "Batgirl"
@@ -635,7 +635,7 @@ const villainQuestions = [
     {
         title: "Chapter 2: The Rise of Darkness",
         questionNumber: 2,
-        question: "As you emerge from the shadows of Gotham's underworld, you realize the potential for power and control that lies within your grasp. How do you begin your journey to ascendancy?",
+        question: "As you emerge from the shadows of Gotham's underworld, you realise the potential for power and control that lies within your grasp. How do you begin your journey to ascendancy?",
         image: "assets/images/villain-chapter-2.webp",
         answers: [
             {
@@ -708,6 +708,7 @@ const villainQuestions = [
         title: "Chapter 4: Evading Capture",
         questionNumber: 4,
         question: "As law enforcement closes in on your location, how do you evade capture?",
+        image: "assets/images/villain-chapter-4.webp",
         answers: [
             {
                 answerNumber: 1,
@@ -779,6 +780,7 @@ const villainQuestions = [
         title: "Chapter 6: Final Showdown",
         questionNumber: 6,
         question: "As the heroes rally to challenge your reign of terror, you prepare for a final confrontation to determine the fate of Gotham. How do you intend to emerge victorious and solidify your legacy as the city's ultimate villain?",
+        image: "assets/images/villain-chapter-6.webp",
         answers: [
             {
                 answerNumber: 1,
@@ -864,7 +866,7 @@ const villainQuestions = [
             },
             {
                 answerNumber: 4,
-                text: "Stay one step ahead of any potential threats, using your cunning and intellect to thwart any attempts to overthrow your rule.",
+                text: "Enforce your rule through ruthless displays of power, making examples of those who dare defy your supremacy.",
                 personality: "Villain",
                 character: "The Joker"
             }
