@@ -1,3 +1,5 @@
+/*jshint esversion: 6 */
+
 // Add fadeIn transition to quiz introduction.
 $(document).ready(function() {
     $("main").fadeIn(2500);
@@ -79,17 +81,17 @@ function showFirstQuestion(index) {
         personality = $(this).data("personality");
         // Check the personality property of the answer.
         if (personality === "hero") {
-            startHeroPath()
-            console.log(personality)
+            startHeroPath();
+            console.log(personality);
         } else {
             startVillainPath();
-            console.log(personality)
+            console.log(personality);
         }
 
         $('.ans-btn').prop('disabled', true); 
         $(this).addClass("selected"); // add selected class to users choice.
-    })
-};
+    });
+}
 
 //Start Hero Path--------------------------------------------------------------------------
 function startHeroPath() {
@@ -135,13 +137,13 @@ function nextHeroQuestion(index) {
                 console.log("Batman score:", batman);
             } else if (character === "Robin") {
                 robin++;
-                console.log("Robin score", robin)
+                console.log("Robin score", robin);
             } else if (character === "Red Hood") {
                 redHood++;
-                console.log("Red Hood score", redHood)
+                console.log("Red Hood score", redHood);
             } else {
                 batgirl++;
-                console.log("Batgirl score", batgirl)
+                console.log("Batgirl score", batgirl);
             }
             
             // Move to the next hero question or end the path if there are no more questions
@@ -168,7 +170,7 @@ function startVillainPath() {
     // Display the first hero question
     console.log(currentVillainQuestionIndex);
     nextVillainQuestion(currentVillainQuestionIndex);
-};
+}
 
 function nextVillainQuestion(index) {
     // Fade out the main container
@@ -207,13 +209,13 @@ function nextVillainQuestion(index) {
             console.log("The Joker score:", theJoker);
         } else if (character === "The Penquin") {
             thePenguin++;
-            console.log("The Penguin score", thePenguin)
+            console.log("The Penguin score", thePenguin);
         } else if (character === "Bane") {
             bane++;
-            console.log("Bane score", bane)
+            console.log("Bane score", bane);
         } else {
             catwoman++;
-            console.log("Catwoman score", catwoman)
+            console.log("Catwoman score", catwoman);
         }
 
         $('.villain-ans-btn').prop('disabled', true); 
@@ -274,13 +276,13 @@ function score() {
     } else if (maxScore === catwoman) {
         userCharacter = "Catwoman";
     }
-    console.log("You are", userCharacter)
+    console.log("You are", userCharacter);
 }
 
 // Character Reveal--------------------------------------------------------------------------
 
 $(".reveal-btn").on("click", function() {
-    console.log(userCharacter)
+    console.log(userCharacter);
     displayResult();
 });
 
@@ -325,7 +327,7 @@ function displayResult() {
 
         $("main").fadeIn(1000);
     });
-};
+}
 
 //Game Reset--------------------------------------------------------------------------
 
@@ -379,7 +381,7 @@ const heroQuestions = [
     {
         title: "Chapter 2: Embracing Your Past",
         questionNumber: 2,
-        question: "You accept the stranger's help and follow them to a hidden room filled with newspaper clippings, photographs, and documents. They reveal that you were once a renowned detective, but your memory loss has left you vulnerable. How do you react to this revelation?",image: "assets/images/the-choice.webp",
+        question: "You accept the stranger's help and follow them to a hidden room filled with newspaper clippings, photographs, and documents. They reveal that you were once a renowned detective, but your memory loss has left you vulnerable. How do you react to this revelation?",
         image: "assets/images/hero-chapter-2.webp",
         answers: [
             {

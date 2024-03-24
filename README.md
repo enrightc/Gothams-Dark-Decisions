@@ -358,7 +358,9 @@ To launch the project, GitHub Pages was employed as the deployment platform. The
 
   - [JavaScript Refresh Page - How to Reload a Page in JS](https://www.freecodecamp.org/news/javascript-refresh-page-how-to-reload-a-page-in-js/). [Accessed 20th March, 2024].
 
-   - [jQuery Modal](https://www.jquerymodal.com/). [Accessed 21st March, 2024].
+  - [jQuery Modal](https://www.jquerymodal.com/). [Accessed 21st March, 2024].
+
+  - [Stackflow: Why does JSHnt throw a warning if I am using const?](https://stackoverflow.com/questions/27441803/why-does-jshint-throw-a-warning-if-i-am-using-const). [Accessed 24th March, 2024].
 
 
 
