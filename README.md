@@ -362,6 +362,8 @@ To launch the project, GitHub Pages was employed as the deployment platform. The
 
   - [Stackflow: Why does JSHnt throw a warning if I am using const?](https://stackoverflow.com/questions/27441803/why-does-jshint-throw-a-warning-if-i-am-using-const). [Accessed 24th March, 2024].
 
+  - [Alternate Text for Background Images: Techniques and Consideration](https://www.davidmacd.com/blog/alternate-text-for-css-background-images.html). [Accessed 24th March, 2024].
+
 
 
 ## Acknowledgements
