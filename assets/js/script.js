@@ -19,8 +19,8 @@ let currentHeroQuestionIndex = 0;
 let currentVillainQuestionIndex = 0;
 let userCharacter;
 let personality;
-
 let startBlocked = false;
+
 
 //START GAME--------------------------------------------------------------------------
 
@@ -28,7 +28,7 @@ let startBlocked = false;
     $("#start-btn").on("click", function() {
         // prevent multiple clicks of start button
         if (startBlocked == false){
-            startBlocked = true;
+            startBlocked = true;  // Set startBlocked to true to prevent further clicks
             startGame(); // Calls the startGame function when the start button is clicked
         }
     });
@@ -92,34 +92,34 @@ function showFirstQuestion(index) { // show the first question that allows user 
 
 //Start Hero Path--------------------------------------------------------------------------
 function startHeroPath() { // initiate hero path
-    nextHeroQuestion(currentHeroQuestionIndex);
+    nextHeroQuestion(currentHeroQuestionIndex); // calls the function to display the first hero question.
 }
 
-function nextHeroQuestion(index) { // Display the first hero question with a fade-in effect
-    // Fade out the main container
+function nextHeroQuestion(index) { // Display the next hero question with a fade effect
+    // Fade out the main container before displaying the question.
     $("main").fadeOut(1000, function() {
-        // Collects the hero question object from the heroQuestions array.
+        // Retrieves the hero question object from the heroQuestions array based on the provided index
         const question = heroQuestions[index];
 
-        // Sets the text of the element to text of current question.
+        // Sets the text content of the title and question-box elements to that of the current hero question
         $('#title').text(question.title);
         $('#question-box').text(question.question);
 
-         // Set the background image of the body. Adapted from Satpal (Stackflow user; see references).
+        // Sets the background image of the body using the URL specified in the question object. Adapted from Satpal (Stackflow user; see references).
         $('body').css('background-image', 'url("' + question.image + '")');
 
         // Display current question number on progress tracker
         $('#currentQuestion').text(question.questionNumber + " of 8");
         
-        // Clear previous answer buttons using .empty method
+        // Clears any previously displayed answer buttons
         answerButtonsElement.empty();
 
-        // display Answers using forEach with arrow function.
+        // display answer options for the current hero question using forEach with arrow function.
         question.answers.forEach(answer => {
             const button = $('<button></button>');
             button.text(answer.text);
             button.addClass('hero-ans-btn');
-            button.data('character', answer.character); // Add data attribute for character
+            button.data('character', answer.character); // Retrieves the character associated with the selected answer
             answerButtonsElement.append(button);
         });
 
@@ -127,7 +127,7 @@ function nextHeroQuestion(index) { // Display the first hero question with a fad
     $(".hero-ans-btn").on("click", function() {
         const character = $(this).data("character"); // store the users choice based on answer button clicked.
             
-    // Increment Batman score only if the clicked button has the personality "Batman"
+         // Increments the score for the corresponding character based on the user's choice
         if (character === "Batman") {
             batman++; // Increment Batman score
         } else if (character === "Robin") {
@@ -141,59 +141,60 @@ function nextHeroQuestion(index) { // Display the first hero question with a fad
     // Move to the next hero question or end the path if there are no more questions
         currentHeroQuestionIndex++;
         if (currentHeroQuestionIndex < heroQuestions.length) {
-            // Call nextHeroQuestion recursively with a fade-in effect
+            // Call nextHeroQuestion function recursively to display the next question with a fade-in effect
             nextHeroQuestion(currentHeroQuestionIndex);
         } else {
-             // No more hero questions, end the hero path and move to revelation.
+             // No more hero questions, end the hero path and proceed to revelation.
             revelation();
             }
 
         $('.hero-ans-btn').prop('disabled', true); // Prevent multiple button clicks.
-        $(this).addClass("selected"); // add selected class to users choice.
+        $(this).addClass("selected");  // Adds a selected class to the user's choice for styling 
         });
 
-        // Fade in the main container
+        // Fades in the main container after displaying the question
         $("main").fadeIn(1000);
     });
 }
 
 //Start Villain Path--------------------------------------------------------------------------
 function startVillainPath() { // initiate villain path
-    nextVillainQuestion(currentVillainQuestionIndex);
+    nextVillainQuestion(currentVillainQuestionIndex); // calls the function to display the first hero question.
 }
 
-function nextVillainQuestion(index) {// Display the first hero question
-    // Fade out the main container
+function nextVillainQuestion(index) { // Display the next hero question with a fade-in effect
+    // Fade out the main container before displaying the question.
     $("main").fadeOut(1000, function() {
-    // Collects the hero question object from the heroQuestions array.
+    // Retrieves the villain question object from the villainQuestions array based on the provided index
     const question = villainQuestions[index];
-    // Sets the text of the element to text of current question.
+   
+    // Sets the text content of the title and question-box elements to that of the current hero question
     $('#title').text(question.title);
     $('#question-box').text(question.question);
 
-     // Set the background image of the body. Adapted from Satpal (Stackflow user; see references).
+     // // Sets the background image of the body using the URL specified in the question object. Adapted from Satpal (Stackflow user; see references).
      $('body').css('background-image', 'url("' + question.image + '")');
 
-     // Display current quesiton number
+     // Display current quesiton number on progress tracker
     $('#currentQuestion').text(question.questionNumber + " of 8");
     
-    // Clear previous answer buttons using .empty method
+    // Clears any previously displayed answer buttons
     answerButtonsElement.empty();
 
-    // display Answers using forEach with arrow function.
+    // display answer options for the current hero question using forEach with arrow function.
     question.answers.forEach(answer => {
         const button = $('<button></button>');
         button.text(answer.text);
         button.addClass('villain-ans-btn');
-        button.data('character', answer.character); // Add data attribute for personality
+        button.data('character', answer.character); // Retrieves the character associated with the selected answer
         answerButtonsElement.append(button);
     });
 
     // Attach event listener to handle user response
     $(".villain-ans-btn").on("click", function() {
-        const character = $(this).data("character");
+        const character = $(this).data("character"); // store the users choice based on answer button clicked.
         
-        // Increment The Joker score only if the clicked button has the personality "The Joker"
+        // Increments the score for the corresponding character based on the user's choice
         if (character === "The Joker") {
             theJoker++; // Increment score
         } else if (character === "The Penquin") {
@@ -205,19 +206,20 @@ function nextVillainQuestion(index) {// Display the first hero question
         }
 
     $('.villain-ans-btn').prop('disabled', true); //Prevent multiple button clicks
-    $(this).addClass("selected"); // add selected class to users choice.
+    $(this).addClass("selected"); // Adds a selected class to the user's choice for styling 
         
-    // Move to the next hero question or end the path if there are no more questions
+    // Move to the next villain question or end the path if there are no more questions
     currentVillainQuestionIndex++;
     if (currentVillainQuestionIndex < villainQuestions.length) {
+        // Call nextVillainQuestion function recursively to display the next question with a fade-in effect
         nextVillainQuestion(currentVillainQuestionIndex);
         } else {
-        // No more hero questions, end the hero path
+        // No more hero questions, end the hero path and proceed to revelation.
         revelation();
         }
     });
 
-     // Fade in the main container
+     // Fades in the main container after displaying the question
      $("main").fadeIn(1000);
     });
 }
@@ -270,23 +272,27 @@ function score() { // Calculate users character based on their quiz score.
 
 // Character Reveal--------------------------------------------------------------------------
 
-$(".reveal-btn").on("click", function() { //event listener to reveal user character 
-    displayResult();
+$(".reveal-btn").on("click", function() { // Event listener to reveal the user's character when the reveal button is clicked
+    displayResult(); // Call the displayResult function to show the user's character
 });
 
-function displayResult() { // Display users character result
-    $("main").fadeOut(2000, function() { 
-        $("#revelation-container").addClass("hidden");
+function displayResult() { // Display user's character result
+    $("main").fadeOut(2000, function() { // Fade out the main container before displaying the result
+        // Hide the revelation container and reveal the results container
+        $("#revelation-container").addClass("hidden");  
         $("#results").removeClass("hidden");
-        // Display appropriate heading, character description and picture 
+        // Determine the user's character and display the appropriate heading, character description, and picture 
         if (userCharacter === "Batman") {
+            // Display information for Batman
             $('h1.character-reveal').append('<h1>You Are Batman</h1>');
+            // Append Batman's character description
             $('p.character-bio').append("<p>You are Gotham's legendary Dark Knight. With unparalleled detective skills and unwavering determination, you tirelessly fight against the city's criminal underworld. Your commitment to justice, coupled with your strategic brilliance and advanced technology, strikes fear into the hearts of evildoers. You embody the symbol of hope for Gotham, standing as its protector against the forces of darkness</p>");
+            // Set Batman's headshot image
             $('img.character-headshot').attr('src', 'assets/images/batman-headshot.webp').attr('alt', 'Batman headshot'); 
         } else if (userCharacter === "Robin") {
             $('h1.character-reveal').append('<h1>You Are Robin</h1>');
             $('p.character-bio').append("<p>You are the loyal and resourceful partner of Batman. With a strong sense of justice and a desire to make a difference, you navigate the streets of Gotham alongside the Dark Knight. Your agility, intellect, and unwavering dedication to the cause make you a valuable asset in the fight against crime. You bring a youthful energy and optimism to the hero's journey, inspiring hope in the city's darkest hours.</p>");
-            $('img.character-headshot').attr('src', 'assets/images/robin head-shot.webp').attr('alt', 'Robins headshot'); 
+            $('img.character-headshot').attr('src', 'assets/images/robin-headshot.webp').attr('alt', 'Robins headshot'); 
         } else if (userCharacter === "Red Hood") {
             $('h1.character-reveal').append('<h1>You Are Red Hood</h1>');
             $('p.character-bio').append("<p>You are Gotham's conflicted anti-hero. Driven by a desire for vengeance and redemption, you walk a fine line between justice and revenge. Your combat skills and willingness to do whatever it takes to achieve your goals make you a formidable force against the city's criminals. Despite your troubled past, you strive to protect the innocent and bring a sense of justice to Gotham's streets.</p>");
@@ -312,7 +318,7 @@ function displayResult() { // Display users character result
             $('p.character-bio').append("<p>Gotham's agile and elusive thief. With a code of honour all your own, you walk the fine line between hero and villain, using your skills to survive in Gotham's dangerous streets. Your quick wit and cunning make you a formidable adversary, as you navigate the shadows of Gotham with grace and style, always looking out for yourself above all else.</p>");
             $('img.character-headshot').attr('src', 'assets/images/catwoman-headshot.webp').attr('alt', 'Catwomans headshot'); 
         }
-        $("main").fadeIn(1000);
+        $("main").fadeIn(1000); // Fade in the main container after displaying the result
     });
 }
 

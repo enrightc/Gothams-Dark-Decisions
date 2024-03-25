@@ -115,7 +115,7 @@ Gotham's Dark Decisions aims to truly immerse users in the captivating world of 
 The Gotham's Dark Decision quiz is a JavaScript-powered frontend website designed to immerse users in the captivating world of Batman. However, to ensure accessibility and comprehension for a broader audience, the code has been translated into plain English. This transparency provides users with insight into the application's functionality and structure without requiring programming knowledge, fostering trust and engagement.
 
 
-1. Fade In Transition: When the document is ready, the main content fades in gradually over 3 seconds using jQuery.
+1. Fade In Transition: When the document is ready, the main content fades in gradually over 2.5 seconds using jQuery.
 
 2. Essential Elements:
    - Key elements such as answer buttons, character scores, and current question indexes are initialized.
@@ -134,20 +134,30 @@ The Gotham's Dark Decision quiz is a JavaScript-powered frontend website designe
 6. Next Hero/Villain Question Functions: Displays subsequent hero or villain questions, updates scores based on user answers, and progresses through the quiz.
     - Retrieves the next question object and sets question text elements accordingly. 
     - Clears previous answer buttons and displays new answer options.
-    - Handles user responses, incrementing corresponding character scores and advancing to the next question or displaying results.
+    - Handles user responses, incrementing corresponding character scores and advancing to the next question or displaying the revelation if no more questions. 
 
-7. Results Function: Shows the results container, determines the user's character based on score calculations, and displays the corresponding character revelation.
-    - Hides the game container and reveals the results container.
+7. Revelation Function: Shows the revelation container for either a hero or villain.
+    - Hides the game container and reveals the revelation container.
     - Displays specific content based on whether the user's personality is hero or villain.
-    - Calls the revelation function to determine the user's character. 
-    - Appends the user's character result to the webpage.
+    - Calls the score function to determine the user's character. 
    
-8. Revelation Function: Calculates the user's character based on the highest score and assigns the corresponding character name.
+8. Score Function: Calculates the user's character based on the highest score and assigns the corresponding character name.
     - Determines the maximum score among character variables and assigns the corresponding character name to the user.
 
-9. Voiceover Function: Toggles the play/pause button for an audio voiceover.
+9. Character Reveal:
+    - Event handler calls the displayResult function when reveal button is clicked.
+    - DisplayResult function hides the revelation container and reveals the results container.
+    - It determines the user's character based on the userCharacter variable and displays the appropriate heading, character description, and picture in the results container.
+      - It appends a heading indicating the character's name (You Are [Character]).
+      - It appends a paragraph with a description of the character's traits, motivations, and role in Gotham.
+      - It sets the src attribute of an <img> element to display the character's headshot.
 
-10. Questions: Define arrays containing hero and villain questions, each with titles, questions, and multiple-choice answers, tailored to each character's path. The showFirstQuestion 
+10. Game Reset:
+    - Causes the game to reset by reloading the browser in the same way the refresh button on your browser reloads the page. 
+
+11. Voiceover Function: Toggles the play/pause button for an audio voiceover.
+
+12. Questions: Define arrays containing hero and villain questions, each with titles, questions, and multiple-choice answers, tailored to each character's path. The showFirstQuestion 
     function directs users down either the hero or villain path based on their initial response.
     - If the user's answer leads to the hero path, subsequent questions are drawn from the heroQuestions array.
     - Conversely, if the user's answer leads to the villain path, questions are drawn from the villainQuestions array.
@@ -156,26 +166,80 @@ The Gotham's Dark Decision quiz is a JavaScript-powered frontend website designe
 # DESIGN
 
 ## Wireframes
+Prior to commencing the coding process, comprehensive wireframes were produced for each section of the quiz  using Figma - a design tool used for creating user interfaces, prototypes, and wireframes. These wireframes served as the initial blueprints, providing a visual roadmap for the quiz layout and structure on both desktop and mobile devices.
 
+It's important to note that while the final product evolved from these early plans, some deviations were intentionally made to enhance the user experience and align better with the project's goals.
+
+This iterative process allowed for flexibility in adapting to evolving project requirements, ultimately contributing to the development of a more refined and user-friendly quiz.
 
 ## Imagery
+The imagery chosen for this quiz is purposeful and aims to enhance the overall user experience. Each background image used throughout the quiz has been carefully selected to complement the theme and narrative of the quiz.
 
+As the user progresses through the quiz, the background imagery dynamically changes with a fadeIn/fadeOut transition effect. This deliberate design choice aims to immerse the user in the experience, creating a sense of progression akin to turning the pages of a graphical novel.
 
+The changing background imagery not only adds visual interest but also helps to convey the evolving storyline and atmosphere of the quiz. By seamlessly integrating visual elements with the quiz content, the goal is to enhance user engagement and create a memorable and immersive experience for every participant.
 
 ## Colours
+The colour scheme used in this quiz is purposefully minimalistic, aiming to evoke the dark and gritty ambiance of Gotham City. Drawing inspiration from the iconic setting, the colour palette revolves around bold and striking hues, accentuated by hover effects to highlight key elements of the page.
 
+At the outset of the quiz, a vibrant yellow colour takes center stage in the the interface, setting the stage for the user's journey. As the quiz progresses, the colour dynamically shifts to either red or blue, reflecting the path chosen by the user – hero or villain, respectively. This intentional use of colour not only enhances the visual narrative but also provides a subtle indication of the user's progress and choices throughout the quiz.
+
+Consistency is maintained in the choice of font colours, with a white font against dark-coloured backgrounds ensuring optimal readability and visual contrast. By employing a minimalist colour scheme and hover effects, the goal is to immerse participants in the immersive world of the quiz while maintaining clarity and ease of navigation.
 
 ## Fonts
+In this quiz project, typography plays a crucial role in enhancing visual appeal and ensuring readability across all content. Consistently, the 'Judson' font is employed for both headings and paragraph text, offering a balanced and cohesive aesthetic throughout the interface.
+
+For headings, 'Judson' imparts a sense of elegance and sophistication, elevating the presentation of key information. Meanwhile, paragraph text is set in 'Judson' as well, ensuring a comfortable reading experience for users across all sections.
+
+To maintain consistency and legibility, a Sans Serif font serves as the backup option. This ensures that even if the primary font isn't loaded correctly, the text remains clear and easily readable.
+
+This consistency provides a seamless and visually pleasing experience for users.
 
 
 ## Accessibility
+Accessibility is a key consideration in the design of this quiz project, ensuring that all users, regardless of ability, can fully engage with the content.
 
+Colour Contrast: The chosen colour scheme offers a strong contrast, enhancing readability and ensuring that text and content are easily distinguishable against the background. This deliberate choice promotes a visually accessible experience for all users.
+
+Font Selection: Prioritizing simplicity and readability, clear and straightforward fonts have been selected. This ensures that the content remains legible for users with varying visual abilities, contributing to an inclusive user experience.
+
+Background Images: Background images are purely decorative and serve no functional purpose within the quiz. Removing them would not affect the meaning or functionality of the quiz, thus maintaining accessibility for all users.
+
+Icons: Icons are used as links to relevant information or interactive elements within the quiz. To ensure accessibility, each icon is accompanied by an aria-label attribute providing additional information for users employing screen readers. This facilitates seamless navigation and interaction for all users, promoting inclusivity throughout the quiz experience.
 
 ## Design Feedback
+The Gotham's Dark Decisions quiz  has undergone thoughtful design reviews from friends and colleagues. below is some of the feedback received:
+
+- **User-Friendly Design:** Reviewers have praised the user-friendly design of the quiz, noting its intuitive layout and easy navigation. This ensures that users can progress through the quiz seamlessly, enhancing their overall experience.
+
+- **Immersive Experience:** Users have expressed appreciation for the immersive experience provided by the background imagery transitions. The fadeIn/fadeOut effect adds depth to the storytelling aspect of the quiz, making users feel as though they are journeying through a graphic novel.
+
+- **Engaging Visuals:** The deliberate use of minimal colors to evoke the dark ambiance of Gotham City has resonated well with users. Additionally, the dynamic color changes of the buttons based on the user's path choice add an engaging and interactive element to the quiz interface.
+
+- **Clear Instructions:** Reviewers have commended the clear and concise instructions provided throughout the quiz. This clarity helps users understand the purpose of each question and navigate through the quiz with ease.
+
+- **Interactive Elements:** Users have enjoyed the interactive elements incorporated into the quiz, such as the hover effects over buttons. These features enhance user engagement and make the quiz experience more dynamic and enjoyable.
+
+- **Engaging Audio Narration:** Users appreciate the immersive audio narration at the quiz's start. It sets the tone, enhancing the storytelling and leaving a memorable impact.
+
 
 # FEATURES
 
 ## Existing Features
+The following information provides an overview of the features found within the quiz.
+
+**Start Page:**
+The start page of the quiz sets a visually immersive environment, immediately engages users and prepares them for an exciting experience.
+
+1. Audio Button: Enhance the immersive experience with a voice-over narration, synchronized with the on-screen text. This audio feature adds depth to the atmosphere, setting the tone and enhancing engagement.
+
+2. Help Button: Accessible support with a dedicated help button, providing users with assistance or guidance whenever needed. This ensures a user-friendly experience, catering to users of all levels of familiarity with the quiz format.
+
+3. Start Button: Begin the quiz with a prominently placed start button. This intuitive feature invites users to begin their adventure, guiding them into the immersive world of Gotham and its iconic characters.
+
+4. Background Image: A captivating scene with a background image featuring the iconic Gotham cityscape illuminated by the bat signal.
+
+![Start Page](docs/readme-images/start-page.png)
 
 ## Future Website Enhancements
 
@@ -316,8 +380,14 @@ To launch the project, GitHub Pages was employed as the deployment platform. The
 # CREDITS
 
 ### Content
+Questions and Answers generated by ChatGPT 3.5
 
 ### Images
+Images of characters are from the Animated Batman Series. [Batman the Animated Series Wiki](https://batmantheanimatedseries.fandom.com/wiki/Batman:The_Animated_Series_Wiki). [Accessed 11th March, 2024].
+
+Red Hood image [Batman Fandom](https://batman.fandom.com/wiki/Jason_Todd_(Under_the_Red_Hood)). [Accessed 11th March, 2024].
+
+Background images generated by ChatGPT DALL.E
 
 
 ## Resources
@@ -364,7 +434,7 @@ To launch the project, GitHub Pages was employed as the deployment platform. The
 
   - [Alternate Text for Background Images: Techniques and Consideration](https://www.davidmacd.com/blog/alternate-text-for-css-background-images.html). [Accessed 24th March, 2024].
 
-
+  - [How to Comment Your JavaScript Code](https://www.freecodecamp.org/news/comment-your-javascript-code/#:~:text=In%20JavaScript%2C%20single%2Dline%20comments,have%20any%20spaces%20between%20them). [Accessed 25th March, 2024].
 
 ## Acknowledgements
 
