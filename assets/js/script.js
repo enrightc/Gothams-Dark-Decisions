@@ -23,7 +23,7 @@ let personality;
 let startBlocked = false;
 
 //START GAME--------------------------------------------------------------------------
-$(document).ready(function() {
+
     // Event listener for the Start button
     $("#start-btn").on("click", function() {
         // prevent multiple clicks of start button
@@ -32,11 +32,10 @@ $(document).ready(function() {
             startGame(); // Calls the startGame function when the start button is clicked
         }
     });
-});
 
-function startGame() {
-    // Fade out the main container
-    $("main").fadeOut(2000, function() {
+
+function startGame() { // initiate the game and call showFirstQuestion function to show the first question of the game. 
+    $("main").fadeOut(2000, function() {   // Fade out the main container
         // Hide the intro
         $("#intro").addClass("hidden");
         // Fade in the main container
@@ -49,9 +48,9 @@ function startGame() {
 }
 
 //Show Branch Question--------------------------------------------------------------------------
-function showFirstQuestion(index) {
-    const question = firstQuestion[index];
-    // use jQuery .text() method to set text content of question-box element to text of first question
+function showFirstQuestion(index) { // show the first question that allows user to select hero or villain path.
+    const question = firstQuestion[index]; // store the current question
+    // use jQuery .text() method to set text content of question-box element to the title and text of first question
     $('#title').text(question.title);
     $('#question-box').text(question.question);
     // Set the background image of the body
@@ -76,30 +75,27 @@ function showFirstQuestion(index) {
     answerButtonsElement.append(button);
     });
 
-    // Add event to .ans-btn
+    // Add event to .ans-btn and call hero or villain path depending on users choice.
     $(".ans-btn").on("click", function() {
         personality = $(this).data("personality");
-        // Check the personality property of the answer.
+        // Check the personality property of the answer and start the hero or villain path.
         if (personality === "hero") {
             startHeroPath();
-            console.log(personality);
         } else {
             startVillainPath();
-            console.log(personality);
         }
 
-        $('.ans-btn').prop('disabled', true); 
+        $('.ans-btn').prop('disabled', true); //Prevent multiple button clicks
         $(this).addClass("selected"); // add selected class to users choice.
     });
 }
 
 //Start Hero Path--------------------------------------------------------------------------
-function startHeroPath() {
-    // Display the first hero question with a fade-in effect
+function startHeroPath() { // initiate hero path
     nextHeroQuestion(currentHeroQuestionIndex);
 }
 
-function nextHeroQuestion(index) {
+function nextHeroQuestion(index) { // Display the first hero question with a fade-in effect
     // Fade out the main container
     $("main").fadeOut(1000, function() {
         // Collects the hero question object from the heroQuestions array.
@@ -112,7 +108,7 @@ function nextHeroQuestion(index) {
          // Set the background image of the body. Adapted from Satpal (Stackflow user; see references).
         $('body').css('background-image', 'url("' + question.image + '")');
 
-        // Display current quesiton number
+        // Display current question number on progress tracker
         $('#currentQuestion').text(question.questionNumber + " of 8");
         
         // Clear previous answer buttons using .empty method
@@ -123,41 +119,37 @@ function nextHeroQuestion(index) {
             const button = $('<button></button>');
             button.text(answer.text);
             button.addClass('hero-ans-btn');
-            button.data('character', answer.character); // Add data attribute for personality
+            button.data('character', answer.character); // Add data attribute for character
             answerButtonsElement.append(button);
         });
 
-        // Attach event listener to handle user response
-        $(".hero-ans-btn").on("click", function() {
-            const character = $(this).data("character");
+    // Attach event listener to handle user response
+    $(".hero-ans-btn").on("click", function() {
+        const character = $(this).data("character"); // store the users choice based on answer button clicked.
             
-            // Increment Batman score only if the clicked button has the personality "Batman"
-            if (character === "Batman") {
-                batman++; // Increment Batman score
-                console.log("Batman score:", batman);
-            } else if (character === "Robin") {
-                robin++;
-                console.log("Robin score", robin);
-            } else if (character === "Red Hood") {
-                redHood++;
-                console.log("Red Hood score", redHood);
-            } else {
-                batgirl++;
-                console.log("Batgirl score", batgirl);
-            }
+    // Increment Batman score only if the clicked button has the personality "Batman"
+        if (character === "Batman") {
+            batman++; // Increment Batman score
+        } else if (character === "Robin") {
+            robin++;
+        } else if (character === "Red Hood") {
+            redHood++;
+        } else {
+            batgirl++;
+        }
             
-            // Move to the next hero question or end the path if there are no more questions
-            currentHeroQuestionIndex++;
-            if (currentHeroQuestionIndex < heroQuestions.length) {
-                // Call nextHeroQuestion recursively with a fade-in effect
-                nextHeroQuestion(currentHeroQuestionIndex);
-            } else {
-                // No more hero questions, end the hero path
-                revelation();
+    // Move to the next hero question or end the path if there are no more questions
+        currentHeroQuestionIndex++;
+        if (currentHeroQuestionIndex < heroQuestions.length) {
+            // Call nextHeroQuestion recursively with a fade-in effect
+            nextHeroQuestion(currentHeroQuestionIndex);
+        } else {
+             // No more hero questions, end the hero path and move to revelation.
+            revelation();
             }
 
-            $('.hero-ans-btn').prop('disabled', true); 
-            $(this).addClass("selected"); // add selected class to users choice.
+        $('.hero-ans-btn').prop('disabled', true); // Prevent multiple button clicks.
+        $(this).addClass("selected"); // add selected class to users choice.
         });
 
         // Fade in the main container
@@ -166,13 +158,11 @@ function nextHeroQuestion(index) {
 }
 
 //Start Villain Path--------------------------------------------------------------------------
-function startVillainPath() {
-    // Display the first hero question
-    console.log(currentVillainQuestionIndex);
+function startVillainPath() { // initiate villain path
     nextVillainQuestion(currentVillainQuestionIndex);
 }
 
-function nextVillainQuestion(index) {
+function nextVillainQuestion(index) {// Display the first hero question
     // Fade out the main container
     $("main").fadeOut(1000, function() {
     // Collects the hero question object from the heroQuestions array.
@@ -203,31 +193,27 @@ function nextVillainQuestion(index) {
     $(".villain-ans-btn").on("click", function() {
         const character = $(this).data("character");
         
-        // Increment Batman score only if the clicked button has the personality "Batman"
+        // Increment The Joker score only if the clicked button has the personality "The Joker"
         if (character === "The Joker") {
-            theJoker++; // Increment Batman score
-            console.log("The Joker score:", theJoker);
+            theJoker++; // Increment score
         } else if (character === "The Penquin") {
             thePenguin++;
-            console.log("The Penguin score", thePenguin);
         } else if (character === "Bane") {
             bane++;
-            console.log("Bane score", bane);
         } else {
             catwoman++;
-            console.log("Catwoman score", catwoman);
         }
 
-        $('.villain-ans-btn').prop('disabled', true); 
-            $(this).addClass("selected"); // add selected class to users choice.
+    $('.villain-ans-btn').prop('disabled', true); //Prevent multiple button clicks
+    $(this).addClass("selected"); // add selected class to users choice.
         
-        // Move to the next hero question or end the path if there are no more questions
-        currentVillainQuestionIndex++;
-        if (currentVillainQuestionIndex < villainQuestions.length) {
-            nextVillainQuestion(currentVillainQuestionIndex);
+    // Move to the next hero question or end the path if there are no more questions
+    currentVillainQuestionIndex++;
+    if (currentVillainQuestionIndex < villainQuestions.length) {
+        nextVillainQuestion(currentVillainQuestionIndex);
         } else {
-            // No more hero questions, end the hero path
-            revelation();
+        // No more hero questions, end the hero path
+        revelation();
         }
     });
 
@@ -237,7 +223,7 @@ function nextVillainQuestion(index) {
 }
 
 //Revelation Function--------------------------------------------------------------------------
-function revelation() {
+function revelation() {// After all questions have been asked display the revelation
     // Fade out the main container
     $("main").fadeOut(1000, function() {
     // hide game-container (questions and answers)
@@ -257,12 +243,12 @@ function revelation() {
     });
 
     score();
-
-    $("p.character").append(userCharacter);
 }
 
-function score() {
+function score() { // Calculate users character based on their quiz score.
+    // assign the highest scoring character to maxScore variable.
     let maxScore = Math.max(batman, robin, redHood, batgirl,theJoker, thePenguin, bane, catwoman);
+    // Determine the charcter the users most aligns with assign, the userCharacter varible that character.
     if (maxScore === batman) {
         userCharacter = "Batman";
     } else if (maxScore === robin) {
@@ -280,21 +266,19 @@ function score() {
     } else if (maxScore === catwoman) {
         userCharacter = "Catwoman";
     }
-    console.log("You are", userCharacter);
 }
 
 // Character Reveal--------------------------------------------------------------------------
 
-$(".reveal-btn").on("click", function() {
-    console.log(userCharacter);
+$(".reveal-btn").on("click", function() { //event listener to reveal user character 
     displayResult();
 });
 
-function displayResult() {
+function displayResult() { // Display users character result
     $("main").fadeOut(2000, function() { 
         $("#revelation-container").addClass("hidden");
         $("#results").removeClass("hidden");
-
+        // Display appropriate heading, character description and picture 
         if (userCharacter === "Batman") {
             $('h1.character-reveal').append('<h1>You Are Batman</h1>');
             $('p.character-bio').append("<p>You are Gotham's legendary Dark Knight. With unparalleled detective skills and unwavering determination, you tirelessly fight against the city's criminal underworld. Your commitment to justice, coupled with your strategic brilliance and advanced technology, strikes fear into the hearts of evildoers. You embody the symbol of hope for Gotham, standing as its protector against the forces of darkness</p>");
@@ -328,20 +312,19 @@ function displayResult() {
             $('p.character-bio').append("<p>Gotham's agile and elusive thief. With a code of honour all your own, you walk the fine line between hero and villain, using your skills to survive in Gotham's dangerous streets. Your quick wit and cunning make you a formidable adversary, as you navigate the shadows of Gotham with grace and style, always looking out for yourself above all else.</p>");
             $('img.character-headshot').attr('src', 'assets/images/catwoman-headshot.webp').attr('alt', 'Catwomans headshot'); 
         }
-
         $("main").fadeIn(1000);
     });
 }
 
 //Game Reset--------------------------------------------------------------------------
 
-$("#game-reset").on("click", function() {
+$("#game-reset").on("click", function() { // Event listerner for refresh button to reset the quiz.
     window.location.reload();
 });
 
 //Voiceover--------------------------------------------------------------------------
 // from Alon Zilberman on stackflow (See README)
-document.getElementById("play-pause").addEventListener("click", function(){
+document.getElementById("play-pause").addEventListener("click", function(){ // Event listern to play voiceover/narration
     var audio = document.getElementById('voiceover');
     if(this.className == 'is-playing'){
         this.className = "is-paused";
