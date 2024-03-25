@@ -1,6 +1,6 @@
 /*jshint esversion: 6 */
 
-// Add fadeIn transition to quiz introduction.
+// fadeIn transition to quiz introduction.
 $(document).ready(function() {
     $("main").fadeIn(2500);
 });
@@ -61,7 +61,7 @@ function showFirstQuestion(index) {
     $('#currentQuestion').text(question.questionNumber + " of 8");
 
     
-    // Display Answer: Adapted from https://hackr.io/blog/how-to-build-a-javascript-quiz-app
+    // Display Answer: Adapted from https://hackr.io/blog/how-to-build-a-javascript-quiz-app (See README)
     // Loop through the answers and create button elements using foreach() with arrow function
     question.answers.forEach(answer => {
     // Create a button element with jQuery
@@ -237,11 +237,14 @@ function nextVillainQuestion(index) {
 }
 
 //Revelation Function--------------------------------------------------------------------------
-
 function revelation() {
+    // Fade out the main container
     $("main").fadeOut(1000, function() {
+    // hide game-container (questions and answers)
     $("#game-container").addClass("hidden");
+    // show revelation
     $("#revelation-container").removeClass("hidden");
+    // use if statement to show either hero or villain revelation based on user personality. 
     if (personality === "hero") {
         $(".hero-revelation").removeClass("hidden");
         $('body').css('background-image', 'url("assets/images/hero-revelation-background.webp")');
@@ -249,6 +252,7 @@ function revelation() {
         $(".villain-revelation").removeClass("hidden");
         $('body').css('background-image', 'url("assets/images/villain-revelation-background.webp")');
     }
+    // Fade main back in
     $("main").fadeIn(1000);
     });
 
@@ -302,7 +306,7 @@ function displayResult() {
         } else if (userCharacter === "Red Hood") {
             $('h1.character-reveal').append('<h1>You Are Red Hood</h1>');
             $('p.character-bio').append("<p>You are Gotham's conflicted anti-hero. Driven by a desire for vengeance and redemption, you walk a fine line between justice and revenge. Your combat skills and willingness to do whatever it takes to achieve your goals make you a formidable force against the city's criminals. Despite your troubled past, you strive to protect the innocent and bring a sense of justice to Gotham's streets.</p>");
-            $('img.character-headshot').attr('src', 'assets/images/redHood-headshot.webp').attr('alt', 'Red Hoods headshot'); 
+            $('img.character-headshot').attr('src', 'assets/images/redhood-headshot.webp').attr('alt', 'Red Hoods headshot'); 
         } else if (userCharacter === "Batgirl") {
             $('h1.character-reveal').append('<h1>You Are Batgirl</h1>');
             $('p.character-bio').append("<p>Gotham's agile and resourceful vigilante. With a keen intellect and unmatched martial arts prowess, you fight alongside Batman to protect the city from harm. Your determination, bravery, and technological expertise make you a vital member of the Bat-family. Despite facing adversity and challenges, you remain steadfast in your mission to make Gotham a safer place for all its citizens.</p>");
@@ -336,7 +340,7 @@ $("#game-reset").on("click", function() {
 });
 
 //Voiceover--------------------------------------------------------------------------
-// from Alon Zilberman on stackflow
+// from Alon Zilberman on stackflow (See README)
 document.getElementById("play-pause").addEventListener("click", function(){
     var audio = document.getElementById('voiceover');
     if(this.className == 'is-playing'){

@@ -54,7 +54,6 @@ p {
 }
 
 .para {
-    max-width: 550px;
     margin-bottom:30px;
     text-align:center;
 }
@@ -169,7 +168,7 @@ button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-
+    padding-top: 
 }
 
 .help-btn:hover {
