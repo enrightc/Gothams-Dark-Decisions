@@ -228,18 +228,68 @@ The Gotham's Dark Decisions quiz  has undergone thoughtful design reviews from f
 ## Existing Features
 The following information provides an overview of the features found within the quiz.
 
-**Start Page:**
-The start page of the quiz sets a visually immersive environment, immediately engages users and prepares them for an exciting experience.
+**Landing Page**
+Designed with a deliberate focus on simplicity, the landing page boasts a striking H1 heading introducing the game as "Gotham's Dark Decisions" accompanied by introductory text that sets the stage for the immersive experience ahead. 
 
-1. Audio Button: Enhance the immersive experience with a voice-over narration, synchronized with the on-screen text. This audio feature adds depth to the atmosphere, setting the tone and enhancing engagement.
+Section Elements:
+1. Audio Button: Elevating immersion, this feature offers synchronised voice-over narration, enriching the atmosphere and deepening engagement as users navigate the text.
 
-2. Help Button: Accessible support with a dedicated help button, providing users with assistance or guidance whenever needed. This ensures a user-friendly experience, catering to users of all levels of familiarity with the quiz format.
+2. Help Button: Providing accessible support, the dedicated help button ensures users can easily seek assistance or guidance, fostering a user-friendly experience suitable for all levels of quiz familiarity.
 
-3. Start Button: Begin the quiz with a prominently placed start button. This intuitive feature invites users to begin their adventure, guiding them into the immersive world of Gotham and its iconic characters.
+3. Start Button: Positioned prominently, the start button beckons users to embark on their quiz adventure, seamlessly guiding them into the captivating world of Gotham and its legendary characters.
 
-4. Background Image: A captivating scene with a background image featuring the iconic Gotham cityscape illuminated by the bat signal.
+4. Background Image: Setting a captivating scene, the background showcases the iconic Gotham cityscape illuminated by the iconic bat signal, captivating users from the moment they arrive on the page.
 
 ![Start Page](docs/readme-images/start-page.png)
+
+**The Choice:**
+A pivotal moment of the quiz, the first question provides the user with a choice that will determine if they take the path of a hero or villain for the rest of the game. 
+
+Section Elements:
+5. Title: Each question is accompanied by a title to provide context.
+
+6. Question: This section acts as a placeholder for the initial question, setting the stage for the user's pivotal choice.
+
+7. Answers: Question one presents the user with a binary decision, offering only two possible answers. This choice determines whether the user embarks on the hero's or villains path.
+
+8.  Progression: A progress bar is included to indicate the user's advancement through the quiz, providing visual feedback on their progress.
+
+![The Choice](docs/readme-images/the-choice.png)
+
+**The Questions**
+Both the hero and villain paths consist of seven questions each, providing users with a distinct narrative journey based on their initial choice.
+
+Section Elements:
+
+9. Title: Each question is introduced with a title, offering essential context to guide users through their decision-making process.
+
+10. Question: From questions two to eight, the quiz delves deeper into the user's chosen path, whether heroic or villainous.
+
+11. Answers: Users are presented with four multiple-choice answers for each question. Answers along the hero's path are highlighted in a soothing blue color scheme, while those along the villain's path are accentuated with a striking red. Additionally, Additionally, each answer includes a data attribute that identifies the character it aligns with, though this attribute is not visible to the user.
+
+12. Progress bar: A progress bar is included to indicate the user's advancement through the quiz, providing visual feedback on their progress.
+
+13. Background: As users progress through the quiz, the background imagery undergoes dynamic changes, enhancing immersion and complementing the evolving narrative. This subtle yet impactful feature elevates the overall user experience, fostering deeper engagement with the quiz environment.
+
+![Questions](docs/readme-images/questions.png)
+
+**The Revelation:**
+Upon completing all questions, users are directed to a concluding narrative page that brings closure to their journey through the quiz. This page serves as the culmination of their decisions and actions.
+
+Section Elements: 
+
+14. Click to Reveal: This button invites users to uncover the character from the Batman universe with whom they most closely align based on their quiz responses. It encourages users to stay engaged and provides a fun and rewarding way to cap off their quiz experience.
+
+![Questions](docs/readme-images/revelation.png)
+
+**Character Reveal:**
+This final section reveals the character the user most closely aligns with.
+
+Section Elements:
+
+
+
+![Revelation](docs/readme-images/character-reveal.png)
 
 ## Future Website Enhancements
 
