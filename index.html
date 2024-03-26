@@ -16,14 +16,14 @@
         <div id="intro">
             <!-- Audio Narration -->  
             <div id="controls">
-                <audio id="voiceover" class = "hidden" type="audio/mpeg"> 
-                    <source src="assets/sound/intro.mp3"/> 
+                <audio id="voiceover" class = "hidden"> 
+                    <source src="assets/sound/intro.mp3"> 
                 </audio>
             
                 <div id="play-pause" class="play-btn" aria-label="Play Narration (plays audio)">
                     <p id="play-icon" class="play-icon"></p>
                 </div>
-                <!-- Help -->  
+                <!-- Help / jQuery Modal -->  
                 <div id="ex1" class="modal">
                     <p>Are you ready to embark on your journey through the streets of Gotham? Choose your path wisely, for the fate of the city rests in your hands. Will you walk the path of the hero, fighting for justice and righteousness, or will you embrace the darkness and tread the path of the villain?</p>
                     <p>Answer each question truthfully and commit to your first choice, as it will be final.</p>
@@ -80,7 +80,7 @@
                 <p class = character-bio></p>
                 </div>
 
-                <img class = "character-headshot">
+                <div class = "character-headshot"></div>
             </div>
             <!-- Restart Game Button --> 
             <button id = "game-reset" class = "game-control-btn" aria-label="Restart quiz (refreshes page)"><i class="fa-solid fa-rotate-right"></i></button>
@@ -91,6 +91,6 @@
 <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
 <script src="assets/js/script.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css">
 </body>
 </html>
