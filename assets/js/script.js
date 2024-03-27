@@ -1,11 +1,11 @@
 /*jshint esversion: 6 */
 
 // fadeIn transition to quiz introduction.
-$(document).ready(function() {
-    $("main").fadeIn(2500);
-});
+$("main").fadeIn(2500);
+
 
 // Essential elements-----------------------------------------------------------------
+const mainContainer = $("main")
 const answerButtonsElement = $('#answer-box');
 let batman = 0;
 let robin = 0;
@@ -35,11 +35,11 @@ let startBlocked = false;
 
 
 function startGame() { // initiate the game and call showFirstQuestion function to show the first question of the game. 
-    $("main").fadeOut(2000, function() {   // Fade out the main container
+    mainContainer.fadeOut(2000, function() {   // Fade out the main container
         // Hide the intro
         $("#intro").addClass("hidden");
         // Fade in the main container
-        $("main").fadeIn(1000);
+        mainContainer.fadeIn(1000);
         // Show the game container
         $("#game-container").removeClass("hidden");
         // Call showFirstQuestion function to display the first question
@@ -97,7 +97,7 @@ function startHeroPath() { // initiate hero path
 
 function nextHeroQuestion(index) { // Display the next hero question with a fade effect
     // Fade out the main container before displaying the question.
-    $("main").fadeOut(1000, function() {
+    mainContainer.fadeOut(1000, function() {
         // Retrieves the hero question object from the heroQuestions array based on the provided index
         const question = heroQuestions[index];
 
@@ -130,6 +130,7 @@ function nextHeroQuestion(index) { // Display the next hero question with a fade
          // Increments the score for the corresponding character based on the user's choice
         if (character === "Batman") {
             batman++; // Increment Batman score
+            console.log ("batman")
         } else if (character === "Robin") {
             robin++;
         } else if (character === "Red Hood") {
@@ -153,7 +154,7 @@ function nextHeroQuestion(index) { // Display the next hero question with a fade
         });
 
         // Fades in the main container after displaying the question
-        $("main").fadeIn(1000);
+        mainContainer.fadeIn(1000);
     });
 }
 
@@ -164,7 +165,7 @@ function startVillainPath() { // initiate villain path
 
 function nextVillainQuestion(index) { // Display the next hero question with a fade-in effect
     // Fade out the main container before displaying the question.
-    $("main").fadeOut(1000, function() {
+    mainContainer.fadeOut(1000, function() {
     // Retrieves the villain question object from the villainQuestions array based on the provided index
     const question = villainQuestions[index];
    
@@ -220,14 +221,14 @@ function nextVillainQuestion(index) { // Display the next hero question with a f
     });
 
      // Fades in the main container after displaying the question
-     $("main").fadeIn(1000);
+     mainContainer.fadeIn(1000);
     });
 }
 
 //Revelation Function--------------------------------------------------------------------------
 function revelation() {// After all questions have been asked display the revelation
     // Fade out the main container
-    $("main").fadeOut(1000, function() {
+    mainContainer.fadeOut(1000, function() {
     // hide game-container (questions and answers)
     $("#game-container").addClass("hidden");
     // show revelation
@@ -241,7 +242,7 @@ function revelation() {// After all questions have been asked display the revela
         $('body').css('background-image', 'url("assets/images/villain-revelation-background.webp")');
     }
     // Fade main back in
-    $("main").fadeIn(1000);
+    mainContainer.fadeIn(1000);
     });
 
     score();
@@ -277,7 +278,7 @@ $(".reveal-btn").on("click", function() { // Event listener to reveal the user's
 });
 
 function displayResult() { // Display user's character result
-    $("main").fadeOut(2000, function() { // Fade out the main container before displaying the result
+    mainContainer.fadeOut(2000, function() { // Fade out the main container before displaying the result
         // Hide the revelation container and reveal the results container
         $("#revelation-container").addClass("hidden");  
         $("#results").removeClass("hidden");
@@ -318,7 +319,7 @@ function displayResult() { // Display user's character result
             $('p.character-bio').append("<p>Gotham's agile and elusive thief. With a code of honour all your own, you walk the fine line between hero and villain, using your skills to survive in Gotham's dangerous streets. Your quick wit and cunning make you a formidable adversary, as you navigate the shadows of Gotham with grace and style, always looking out for yourself above all else.</p>");
             $('img.character-headshot').attr('src', 'assets/images/catwoman-headshot.webp').attr('alt', 'Catwomans headshot'); 
         }
-        $("main").fadeIn(1000); // Fade in the main container after displaying the result
+        mainContainer.fadeIn(1000); // Fade in the main container after displaying the result
     });
 }
 

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Judson:ital,wght@0,400;0,700;1,400&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Judson:ital,wght@0,400;0,700;1,400&display=swap');
 
 * {
     margin: 0;
@@ -41,7 +41,7 @@ h2 {
 
 p {
     font-size: 18px;
-    margin-top: 10px 0;
+    margin-top: 10px;
     font-style: normal;
     font-weight: 400;
     line-height: 25px;
@@ -168,7 +168,6 @@ button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding-top: 
 }
 
 .help-btn:hover {

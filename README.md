@@ -286,8 +286,13 @@ Section Elements:
 This final section reveals the character the user most closely aligns with.
 
 Section Elements:
+15. Character: This is the character the user aligns with.
 
+16. Character Bio: A short description of the character.
 
+17. Character Image: a picture of the character.
+
+18. Refresh Button: Clicking this button will take the user back to the start page so they can take a different path. 
 
 ![Revelation](docs/readme-images/character-reveal.png)
 
@@ -363,6 +368,7 @@ The issue related to the hover effect persisting on mobile devices has been reso
 
 - HTML: Employed for organising and presenting the site content.
 - CSS: Utilised for the styling and layout of the site.
+- JavaScript
 
 ## Frameworks, Libraries and Programs Used
 - jQuery: Used for HTML manipulation, event handling and animations/transitions.
@@ -382,39 +388,91 @@ The issue related to the hover effect persisting on mobile devices has been reso
 
 
 ### Feature testing:
+During Feature Testing various aspects of the quiz application have undergone robust testing, including functionality, user interaction and appearence. The expected outcomes and actual outcomes are clearly defined for each feature, making it easy to assess whether the application meets its requirements. This process makes it easier to identify and address any issues or discrepancies that may arise and also serves as a reference point for other developers to understand the expected behaviour of a feature. 
+
+Features that appear throughout quiz:
+| Feature                  |      Expected              |                                              Testing |                                 Outcome |
+| ------------------------|:-----------------------: | ------------------------------------------------------: | -------------------------------------: | 
+| Favicon              |    The favicon should be visible in the browser tab.   |   Checked the visibility of the favicon in various browsers. | The favicon appeared as expected, ensuring brand consistency and recognition in the browser tab.
+| Background images    |      Background images dynamically change as quiz progresses      |        Ran through the quiz from start to finish, observing background changes. | Backgrounds changed as expected, enhancing the visual experience and immersing the user further into the quiz environment.
+| Transition effects             |     Sections of the quiz should fade in and out to provide smooth transitions between content.  |  Ran through the quiz from start to finish, paying attention to transition effects. | Transitions occurred as expected, contributing to a polished user experience and maintaining engagement.
+| Progress             |    The progress indicator should show the current question number out of the total number of questions.  |  Ran through the quiz from start to finish to check if progress updates.| The progress indicator updated with the current question number as expected, providing users with clear feedback on their quiz progression.
+| Console            |    No errors should be logged in the browser console during the quiz.  |  Checked the console in the browser's developer tools while running the quiz. | No console errors were logged, indicating that the quiz functions smoothly without encountering any unexpected issues.
+
+Intro: 
+
+| Feature                  |      Expected              |                                              Testing |                                 Outcome |
+| ------------------------|:-----------------------: | ------------------------------------------------------: | -------------------------------------: | 
+| Audio Button (Play/Pause)  |  Clicking the audio button once should play the narration, while clicking it again should pause the narration.   | Verify functionality across various browsers and devices.  |  The audio plays when the button is clicked once and pauses when clicked again, ensuring seamless control over narration playback. |
+| Help button             |     Clicking the help button should open a modal providing assistance.        |   Test functionality across different browsers and devices.  |  The help modal opens when the button is clicked, and it can be closed by clicking the 'x', providing users with accessible support  | 
+| Start Button      |   Should be clearly visible   |   User feedback    |     The start button is prominently displayed and clearly labeled |
+| Start Button      |   Hover effect   |     Hovered on start button  |     Hovering over the start button changes its appearance to indicate interactivity. |
+| Start Button      |   Clicking the start button should initiate the quiz, transitioning the user to the first question.   |     Test functionality across various browsers and devices.  |  When clicked, the start button effectively transitions the user from the intro section to the quiz section |
 
 
+The Quiz (Questions and Answers): 
+| Feature                  |      Expected              |                                              Testing |                                 Outcome |
+| ------------------------|:-----------------------: | ------------------------------------------------------: | -------------------------------------: | 
+| Title       |   The title dynamically changes with each question, providing context for the user.   |  Run through the quiz to ensure the title updates accordingly. |  The title consistently changes to reflect the context of each question, guiding users through the quiz progression. |
+| Questions and answers     |   Correct questions and answers load based on user selections, progressing the quiz accordingly.   | Review each question and its corresponding answers throughout the quiz. | The quiz progresses smoothly with accurate questions and multiple-choice answers, aligning with user selections and guiding them through the hero or villain paths.|
+| Answer button elements            |     Answers populate as button elements, facilitating user interaction.         |   Verify the presence and functionality of answer buttons.  |   Each answer is presented as a clickable button, allowing users to select their responses effortlessly. 
+| Answer Button      |   Hover effect   |     Hovered on button  |     Hovering over the start button changes its appearance to indicate interactivity|
+| Answer Button      |   Selected answers change appearance to provide visual feedback.  |     Select an answer and observe change in appearence  |     When an answer is selected, the button's appearance changes to indicate selection, enhancing user interaction and feedback.|
+| Answer Button      |   Users should be prevented from submitting multiple answers for a single question to maintain quiz integrity.   |     After selecting an answer for a question, attempt to select other answers for the same question.  |     After submitting the first answer, the buttons corresponding to other answer choices for the same question are disabled, preventing multiple submissions.|
+| Question one     |   User's answer determines the path (hero or villain) for subsequent questions.   |     Select different answers for question one and verify quiz progression.  | Depending on the chosen answer, the quiz progresses down the appropriate path (hero or villain), aligning with user decisions. |
+| personality/character     |   Each answer is correctly assigned a personality/character, influencing quiz outcomes.   |   Review console logs to confirm character assignments for each answer.  |     Answers are accurately associated with the corresponding personality/character, influencing quiz progression and results.|
+| Score      |   Scores for characters increment based on user selections aligned with those characters.   |    Monitor console logs to track score changes for each character.  |  Scores increment correctly for characters based on user selections, contributing to personalised quiz results. |
+| Final Question (Q.8)      |   Submitting the final answer transitions the quiz to the revelation section.   |     Complete the quiz and verify transition after submitting the final answer.  |     Upon submitting the final answer, the quiz concludes and transitions to the revelation section, revealing the user's character alignment.|
+
+Revelation:
+| Feature                  |      Expected              |                                              Testing |                                 Outcome |
+| ------------------------|:-----------------------: | ------------------------------------------------------: | -------------------------------------: | 
+| Concluding text             |    Relevant conclusion based on the hero or villain path chosen by the user.   |  Complete the quiz for both paths and review the conclusion text. | The conclusion text appropriately reflects the user's chosen path, providing a personalised narrative conclusion.
+| "Click to reveal"    |      The button should be visible and responsive, leading to the character reveal upon click.      |    Interact with the button and verify functionality. | The button is prominently displayed, responsive to hover, and successfully progresses to the character reveal section upon click.
+
+
+Results:
+| Feature                  |      Expected              |                                              Testing |                                 Outcome |
+| ------------------------|:-----------------------: | ------------------------------------------------------: | -------------------------------------: | 
+| Character display information             |    Relevant character information (name, bio, image) displayed based on user alignment.   |  Complete the quiz with different alignments and review displayed character information. | The correct character information is presented, reflecting the user's alignment and providing personalised results.
+| Refresh   |     Clicking the button should refresh the window, allowing users to retake the quiz.    |        Click the button and verify window refresh. | The window successfully refreshes, returning users to the intro section for quiz retake, ensuring a seamless user experience.
 
 ### Browser Compatibility:
 
-| Browser Tested | Intended appearance | intended Responsiveness |
-| -------------- | :-----------------: | ----------------------: |
-| Chrome         |                 |                     |
-| Mozilla        |                 |                     |
-| Safari         |                 |                     |
-| Edge           |                 |                     |
+Expected: Consistent appearance and functionality across major browsers.
+Testing: Test site on Chrome, Mozilla, Safari, and Edge browsers.
+Outcome: The site renders as expected with good responsiveness and compatibility across different browsers.
 
 ### Responsiveness Test:
 
-| Device Tested  | Site Responsiveness >700px | Site Responsiveness <699px | Renders as Expected |
-| -------------- | -------------------------- | -------------------------- | ------------------- |
-| iPhone 12      | N/A                        |                  |                |
-| iPad 12        |                  |                        |                  |
-| Desktop 1024px |                  |                         |                  |
+Expected: Site should render appropriately on various devices with different screen sizes.
+Testing: Test responsiveness on iPhone 12, iPad 12, and desktop (1024px).
+Outcome: The site displays responsively across different devices, maintaining functionality and appearance as intended.
 
-## Validator Testing
+## Automated Testing
 
 ### HTML
 
 
 
 ### CSS
+A [CSS Validator](https://validator.w3.org/) was used to check the validity of the CSS code of the quiz. There were no errors detected.
 
+### JavaScript
+A [JSHint](https://jshint.com/) was used to check the validity of the JavaScript code of the quiz. There were no errors detected.
 
+Metrics:
+There are 25 functions in this file.
+Function with the largest signature take 1 arguments, while the median is 0.
+Largest function has 28 statements in it, while the median is 5.
+The most complex function has a cyclomatic complexity value of 9 while the median is 1.
 
 ### Light House Analysis
+Lighthouse in Chrome Developer Tools was used to assess the performance, accessibility, best practice and SEO rating of the website. 
 
+The Lighthouse analysis was run on both mobile and desktop devices and the results are illustrated below:
 
+![Lighthouse Analysis](docs/readme-images/lighthouse-analysis.png)
 
 # DEPLOYMENT
 
