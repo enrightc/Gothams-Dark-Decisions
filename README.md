@@ -60,9 +60,9 @@ Welcome to Gotham's Dark Decisions - the interactive frontend website that plung
 
 Gotham's Dark Decisions is more than just a personality quiz - it's a portal to the heart of Gotham City, where shadows reign and the line between good and evil is constantly blurred. Inspired by the rich lore of Batman, this project invites users to explore their own identity within the context of Gotham's complex universe.
 
-To get started with Gotham's Dark Decisions, simply visit the website and click on the "START button. From there, follow the prompts to navigate through the quiz and discover your fate within the Batman universe.
+To get started with Gotham's Dark Decisions, simply visit the website and click on the "START" button. From there, follow the prompts to navigate through the quiz and discover your fate within the Batman universe.
 
-Visit Gotham's Dark Decisions website here [Gothams Dark Decisions](PUT LIVE LINK HERE)
+Visit Gotham's Dark Decisions website here [Gothams Dark Decisions](https://enrightc.github.io/Gothams-Dark-Decisions/)
 
 ## Experience
   - Choose Your Path: Begin your journey by deciding whether you'll walk the path of a hero or embrace the allure of the darkness as a villain.
@@ -71,16 +71,21 @@ Visit Gotham's Dark Decisions website here [Gothams Dark Decisions](PUT LIVE LIN
   - Engaging Experience: Immerse yourself in the dark and atmospheric world of Gotham City, brought to life through intriguing questions and stunning visuals.
   
 ## Project Rationale
-Unlike traditional personality quizzes, which often feel static and detached, Gotham's Dark Decisions offers an interactive journey for players. By answering thought-provoking questions, players actively participate in shaping their own narrative within the Batman universe.
-Through engaging with the quiz, players uncover which Batman character's personality traits resonate most with their own. Whether they lean towards the righteousness of a hero or the complexity of a villain, each player's result reflects their unique characteristics.
-To enhance the experience, the quiz incorporates elements reminiscent of reading a Batman graphic novel. With chapters guiding players through the narrative, transition effects mimic turning pages, and changing backgrounds immerse players in the world of Gotham City.
-The goal of Gotham's Dark Decisions is to captivate players and draw them deeper into the world of Batman. By combining interactive elements, storytelling techniques, and engaging visuals, the quiz aims to provide an unforgettable experience that resonates with fans of the Dark Knight.
+The purpose of the "Gotham's Dark Decisions" project is to create an immersive front-end interactive site that responds dynamically to users' actions, offering them a unique experience within the Batman universe.
+
+Traditionally, personality quizzes can feel static and detached. "Gotham's Dark Decisions" seeks to redefine this experience by offering an interactive journey for players. Through a series of thought-provoking questions, players actively shape their own narrative within the Batman universe.
+
+Unlike conventional quizzes, where results are predetermined, Gotham's Dark Decisions  dynamically adapts to users' responses, allowing them to uncover which Batman character's personality traits resonate most with their own. Each player's result reflects their unique characteristics and choices.
+
+To further immerse players in the world of Gotham City, the quiz incorporates elements reminiscent of reading a Batman graphic novel. Chapters guide players through the narrative, while transition effects mimic the experience of turning pages. Additionally, changing backgrounds enhance the atmosphere, captivating players and drawing them deeper into the world of Batman.
+
+The ultimate goal of "Gotham's Dark Decisions" is to captivate players and provide them with an unforgettable experience that resonates with fans of the Dark Knight. By combining interactive elements, storytelling techniques, and engaging visuals, the quiz aims to leave a lasting impression and foster a deeper connection with the iconic characters of Gotham.
 
 ## Overall Website Aim
-Gotham's Dark Decisions aims to truly immerse users in the captivating world of Batman, providing an interactive platform for exploring their own heroic or villainous nature. Through engaging and thought-provoking questions, users will embark on a journey of self-discovery within the rich and atmospheric backdrop of Gotham City. The primary goal is to entertain and engage Batman enthusiasts, offering them a unique and immersive experience that celebrates the iconic characters and themes of the Batman universe. Additionally, it aims to provide users with valuable insights into their own personalities and the complex dynamics of heroism and villainy, all while fostering a sense of excitement and intrigue. Whether users are long time fans or newcomers to the world of Batman, Gotham's Dark Decisions invites them to explore, discover, and embrace their inner hero or villain.
-
+Gotham's Dark Decisions aims to truly immerse users in the captivating world of Batman, providing an interactive platform that responds dynamically, allowing users to exploring their own heroic or villainous nature. Through engaging and thought-provoking questions, users will embark on a journey of self-discovery within the rich and atmospheric backdrop of Gotham City. The primary goal is to entertain and engage Batman enthusiasts, offering them a unique and immersive experience that celebrates the iconic characters and themes of the Batman universe. Additionally, it aims to provide users with valuable insights into their own personalities and the complex dynamics of heroism and villainy, all while fostering a sense of excitement and intrigue through engagment. Whether users are long time fans or newcomers to the world of Batman, Gotham's Dark Decisions invites them to explore, discover, and embrace their inner hero or villain.
 
 ## External User Goals
+  - Take part in a quiz that responds dynamically to user input.
   - Explore Heroic or Villainous Paths: Users are eager to explore their heroic or villainous tendencies through engaging questions and scenarios.
   - Discover Bat family or Villain Identity: Users aim to uncover which member of the Bat family they resemble or which notorious Batman villain shares their traits.
   - Experience the Atmosphere of Gotham: Users seek to immerse themselves in the dark and atmospheric world of Gotham City, enjoying thought-provoking questions and stunning visuals.
@@ -91,12 +96,11 @@ Gotham's Dark Decisions aims to truly immerse users in the captivating world of 
   - Establish Brand Authority: The site owner aims to position the website as a leading authority on Batman-related personality quizzes, attracting fans and enthusiasts seeking entertainment and insights into the iconic characters and themes.
 
 ## Target Audience
-  - Fans the Batman franchise.
+  - Fans of the Batman franchise.
   - People who enjoy reading graphic novels.
   - Personality quiz enthusiasts.
 
 ## User Story
-
 - As a first-time user
   - I want to be able to start the quiz by clicking on a "Begin Quiz" button.
   - I want to be presented with a question asking if I prefer to be a hero or a villain in the Batman universe.
@@ -110,10 +114,8 @@ Gotham's Dark Decisions aims to truly immerse users in the captivating world of 
 - As a returning user
   - I want to have the option to retake the quiz if I want to try different answers.
 
-
 # LOGIC OVERVIEW
 The Gotham's Dark Decision quiz is a JavaScript-powered frontend website designed to immerse users in the captivating world of Batman. However, to ensure accessibility and comprehension for a broader audience, the code has been translated into plain English. This transparency provides users with insight into the application's functionality and structure without requiring programming knowledge, fostering trust and engagement.
-
 
 1. Fade In Transition: When the document is ready, the main content fades in gradually over 2.5 seconds using jQuery.
 
@@ -172,6 +174,13 @@ It's important to note that while the final product evolved from these early pla
 
 This iterative process allowed for flexibility in adapting to evolving project requirements, ultimately contributing to the development of a more refined and user-friendly quiz.
 
+[Introduction (Desktop)](docs/readme-images/wireframe-desktop-intro.png)
+[Introduction (Mobile)](docs/readme-images/wireframe-mobile-intro.png)
+[Questions (Desktop)](docs/readme-images/wireframe-questions-desktop.png)
+[Questions (Mobile)](docs/readme-images/wireframe-questions-mobile.png)
+[Results (Desktop)](docs/readme-images/wireframe-results-desktop.png)
+[results (Mobile)](docs/readme-images/wireframe-results-mobile.png)
+
 ## Imagery
 The imagery chosen for this quiz is purposeful and aims to enhance the overall user experience. Each background image used throughout the quiz has been carefully selected to complement the theme and narrative of the quiz.
 
@@ -222,9 +231,16 @@ The Gotham's Dark Decisions quiz  has undergone thoughtful design reviews from f
 
 - **Engaging Audio Narration:** Users appreciate the immersive audio narration at the quiz's start. It sets the tone, enhancing the storytelling and leaving a memorable impact.
 
+# Game Functionality and Structure
+The quiz is designed to be engaging and interactive, comprising eight questions that lead the user on a journey through the Batman universe.
+
+**Question Structure:** The quiz consists of eight questions, each with four answer options for the user to choose from. The first question serves as a pivotal point, with two possible answers determining whether the user takes the hero or villain path. Subsequent questions (2 - 8) each have four answer options tailored to align with either heroes (Batman, Robin, Red Hood, and Batgirl) or villains (The Joker, Penguin, Bane, and Catwoman), depending on the chosen path.
+
+**Character Alignment:** With each answer selected, the quiz builds a profile of the character the user most aligns with. This process culminates in presenting the user with their character alignment at the end of the quiz.
+
+**Section Layout:** The quiz is contained within a single page structured into four sections: Introduction, Questions, Revelation, and Reveal. As the user progresses through the quiz, smooth transitions seamlessly guide them from one section to the next.
 
 # FEATURES
-
 ## Existing Features
 The following information provides an overview of the features found within the quiz.
 
@@ -439,9 +455,9 @@ Results:
 
 ### Browser Compatibility:
 
-Expected: Consistent appearance and functionality across major browsers.
-Testing: Test site on Chrome, Mozilla, Safari, and Edge browsers.
-Outcome: The site renders as expected with good responsiveness and compatibility across different browsers.
+- Expected: Consistent appearance and functionality across major browsers.
+- Testing: Test site on Chrome, Mozilla, Safari, and Edge browsers.
+- Outcome: The site renders as expected with good responsiveness and compatibility across different browsers.
 
 ### Responsiveness Test:
 
