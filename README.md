@@ -1,6 +1,6 @@
 # GOTHAM'S DARK DECISIONS
 
-![Gotham's Dark Decisions Am I Responsive Image](add link)
+![Gotham's Dark Decisions Am I Responsive Image](docs/readme-images/mockup.png)
 
 # TABLE OF CONTENTS
 
@@ -312,8 +312,14 @@ Section Elements:
 
 ![Revelation](docs/readme-images/character-reveal.png)
 
-## Future Website Enhancements
+## Future Enhancements
+**Dynamic Quiz Expansion:** One of the key areas for improvement in the project is to enhance the dynamic nature of the quiz. This can be achieved by adding more questions that introduce additional branching paths based on user responses. By diversifying the progression routes, the quiz becomes more engaging and offers a higher level of repeatability, as users can explore different outcomes with each playthrough.
 
+**Visual and Audio Enhancements:** Adding visual and audio enhancements could elevate the overall user experience of the quiz. This may include integrating more immersive background visuals, sound effects, or music tracks that align with the mood and theme of the Batman universe. Additionally, incorporating animations or visual cues during transitions can further enhance the storytelling aspect of the quiz.
+
+**Accessibility and Usability Features:** Implementing accessibility and usability features can make the quiz more inclusive and user-friendly. This may involve optimising the quiz interface for screen readers, ensuring compatibility with assistive technologies, and incorporating features such as keyboard navigation and adjustable font sizes to accommodate users with additional needs.
+
+**Refactoring Code:** Instead of having three separate arrays for questions, they could be consolidated into a single array of objects. Each object can represent a question, containing properties such as the question itself, answer options, and other relevant data. When the user makes a choice, it can filter this array to display the appropriate questions based on their path (hero or villain).
 
 
 # BUGS
@@ -374,9 +380,6 @@ The issue related to the hover effect persisting on mobile devices has been reso
 
 
 ### Known Bugs (unresolved)
-
-
-
 
 # TECHNOLOGY
 
