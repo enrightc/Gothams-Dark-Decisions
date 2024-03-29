@@ -187,6 +187,7 @@ button {
     cursor: pointer;
     font-size:12px;
     line-height:1.5;
+    border: none;
 }
 
 .play-btn:hover, .is-playing:hover, .is-paused:hover {

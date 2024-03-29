@@ -5,7 +5,7 @@ $("main").fadeIn(2500);
 
 
 // Essential elements-----------------------------------------------------------------
-const mainContainer = $("main")
+const mainContainer = $("main");
 const answerButtonsElement = $('#answer-box');
 let batman = 0;
 let robin = 0;
@@ -20,6 +20,18 @@ let currentVillainQuestionIndex = 0;
 let userCharacter;
 let personality;
 let startBlocked = false;
+
+
+//Commonly used functions--------------------------------------------------------------------------
+function displayQuestion (question) { // Display the title, current question and background image.
+    // use jQuery .text() method to set text content of question-box element to the title and text of first question
+    $('#title').text(question.title);
+    $('#question-box').text(question.question);
+    // Set the background image of the body
+    $('body').css('background-image', 'url("' + question.image + '")');
+    // Display current quesiton number
+    $('#currentQuestion').text(question.questionNumber + " of 8");
+};
 
 
 //START GAME--------------------------------------------------------------------------
@@ -50,15 +62,8 @@ function startGame() { // initiate the game and call showFirstQuestion function 
 //Show Branch Question--------------------------------------------------------------------------
 function showFirstQuestion(index) { // show the first question that allows user to select hero or villain path.
     const question = firstQuestion[index]; // store the current question
-    // use jQuery .text() method to set text content of question-box element to the title and text of first question
-    $('#title').text(question.title);
-    $('#question-box').text(question.question);
-    // Set the background image of the body
-    $('body').css('background-image', 'url("' + question.background + '")');
-
-    // Display current quesiton number
-    $('#currentQuestion').text(question.questionNumber + " of 8");
-
+    
+    displayQuestion(question);
     
     // Display Answer: Adapted from https://hackr.io/blog/how-to-build-a-javascript-quiz-app (See README)
     // Loop through the answers and create button elements using foreach() with arrow function
@@ -101,15 +106,7 @@ function nextHeroQuestion(index) { // Display the next hero question with a fade
         // Retrieves the hero question object from the heroQuestions array based on the provided index
         const question = heroQuestions[index];
 
-        // Sets the text content of the title and question-box elements to that of the current hero question
-        $('#title').text(question.title);
-        $('#question-box').text(question.question);
-
-        // Sets the background image of the body using the URL specified in the question object. Adapted from Satpal (Stackflow user; see references).
-        $('body').css('background-image', 'url("' + question.image + '")');
-
-        // Display current question number on progress tracker
-        $('#currentQuestion').text(question.questionNumber + " of 8");
+        displayQuestion(question);
         
         // Clears any previously displayed answer buttons
         answerButtonsElement.empty();
@@ -130,7 +127,6 @@ function nextHeroQuestion(index) { // Display the next hero question with a fade
          // Increments the score for the corresponding character based on the user's choice
         if (character === "Batman") {
             batman++; // Increment Batman score
-            console.log ("batman")
         } else if (character === "Robin") {
             robin++;
         } else if (character === "Red Hood") {
@@ -169,15 +165,7 @@ function nextVillainQuestion(index) { // Display the next hero question with a f
     // Retrieves the villain question object from the villainQuestions array based on the provided index
     const question = villainQuestions[index];
    
-    // Sets the text content of the title and question-box elements to that of the current hero question
-    $('#title').text(question.title);
-    $('#question-box').text(question.question);
-
-     // // Sets the background image of the body using the URL specified in the question object. Adapted from Satpal (Stackflow user; see references).
-     $('body').css('background-image', 'url("' + question.image + '")');
-
-     // Display current quesiton number on progress tracker
-    $('#currentQuestion').text(question.questionNumber + " of 8");
+    displayQuestion(question);
     
     // Clears any previously displayed answer buttons
     answerButtonsElement.empty();
@@ -354,7 +342,7 @@ const firstQuestion = [
         title: "Chapter 1: The Choice",
         questionNumber: 1,
         question: "As the figure approaches, you see a glint of concern in their eyes. They offer you a hand and ask, 'Are you alright? You seem lost.' How do you respond?",
-        background: "assets/images/chapter-1-the-choice.webp",
+        image: "assets/images/chapter-1-the-choice.webp",
         answers: [
             {
                 answerNumber: 1,

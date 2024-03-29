@@ -471,7 +471,13 @@ Outcome: The site displays responsively across different devices, maintaining fu
 ## Automated Testing
 
 ### HTML
+To test the markup validity [HTML Validator](https://validator.w3.org/) was used.
+The following warning/errors were identified:
+**Possible Misuse of Aria-label:** The aria-label attribute was originally attached to a div element, which is not considered an interactive element and therefore cannot have aria-label attributes.
 
+To resolve this issue and ensure compliance with accessibility standards, the div element was replaced with a button element. Buttons are interactive elements and are suitable for adding aria-label attributes.
+
+By making this adjustment, the HTML code now adheres to accessibility guidelines and passes validation without errors.
 
 
 ### CSS
