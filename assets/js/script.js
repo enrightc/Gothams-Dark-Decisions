@@ -49,6 +49,19 @@ function generateAnswerButtons(question, buttonClass, attribute) { // Function t
     });
 }
 
+function handleClickEvents() {
+    const personality = $(this).data("personality");
+
+    if (personality === "hero") {
+        startHeroPath();
+    } else {
+        startVillainPath();
+    }
+
+    $('.ans-btn').prop('disabled', true); //Prevent multiple button clicks
+    $(this).addClass("selected"); // add selected class to users choice.
+}
+
 
 //START GAME--------------------------------------------------------------------------
     // Event listener for the Start button
@@ -81,20 +94,11 @@ function showFirstQuestion(index) { // show the first question that allows user 
     
     generateAnswerButtons(question, 'ans-btn', 'personality'); // For branch questions
 
-    // Add event to .ans-btn and call hero or villain path depending on users choice.
-    $(".ans-btn").on("click", function() {
-        personality = $(this).data("personality");
-        // Check the personality property of the answer and start the hero or villain path.
-        if (personality === "hero") {
-            startHeroPath();
-        } else {
-            startVillainPath();
-        }
-
-        $('.ans-btn').prop('disabled', true); //Prevent multiple button clicks
-        $(this).addClass("selected"); // add selected class to users choice.
-    });
+    // Selects the #answer-box and attach event listener for a click event on elements with the class .ans-btn and then calls handleClickEvents()
+    $("#answer-box").on("click", ".ans-btn", handleClickEvents);
 }
+
+  
 
 //Start Hero Path--------------------------------------------------------------------------
 function startHeroPath() { // initiate hero path
