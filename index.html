@@ -16,12 +16,12 @@
         <div id="intro">
             <!-- Audio Narration -->  
             <div id="controls">
-                <audio id="voiceover" class = "hidden"> 
+                <audio id="voiceover" class="hidden"> 
                     <source src="assets/sound/intro.mp3"> 
                 </audio>
             
                 <button id="play-pause" class="play-btn" aria-label="Play Narration (plays audio)">
-                    <p id="play-icon" class="play-icon"></p>
+                    <i id="play-icon" class="play-icon"></i>
                 </button>
                 <!-- Help / jQuery Modal -->  
                 <div id="ex1" class="modal">
@@ -37,12 +37,12 @@
             <h1 class="heading">Gotham's Dark Decisions</h1>
             <p class="para">You awaken in a dimly lit alley, surrounded by towering buildings that cast long shadows. Your head throbs with pain, and you realise you have no memory of who you are or how you ended up here. As you struggle to your feet, a mysterious figure emerges from the darkness, offering assistance. This encounter marks the beginning of your journey to uncover your true identity in the heart of Gotham City.</p>
             <!-- Start Button --> 
-            <button id = "start-btn" class = "start-btn btn game-control-btn">START</button>
+            <button id = "start-btn" class="start-btn btn game-control-btn">START</button>
         </div>
 
         <!-- Question & Answers Display --> 
         <div id = "game-container" class = "hidden"> 
-            <h1 id="title"></h1>
+            <h1 id="title">Placeholder Text</h1>
 
             <div id="question-box"></div>
             
@@ -53,13 +53,13 @@
         </div>
 
         <!-- End quiz/Relevation-->
-        <div id = "revelation-container" class = "hidden">
+        <div id = "revelation-container" class="hidden">
             <h1 class="heading">Chapter 9: The Aftermath and Revelation</h1> 
             <!-- Revelation for Hero-->    
             <div class ="hero-revelation hidden">
                     <p class="para">The dust settles, and you emerge victorious, having defeated the leader of the criminal organisation and restored peace to Gotham. As the city celebrates your heroism, you reflect on your journey and the path that led you here. Suddenly, a sense of clarity washes over you, and you realise the true nature of your character.</p>
                     <!-- Reveal Button--> 
-                    <button id = "hero-reveal" class = "reveal-btn game-control-btn">Click to Reveal</button>
+                    <button id = "hero-reveal" class="reveal-btn game-control-btn">Click to Reveal</button>
                 </div>
 
                 <!-- Revelation for Villain--> 
@@ -67,7 +67,7 @@
                     <p>The city lies in ruins, its streets stained with blood and its people trembling in fear. You stand atop the tallest skyscraper, surveying the chaos you have wrought upon Gotham. As the smoke clears and the echoes of your laughter fill the air, a sense of realisation dawns upon you.</p>
                     <p>You are the architect of destruction, the harbinger of chaos that Gotham will never forget. Your name will be whispered in terror, your legacy written in the ashes of the city you have conquered.</p>
                     <!-- Reveal Button--> 
-                    <button id = "villain-reveal" class = "reveal-btn game-control-btn">Click to Reveal</button>
+                    <button id="villain-reveal" class="reveal-btn game-control-btn">Click to Reveal</button>
                 </div>
         </div>
 
@@ -76,21 +76,21 @@
 
             <div class="character-description">
                 <div>
-                <h1 class = "character-reveal"></h1>
-                <p class = character-bio></p>
+                <h1 class="character-reveal">Placeholder Text</h1>
+                <p class="character-bio"></p>
                 </div>
 
-                <img class = "character-headshot">
+                <img class="character-headshot" src="docs/readme-images/batlogo-placeholder.webp" alt="Bat logo placeholder image">
             </div>
             <!-- Restart Game Button --> 
-            <button id = "game-reset" class = "game-control-btn" aria-label="Restart quiz (refreshes page)"><i class="fa-solid fa-rotate-right"></i></button>
+            <button id="game-reset" class="game-control-btn" aria-label="Restart quiz (refreshes page)"><i class="fa-solid fa-rotate-right"></i></button>
         </div>
     
     </main>
 
 <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
-<script src="assets/js/script.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css">
+<script src="assets/js/script.js" defer></script>
 </body>
 </html>

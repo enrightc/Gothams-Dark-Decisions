@@ -86,11 +86,9 @@ function showFirstQuestion(index) { // show the first question that allows user 
         personality = $(this).data("personality");
         // Check the personality property of the answer and start the hero or villain path.
         if (personality === "hero") {
-            console.log(personality)
             startHeroPath();
         } else {
             startVillainPath();
-            console.log(personality)
         }
 
         $('.ans-btn').prop('disabled', true); //Prevent multiple button clicks

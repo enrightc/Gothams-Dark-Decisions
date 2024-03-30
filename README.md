@@ -1,6 +1,6 @@
 # GOTHAM'S DARK DECISIONS
 
-![Gotham's Dark Decisions Am I Responsive Image](docs/readme-images/mockup.png)
+![Gotham's Dark Decisions Am I Responsive Image](docs/readme-images/Mockup.png)
 
 # TABLE OF CONTENTS
 
