@@ -31,11 +31,26 @@ function displayQuestion (question) { // Display the title, current question and
     $('body').css('background-image', 'url("' + question.image + '")');
     // Display current quesiton number
     $('#currentQuestion').text(question.questionNumber + " of 8");
-};
+}
+
+function generateAnswerButtons(question, buttonClass, attribute) { // Function to create answer button elements for each question
+    // Loop through the answers and create button elements using forEach() with arrow function
+    question.answers.forEach(answer => {
+        // Create a button element with jQuery
+        const button = $('<button></button>');
+        // Set button text
+        button.text(answer.text);
+        // Add a class to the button (ans-btn, hero-ans-btn or villain-ans-btn) for styling
+        button.addClass(buttonClass);
+        // Add personality/character attribute property to button
+        button.data(attribute, answer[attribute]); // Use square brackets notation to access answer object. If attribute is 'personality' then accesses the value of the 'personality' property i.e. hero or villain. 
+        // Append the button to the answerButtonsElement
+        answerButtonsElement.append(button);
+    });
+}
 
 
 //START GAME--------------------------------------------------------------------------
-
     // Event listener for the Start button
     $("#start-btn").on("click", function() {
         // prevent multiple clicks of start button
@@ -44,7 +59,6 @@ function displayQuestion (question) { // Display the title, current question and
             startGame(); // Calls the startGame function when the start button is clicked
         }
     });
-
 
 function startGame() { // initiate the game and call showFirstQuestion function to show the first question of the game. 
     mainContainer.fadeOut(2000, function() {   // Fade out the main container
@@ -65,29 +79,18 @@ function showFirstQuestion(index) { // show the first question that allows user 
     
     displayQuestion(question);
     
-    // Display Answer: Adapted from https://hackr.io/blog/how-to-build-a-javascript-quiz-app (See README)
-    // Loop through the answers and create button elements using foreach() with arrow function
-    question.answers.forEach(answer => {
-    // Create a button element with jQuery
-    const button = $('<button></button>');
-    // Set button text
-    button.text(answer.text);
-    // Add a class to the button
-    button.addClass('ans-btn');
-    // Add data attribute for personality
-    button.data('personality', answer.personality); 
-    // Append the button to the answerButtonsElement
-    answerButtonsElement.append(button);
-    });
+    generateAnswerButtons(question, 'ans-btn', 'personality'); // For branch questions
 
     // Add event to .ans-btn and call hero or villain path depending on users choice.
     $(".ans-btn").on("click", function() {
         personality = $(this).data("personality");
         // Check the personality property of the answer and start the hero or villain path.
         if (personality === "hero") {
+            console.log(personality)
             startHeroPath();
         } else {
             startVillainPath();
+            console.log(personality)
         }
 
         $('.ans-btn').prop('disabled', true); //Prevent multiple button clicks
@@ -111,14 +114,8 @@ function nextHeroQuestion(index) { // Display the next hero question with a fade
         // Clears any previously displayed answer buttons
         answerButtonsElement.empty();
 
-        // display answer options for the current hero question using forEach with arrow function.
-        question.answers.forEach(answer => {
-            const button = $('<button></button>');
-            button.text(answer.text);
-            button.addClass('hero-ans-btn');
-            button.data('character', answer.character); // Retrieves the character associated with the selected answer
-            answerButtonsElement.append(button);
-        });
+        generateAnswerButtons(question, 'hero-ans-btn', 'character'); // For hero questions
+        
 
     // Attach event listener to handle user response
     $(".hero-ans-btn").on("click", function() {
@@ -152,7 +149,8 @@ function nextHeroQuestion(index) { // Display the next hero question with a fade
         // Fades in the main container after displaying the question
         mainContainer.fadeIn(1000);
     });
-}
+    }
+    
 
 //Start Villain Path--------------------------------------------------------------------------
 function startVillainPath() { // initiate villain path
@@ -170,14 +168,7 @@ function nextVillainQuestion(index) { // Display the next hero question with a f
     // Clears any previously displayed answer buttons
     answerButtonsElement.empty();
 
-    // display answer options for the current hero question using forEach with arrow function.
-    question.answers.forEach(answer => {
-        const button = $('<button></button>');
-        button.text(answer.text);
-        button.addClass('villain-ans-btn');
-        button.data('character', answer.character); // Retrieves the character associated with the selected answer
-        answerButtonsElement.append(button);
-    });
+    generateAnswerButtons(question, 'villain-ans-btn', 'character'); // For villain questions
 
     // Attach event listener to handle user response
     $(".villain-ans-btn").on("click", function() {
