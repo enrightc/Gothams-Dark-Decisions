@@ -262,38 +262,38 @@ function displayResult() { // Display user's character result
         // Determine the user's character and display the appropriate heading, character description, and picture 
         if (userCharacter === "Batman") {
             // Display information for Batman
-            $('h1.character-reveal').append('<h1>You Are Batman</h1>');
+            $('h1.character-reveal').text('You Are Batman');
             // Append Batman's character description
-            $('p.character-bio').append("<p>You are Gotham's legendary Dark Knight. With unparalleled detective skills and unwavering determination, you tirelessly fight against the city's criminal underworld. Your commitment to justice, coupled with your strategic brilliance and advanced technology, strikes fear into the hearts of evildoers. You embody the symbol of hope for Gotham, standing as its protector against the forces of darkness</p>");
+            $('p.character-bio').text("You are Gotham's legendary Dark Knight. With unparalleled detective skills and unwavering determination, you tirelessly fight against the city's criminal underworld. Your commitment to justice, coupled with your strategic brilliance and advanced technology, strikes fear into the hearts of evildoers. You embody the symbol of hope for Gotham, standing as its protector against the forces of darkness");
             // Set Batman's headshot image
             $('img.character-headshot').attr('src', 'assets/images/batman-headshot.webp').attr('alt', 'Batman headshot'); 
         } else if (userCharacter === "Robin") {
-            $('h1.character-reveal').append('<h1>You Are Robin</h1>');
-            $('p.character-bio').append("<p>You are the loyal and resourceful partner of Batman. With a strong sense of justice and a desire to make a difference, you navigate the streets of Gotham alongside the Dark Knight. Your agility, intellect, and unwavering dedication to the cause make you a valuable asset in the fight against crime. You bring a youthful energy and optimism to the hero's journey, inspiring hope in the city's darkest hours.</p>");
+            $('h1.character-reveal').text('You Are Robin');
+            $('p.character-bio').text("You are the loyal and resourceful partner of Batman. With a strong sense of justice and a desire to make a difference, you navigate the streets of Gotham alongside the Dark Knight. Your agility, intellect, and unwavering dedication to the cause make you a valuable asset in the fight against crime. You bring a youthful energy and optimism to the hero's journey, inspiring hope in the city's darkest hours.");
             $('img.character-headshot').attr('src', 'assets/images/robin-headshot.webp').attr('alt', 'Robins headshot'); 
         } else if (userCharacter === "Red Hood") {
-            $('h1.character-reveal').append('<h1>You Are Red Hood</h1>');
-            $('p.character-bio').append("<p>You are Gotham's conflicted anti-hero. Driven by a desire for vengeance and redemption, you walk a fine line between justice and revenge. Your combat skills and willingness to do whatever it takes to achieve your goals make you a formidable force against the city's criminals. Despite your troubled past, you strive to protect the innocent and bring a sense of justice to Gotham's streets.</p>");
+            $('h1.character-reveal').text('You Are Red Hood');
+            $('p.character-bio').text("You are Gotham's conflicted anti-hero. Driven by a desire for vengeance and redemption, you walk a fine line between justice and revenge. Your combat skills and willingness to do whatever it takes to achieve your goals make you a formidable force against the city's criminals. Despite your troubled past, you strive to protect the innocent and bring a sense of justice to Gotham's streets.");
             $('img.character-headshot').attr('src', 'assets/images/redhood-headshot.webp').attr('alt', 'Red Hoods headshot'); 
         } else if (userCharacter === "Batgirl") {
-            $('h1.character-reveal').append('<h1>You Are Batgirl</h1>');
-            $('p.character-bio').append("<p>Gotham's agile and resourceful vigilante. With a keen intellect and unmatched martial arts prowess, you fight alongside Batman to protect the city from harm. Your determination, bravery, and technological expertise make you a vital member of the Bat-family. Despite facing adversity and challenges, you remain steadfast in your mission to make Gotham a safer place for all its citizens.</p>");
+            $('h1.character-reveal').text('You Are Batgirl');
+            $('p.character-bio').text("Gotham's agile and resourceful vigilante. With a keen intellect and unmatched martial arts prowess, you fight alongside Batman to protect the city from harm. Your determination, bravery, and technological expertise make you a vital member of the Bat-family. Despite facing adversity and challenges, you remain steadfast in your mission to make Gotham a safer place for all its citizens.");
             $('img.character-headshot').attr('src', 'assets/images/batgirl-headshot.webp').attr('alt', 'Batgirl headshot'); 
         } else if (userCharacter === "The Joker") {
-            $('h1.character-reveal').append('<h1>You Are The Joker</h1>');
-            $('p.character-bio').append("<p>Gotham's infamous agent of chaos. With a twisted sense of humor and a penchant for mayhem, you revel in causing chaos and confusion wherever you go. Your unpredictable nature and disregard for consequences make you a formidable adversary for Gotham's heroes, as you delight in pushing the city to its limits.</p>");
+            $('h1.character-reveal').text('You Are The Joker');
+            $('p.character-bio').text("Gotham's infamous agent of chaos. With a twisted sense of humor and a penchant for mayhem, you revel in causing chaos and confusion wherever you go. Your unpredictable nature and disregard for consequences make you a formidable adversary for Gotham's heroes, as you delight in pushing the city to its limits.");
             $('img.character-headshot').attr('src', 'assets/images/joker-headshot.webp').attr('alt', 'The Jokers headshot'); 
         } else if (userCharacter === "The Penguin") {
-            $('h1.character-reveal').append('<h1>You Are The Penguin</h1>');
-            $('p.character-bio').append("<p>Gotham's cunning and resourceful crime lord. With a sharp mind and a knack for business, you thrive in the underworld of Gotham, using your wealth and influence to manipulate those around you. Your ability to adapt to any situation and exploit opportunities to your advantage makes you a force to be reckoned with, as you build your empire one scheme at a time.</p>");
+            $('h1.character-reveal').text('You Are The Penguin');
+            $('p.character-bio').text("Gotham's cunning and resourceful crime lord. With a sharp mind and a knack for business, you thrive in the underworld of Gotham, using your wealth and influence to manipulate those around you. Your ability to adapt to any situation and exploit opportunities to your advantage makes you a force to be reckoned with, as you build your empire one scheme at a time.");
             $('img.character-headshot').attr('src', 'assets/images/penguin-headshot.webp').attr('alt', 'The Penguins headshot'); 
         } else if (userCharacter === "Bane") {
-            $('h1.character-reveal').append('<h1>You Are Bane</h1>');
-            $('p.character-bio').append("<p>Gotham's ruthless and formidable mercenary. With brute strength and tactical genius, you seek to impose your will upon the city, crushing anyone who dares to oppose you. Your unwavering determination and sheer physical power make you a force of nature, as you seek to establish yourself as Gotham's ultimate ruler through fear and intimidation.</p>");
+            $('h1.character-reveal').text('You Are Bane');
+            $('p.character-bio').text("Gotham's ruthless and formidable mercenary. With brute strength and tactical genius, you seek to impose your will upon the city, crushing anyone who dares to oppose you. Your unwavering determination and sheer physical power make you a force of nature, as you seek to establish yourself as Gotham's ultimate ruler through fear and intimidation.");
             $('img.character-headshot').attr('src', 'assets/images/bane-headshot.webp').attr('alt', 'Banes headshot'); 
         } else if (userCharacter === "Catwoman") {
-            $('h1.character-reveal').append('<h1>You Are Catwoman</h1>');
-            $('p.character-bio').append("<p>Gotham's agile and elusive thief. With a code of honour all your own, you walk the fine line between hero and villain, using your skills to survive in Gotham's dangerous streets. Your quick wit and cunning make you a formidable adversary, as you navigate the shadows of Gotham with grace and style, always looking out for yourself above all else.</p>");
+            $('h1.character-reveal').text('You Are Catwoman');
+            $('p.character-bio').text("Gotham's agile and elusive thief. With a code of honour all your own, you walk the fine line between hero and villain, using your skills to survive in Gotham's dangerous streets. Your quick wit and cunning make you a formidable adversary, as you navigate the shadows of Gotham with grace and style, always looking out for yourself above all else.");
             $('img.character-headshot').attr('src', 'assets/images/catwoman-headshot.webp').attr('alt', 'Catwomans headshot'); 
         }
         mainContainer.fadeIn(1000); // Fade in the main container after displaying the result
