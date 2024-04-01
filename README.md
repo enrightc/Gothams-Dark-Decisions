@@ -3,7 +3,6 @@
 ![Gotham's Dark Decisions Am I Responsive Image](docs/readme-images/Mockup.png)
 
 # TABLE OF CONTENTS
-
 - [Gotham's Dark Decisions](#gothams-dark-decisions)
 - [TABLE OF CONTENTS](#table-of-contents)
 - [INTRODUCTION](#introduction)
@@ -56,11 +55,12 @@
   - [Acknowledgements](#acknowledgements)
 
 # INTRODUCTION
-Welcome to Gotham's Dark Decisions - the interactive frontend website that plunges you into the captivating world of Batman. In this immersive experience, users will embark on a thrilling journey of self-discovery, exploring their inner hero, or villain, through a series of thought-provoking questions.
+## About
+Welcome to Gotham's Dark Decisions, an interactive frontend website that immerses you in the captivating world of Batman. In this experience, users embark on a thrilling journey of self-discovery, exploring their inner hero or villain through a series of thought-provoking questions.
 
-Gotham's Dark Decisions is more than just a personality quiz - it's a portal to the heart of Gotham City, where shadows reign and the line between good and evil is constantly blurred. Inspired by the rich lore of Batman, this project invites users to explore their own identity within the context of Gotham's complex universe.
+More than just a personality quiz, Gotham's Dark Decisions serves as a portal to the heart of Gotham City, where shadows reign and the line between good and evil is constantly blurred. Inspired by the rich lore of Batman, this project invites users to explore their own identity within Gotham's complex universe.
 
-To get started with Gotham's Dark Decisions, simply visit the website and click on the "START" button. From there, follow the prompts to navigate through the quiz and discover your fate within the Batman universe.
+To get started with Gotham's Dark Decisions, simply visit the website and click on the "START" button. Follow the prompts to navigate through the quiz and discover your fate within the Batman universe.
 
 Visit Gotham's Dark Decisions website here [Gothams Dark Decisions](https://enrightc.github.io/Gothams-Dark-Decisions/)
 
@@ -111,62 +111,9 @@ Gotham's Dark Decisions aims to truly immerse users in the captivating world of 
   - I want to see my progress through the quiz, such as how many questions I have answered and how many are remaining.
   - I want to receive my results at the end of the quiz, telling me which member of the Bat-family or which Batman villain I am most like.
   - I want the quiz to be visually appealing and in line with the Batman theme through the use of images, colours, and fonts.
-- As a returning user
   - I want to have the option to retake the quiz if I want to try different answers.
 
-# LOGIC OVERVIEW
-The Gotham's Dark Decision quiz is a JavaScript-powered frontend website designed to immerse users in the captivating world of Batman. However, to ensure accessibility and comprehension for a broader audience, the code has been translated into plain English. This transparency provides users with insight into the application's functionality and structure without requiring programming knowledge, fostering trust and engagement.
-
-1. Fade In Transition: When the document is ready, the main content fades in gradually over 2.5 seconds using jQuery.
-
-2. Essential Elements:
-   - Key elements such as answer buttons, character scores, and current question indexes are initialized.
-   - Initial scores for Batman, Robin, Red Hood, Batgirl, The Joker, The Penguin, Bane, and Catwoman are set to 0.
-   - Variables for current hero and villain question indexes, user character, and personality are declared.
-
-3. Start Game Function: Clicking the start button initiates the game by hiding the start button and intro, displaying the game container, and showing the first question.
-
-4. showFirstQuestion Function: Responsible for displaying the first quiz question, allowing users to choose between hero or villain paths.
-    - Sets the text of question title and box elements to match the first question.
-    - Creates answer buttons for each option, associating personality data with each button.
-    - Attaches event listeners to handle user responses, initiating either the hero or villain path.
-
-5. Start Hero/Villain Path Functions: Initiates the hero or villain path based on the user's choice.
-
-6. Next Hero/Villain Question Functions: Displays subsequent hero or villain questions, updates scores based on user answers, and progresses through the quiz.
-    - Retrieves the next question object and sets question text elements accordingly. 
-    - Clears previous answer buttons and displays new answer options.
-    - Handles user responses, incrementing corresponding character scores and advancing to the next question or displaying the revelation if no more questions. 
-
-7. Revelation Function: Shows the revelation container for either a hero or villain.
-    - Hides the game container and reveals the revelation container.
-    - Displays specific content based on whether the user's personality is hero or villain.
-    - Calls the score function to determine the user's character. 
-   
-8. Score Function: Calculates the user's character based on the highest score and assigns the corresponding character name.
-    - Determines the maximum score among character variables and assigns the corresponding character name to the user.
-
-9. Character Reveal:
-    - Event handler calls the displayResult function when reveal button is clicked.
-    - DisplayResult function hides the revelation container and reveals the results container.
-    - It determines the user's character based on the userCharacter variable and displays the appropriate heading, character description, and picture in the results container.
-      - It appends a heading indicating the character's name (You Are [Character]).
-      - It appends a paragraph with a description of the character's traits, motivations, and role in Gotham.
-      - It sets the src attribute of an <img> element to display the character's headshot.
-
-10. Game Reset:
-    - Causes the game to reset by reloading the browser in the same way the refresh button on your browser reloads the page. 
-
-11. Voiceover Function: Toggles the play/pause button for an audio voiceover.
-
-12. Questions: Define arrays containing hero and villain questions, each with titles, questions, and multiple-choice answers, tailored to each character's path. The showFirstQuestion 
-    function directs users down either the hero or villain path based on their initial response.
-    - If the user's answer leads to the hero path, subsequent questions are drawn from the heroQuestions array.
-    - Conversely, if the user's answer leads to the villain path, questions are drawn from the villainQuestions array.
-      
-
 # DESIGN
-
 ## Wireframes
 Prior to commencing the coding process, comprehensive wireframes were produced for each section of the quiz  using Figma - a design tool used for creating user interfaces, prototypes, and wireframes. These wireframes served as the initial blueprints, providing a visual roadmap for the quiz layout and structure on both desktop and mobile devices.
 
@@ -174,12 +121,31 @@ It's important to note that while the final product evolved from these early pla
 
 This iterative process allowed for flexibility in adapting to evolving project requirements, ultimately contributing to the development of a more refined and user-friendly quiz.
 
-[Introduction (Desktop)](docs/readme-images/wireframe-desktop-intro.png)
-[Introduction (Mobile)](docs/readme-images/wireframe-mobile-intro.png)
-[Questions (Desktop)](docs/readme-images/wireframe-questions-desktop.png)
-[Questions (Mobile)](docs/readme-images/wireframe-questions-mobile.png)
-[Results (Desktop)](docs/readme-images/wireframe-results-desktop.png)
-[results (Mobile)](docs/readme-images/wireframe-results-mobile.png)
+
+<details>
+  <summary>Introduction (Desktop)</summary>
+  <img src="docs/readme-images/wireframe-desktop-intro.png" alt="Introduction (Desktop)">
+</details>
+<details>
+  <summary>Introduction (Mobile)</summary>
+  <img src="docs/readme-images/wireframe-mobile-intro.png" alt="Introduction (Mobile)">
+</details>
+<details>
+  <summary>Questions (Desktop)</summary>
+  <img src="docs/readme-images/wireframe-questions-desktop.png)" alt="Questions (Desktop)">
+</details>
+<details>
+  <summary>Questions (Mobile)</summary>
+  <img src="docs/readme-images/wireframe-questions-mobile.png)" alt="Questions (Mobile)">
+</details>
+<details>
+  <summary>Results (Desktop)</summary>
+  <img src="docs/readme-images/wireframe-results-desktop.png)" alt="Results (Desktop)">
+</details>
+<details>
+  <summary>Results (Mobile)</summary>
+  <img src="docs/readme-images/wireframe-results-mobile.png)" alt="Results (Mobile)">
+</details>
 
 ## Imagery
 The imagery chosen for this quiz is purposeful and aims to enhance the overall user experience. Each background image used throughout the quiz has been carefully selected to complement the theme and narrative of the quiz.
@@ -231,7 +197,8 @@ The Gotham's Dark Decisions quiz  has undergone thoughtful design reviews from f
 
 - **Engaging Audio Narration:** Users appreciate the immersive audio narration at the quiz's start. It sets the tone, enhancing the storytelling and leaving a memorable impact.
 
-# Game Functionality and Structure
+# GAME FUNCTIONALITY
+## Structure
 The quiz is designed to be engaging and interactive, comprising eight questions that lead the user on a journey through the Batman universe.
 
 **Question Structure:** The quiz consists of eight questions, each with four answer options for the user to choose from. The first question serves as a pivotal point, with two possible answers determining whether the user takes the hero or villain path. Subsequent questions (2 - 8) each have four answer options tailored to align with either heroes (Batman, Robin, Red Hood, and Batgirl) or villains (The Joker, Penguin, Bane, and Catwoman), depending on the chosen path.
@@ -239,6 +206,56 @@ The quiz is designed to be engaging and interactive, comprising eight questions 
 **Character Alignment:** With each answer selected, the quiz builds a profile of the character the user most aligns with. This process culminates in presenting the user with their character alignment at the end of the quiz.
 
 **Section Layout:** The quiz is contained within a single page structured into four sections: Introduction, Questions, Revelation, and Reveal. As the user progresses through the quiz, smooth transitions seamlessly guide them from one section to the next.
+
+## Logic Overview
+The Gotham's Dark Decision quiz is a JavaScript-powered frontend website designed to immerse users in the captivating world of Batman. However, to ensure accessibility and comprehension for a broader audience, the code has been translated into plain English. This transparency provides users with insight into the application's functionality and structure without requiring programming knowledge, fostering trust and engagement.
+
+1. Fade In Transition: When the document is ready, the main content fades in gradually over 2.5 seconds using jQuery.
+
+2. Essential Elements:
+   - Key elements such as answer buttons, character scores, and current question indexes are initialized.
+   - Initial scores for Batman, Robin, Red Hood, Batgirl, The Joker, The Penguin, Bane, and Catwoman are set to 0.
+   - Variables for current hero and villain question indexes, user character, and personality are declared.
+
+3. Start Game Function: Clicking the start button initiates the game by hiding the start button and intro, displaying the game container, and showing the first question.
+
+4. showFirstQuestion Function: Responsible for displaying the first quiz question, allowing users to choose between hero or villain paths.
+    - Sets the text of question title and box elements to match the first question.
+    - Creates answer buttons for each option, associating personality data with each button.
+    - Attaches event listeners to handle user responses, initiating either the hero or villain path.
+
+5. Start Hero/Villain Path Functions: Initiates the hero or villain path based on the user's choice.
+
+6. Next Hero/Villain Question Functions: Displays subsequent hero or villain questions, updates scores based on user answers, and progresses through the quiz.
+    - Retrieves the next question object and sets question text elements accordingly. 
+    - Clears previous answer buttons and displays new answer options.
+    - Handles user responses, incrementing corresponding character scores and advancing to the next question or displaying the revelation if no more questions. 
+
+7. Revelation Function: Shows the revelation container for either a hero or villain.
+    - Hides the game container and reveals the revelation container.
+    - Displays specific content based on whether the user's personality is hero or villain.
+    - Calls the score function to determine the user's character. 
+   
+8. Score Function: Calculates the user's character based on the highest score and assigns the corresponding character name.
+    - Determines the maximum score among character variables and assigns the corresponding character name to the user.
+
+9. Character Reveal:
+    - Event handler calls the displayResult function when reveal button is clicked.
+    - DisplayResult function hides the revelation container and reveals the results container.
+    - It determines the user's character based on the userCharacter variable and displays the appropriate heading, character description, and picture in the results container.
+      - It appends a heading indicating the character's name (You Are [Character]).
+      - It appends a paragraph with a description of the character's traits, motivations, and role in Gotham.
+      - It sets the src attribute of an <img> element to display the character's headshot.
+
+10. Game Reset:
+    - Causes the game to reset by reloading the browser in the same way the refresh button on your browser reloads the page. 
+
+11. Voiceover Function: Toggles the play/pause button for an audio voiceover.
+
+12. Questions: Define arrays containing hero and villain questions, each with titles, questions, and multiple-choice answers, tailored to each character's path. The showFirstQuestion 
+    function directs users down either the hero or villain path based on their initial response.
+    - If the user's answer leads to the hero path, subsequent questions are drawn from the heroQuestions array.
+    - Conversely, if the user's answer leads to the villain path, questions are drawn from the villainQuestions array.
 
 # FEATURES
 ## Existing Features
@@ -380,6 +397,7 @@ The issue related to the hover effect persisting on mobile devices has been reso
 
 
 ### Known Bugs (unresolved)
+There are currently no known bugs identified. 
 
 # TECHNOLOGY
 
@@ -402,12 +420,12 @@ The issue related to the hover effect persisting on mobile devices has been reso
 
 
 # TESTING
+various aspects of the quiz application have undergone robust testing, including functionality, user interaction, appearence and performance through manual and automated testing methods.
 
 ## Manual Testing
-
-
+Manual testing, which fundamentally focuses on human interaction, provided an opportunity to identify and correct bugs, whilst providing an insight to how users interact with and perceive the quiz. During the manual testing process, each feature of the quiz was thoroughly inspected, its browser compatibility assessed, the quiz's responsiveness across a range of devices was evaluated as well as the user stories.
 ### Feature testing:
-During Feature Testing various aspects of the quiz application have undergone robust testing, including functionality, user interaction and appearence. The expected outcomes and actual outcomes are clearly defined for each feature, making it easy to assess whether the application meets its requirements. This process makes it easier to identify and address any issues or discrepancies that may arise and also serves as a reference point for other developers to understand the expected behaviour of a feature. 
+For each feature the expected outcomes and actual outcomes are clearly defined for each feature, making it easy to assess whether the application meets the requirements. This process makes it easier to identify and address any issues or discrepancies that may arise and also serves as a reference point for other developers to understand the expected behaviour of a feature. 
 
 Features that appear throughout quiz:
 | Feature                  |      Expected              |                                              Testing |                                 Outcome |
@@ -474,23 +492,80 @@ Expected: Site should render appropriately on various devices with different scr
 Testing: Test responsiveness on iPhone 12, iPad 12, and desktop (1024px).
 Outcome: The site displays responsively across different devices, maintaining functionality and appearance as intended.
 
+### Testing User Stories:
+### Test Scenarios:
+
+1. **Test Begin Quiz Button:**
+   - Test whether clicking on the "Start" button starts the quiz.
+
+2. **Test Hero or Villain Selection:**
+   - Test whether the user is presented with a question asking if they prefer to be a hero or a villain.
+   - Test whether selecting "hero" leads to questions related to the Batfamily.
+   - Test whether selecting "villain" leads to questions related to Batman villains.
+
+3. **Test Question Presentation:**
+   - Test whether each question is presented one at a time.
+   - Test whether clear instructions are provided on how to proceed to the next question.
+
+4. **Test Answer Selection:**
+   - Test whether users can select their answers from multiple-choice options.
+
+5. **Test Quiz Progress:**
+   - Test whether users can see their progress through the quiz, including how many questions they have answered and how many are remaining.
+
+6. **Test Quiz Results:**
+   - Test whether users receive their results at the end of the quiz, indicating which member of the Bat-family or Batman villain they are most like.
+
+7. **Test Visual Appeal:**
+   - Test whether the quiz is visually appealing and in line with the Batman theme, including the use of images, colors, and fonts.
+
+8. **Test Retake Option for Returning Users:**
+   - Test whether returning users have the option to retake the quiz if they want to try different answers.
+
+### Test Steps:
+By conducting these text scensrios it was possible to ensure that the quiz application meets the requirements specified in the user stories and provides a seamless user experience.
+
+1. Click on the "Start" button and observe if the quiz starts.
+2. Choose "hero" and verify if questions related to the Batfamily are presented.
+3. Choose "villain" and verify if questions related to Batman villains are presented.
+4. Answer each question and proceed to the next question to ensure one question is presented at a time with clear instructions.
+5. Select answers for each question and verify if the selection is recorded.
+6. Observe the progress indicator to ensure it shows the current question number and remaining questions.
+7. Complete the quiz and verify if the results indicating the user's character alignment are displayed.
+8. Evaluate the visual elements of the quiz to ensure it aligns with the Batman theme.
+9. At the end of the quiz ensure there is an option to start the quiz over.
+
+**Test Result:** PASS
+
 ## Automated Testing
+Automated testing was undertaken using a range of open-source developer tools including Google Lighthouse Analysis, HTML, CSS and JavaScript validation. These tests assessed the quiz's quality, performance, accessibility and adherence to web standards. Any identified issues were addressed to enhance the websites usability and overall user experience.  
 
 ### HTML
-To test the markup validity [HTML Validator](https://validator.w3.org/) was used.
-The following warning/errors were identified:
+To test the markup validity [HTML Validator](https://validator.w3.org/) was used to assess markup validity and compliance with accessibility standards.
+The following warning/errors were identified and addressed:
 **Possible Misuse of Aria-label:** The aria-label attribute was originally attached to a div element, which is not considered an interactive element and therefore cannot have aria-label attributes.
 
 To resolve this issue and ensure compliance with accessibility standards, the div element was replaced with a button element. Buttons are interactive elements and are suitable for adding aria-label attributes.
 
 By making this adjustment, the HTML code now adheres to accessibility guidelines and passes validation without errors.
 
+**Empty h1 and p Tags Detected:** Some h1 and p tags were found to be empty in the HTML code. This could potentially impact accessibility, as h1 tags are typically used to define the main heading of a page, providing important context to both users and search engines.
+
+To address this issue, placeholder text has been added within the empty tags to ensure that they are not empty. Additionally, the method of dynamically adding content to these h1 tags has been revised. Instead of using the .append method in jQuery, the .text method is now employed to replace the placeholder text with the desired content.
+
+By implementing these changes, the HTML code now maintains proper semantic structure, enhancing accessibility and ensuring compliance with web standards.
+
+**Empty Image Tag Detected:** An empty image tag without a specified source (src) attribute was identified in the HTML code. This can lead to broken image links and affect the visual presentation of the website.
+
+To resolve this issue, a placeholder image has been inserted into the src attribute of the empty image tag. Additionally, the jQuery code responsible for dynamically updating the image source has been modified to use the .text method instead of the .append. This ensures that the src attribute is properly set to the desired image source.
+
+By making these adjustments, the HTML code now includes a valid image source, preventing broken image links and improving the overall user experience. Additionally, the revised jQuery code ensures accurate manipulation of the image source attribute, maintaining consistency and reliability in the dynamic content updates.
 
 ### CSS
 A [CSS Validator](https://validator.w3.org/) was used to check the validity of the CSS code of the quiz. There were no errors detected.
 
 ### JavaScript
-A [JSHint](https://jshint.com/) was used to check the validity of the JavaScript code of the quiz. There were no errors detected.
+A [JSHint](https://jshint.com/) was used to check the validity of the JavaScript code of the quiz. Any identified errors were addressed.
 
 Metrics:
 There are 25 functions in this file.
