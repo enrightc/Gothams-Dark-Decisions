@@ -55,6 +55,34 @@ function generateAnswerButtons(question, buttonClass, attribute) {
     });
 }
 
+function updateCharacterScore(character) {  // Increments the score for the corresponding character based on the user's choice
+        if (character === "Batman") {
+            batman++; // Increment Batman score
+            console.log("Batman score:", batman);
+        } else if (character === "Robin") {
+            robin++;
+            console.log("Robin score:", robin);
+        } else if (character === "Red Hood") {
+            redHood++;
+            console.log("Red Hood score:", redHood);
+        } else if (character === "Batgirl") {
+            batgirl++;
+            console.log("Batgirl score:", batgirl);
+        } else if (character === "The Joker") {
+            theJoker++; // Increment Joker score
+            console.log("The Joker score:", theJoker);
+        } else if (character === "The Penguin") { // Corrected "Penquin" to "Penguin"
+            thePenguin++;
+            console.log("The Penguin score:", thePenguin);
+        } else if (character === "Bane") {
+            bane++;
+            console.log("Bane score:", bane);
+        } else {
+            catwoman++; // Assumes any other character defaults to Catwoman
+            console.log("Catwoman score:", catwoman);
+        }
+    }
+
 //START GAME--------------------------------------------------------------------------
     // Event listener for the Start button
     $("#start-btn").on("click", function() {
@@ -134,11 +162,8 @@ function nextHeroQuestion(index) {
     });
 }
 
-    
-
-
-    // Move to the next hero question or end the path if there are no more questions
-    function proceedToNextQuestion() {
+// Move to the next hero question or end the path if there are no more questions
+function proceedToNextQuestion() {
         currentHeroQuestionIndex++;
         if (currentHeroQuestionIndex < heroQuestions.length) {
             // Call nextHeroQuestion function recursively to display the next question with a fade-in effect
@@ -150,22 +175,8 @@ function nextHeroQuestion(index) {
         }
       
 
-    function updateCharacterScore(character) {
-        // Increments the score for the corresponding character based on the user's choice
-       if (character === "Batman") {
-           batman++; // Increment Batman score
-           console.log("Batman score:", batman);
-       } else if (character === "Robin") {
-           robin++;
-           console.log("Robin score:", robin);
-       } else if (character === "Red Hood") {
-           redHood++;
-           console.log("Redhood score:", redHood);
-       } else {
-           batgirl++;
-           console.log("Batgirl score:", batgirl);
-       }
-   }
+
+        
     
 //Start Villain Path--------------------------------------------------------------------------
 function startVillainPath() { // initiate villain path
@@ -177,35 +188,19 @@ function nextVillainQuestion(index) { // Display the next hero question with a f
     mainContainer.fadeOut(1000, function() {
     // Retrieves the villain question object from the villainQuestions array based on the provided index
     const question = villainQuestions[index];
-   
     displayQuestion(question);
-    
     // Clears any previously displayed answer buttons
     answerButtonsElement.empty();
-
     generateAnswerButtons(question, 'villain-ans-btn', 'character'); // For villain questions
-
     // Attach event listener to handle user response
     $(".villain-ans-btn").on("click", function() {
         updateCharacterScore($(this).data("character"));
-
-    
-            
+        $('.villain-ans-btn').prop('disabled', true); //Prevent multiple button clicks
+        $(this).addClass("selected"); // Adds a selected class to the user's choice for styling 
         
-        // Increments the score for the corresponding character based on the user's choice
-        if (character === "The Joker") {
-            theJoker++; // Increment score
-            console.log("The Joker score:", joker);
-        } else if (character === "The Penquin") {
-            thePenguin++;
-        } else if (character === "Bane") {
-            bane++;
-        } else {
-            catwoman++;
-        }
+      
 
-    $('.villain-ans-btn').prop('disabled', true); //Prevent multiple button clicks
-    $(this).addClass("selected"); // Adds a selected class to the user's choice for styling 
+   
         
     // Move to the next villain question or end the path if there are no more questions
     currentVillainQuestionIndex++;
