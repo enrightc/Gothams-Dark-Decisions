@@ -1,10 +1,14 @@
 /*jshint esversion: 6 */
 
+// This JavaScript file drives the interactivity of the "Gotham's Dark Decisions" quiz.
+// It handles user inputs, quiz logic, question navigation, and computes the final character outcome.
+
 // fadeIn transition to quiz introduction.
 $("main").fadeIn(2500);
 
 
 // Essential elements-----------------------------------------------------------------
+// Declaration of essential elements and variables for quiz logic.
 const mainContainer = $("main");
 const answerButtonsElement = $('#answer-box');
 let batman = 0;
@@ -23,7 +27,8 @@ let startBlocked = false;
 
 
 //Commonly used functions--------------------------------------------------------------------------
-function displayQuestion (question) { // Display the title, current question and background image.
+// Display the title, current question and background image.
+function displayQuestion (question) { 
     // use jQuery .text() method to set text content of question-box element to the title and text of first question
     $('#title').text(question.title);
     $('#question-box').text(question.question);
@@ -33,7 +38,8 @@ function displayQuestion (question) { // Display the title, current question and
     $('#currentQuestion').text(question.questionNumber + " of 8");
 }
 
-function generateAnswerButtons(question, buttonClass, attribute) { // Function to create answer button elements for each question
+// Function to dynamically create answer buttons based on the current question.
+function generateAnswerButtons(question, buttonClass, attribute) { 
     // Loop through the answers and create button elements using forEach() with arrow function
     question.answers.forEach(answer => {
         // Create a button element with jQuery
@@ -49,22 +55,9 @@ function generateAnswerButtons(question, buttonClass, attribute) { // Function t
     });
 }
 
-function handleClickEvents() {
-    const personality = $(this).data("personality");
-
-    if (personality === "hero") {
-        startHeroPath();
-    } else {
-        startVillainPath();
-    }
-
-    $('.ans-btn').prop('disabled', true); //Prevent multiple button clicks
-    $(this).addClass("selected"); // add selected class to users choice.
-}
-
-
 //START GAME--------------------------------------------------------------------------
     // Event listener for the Start button
+    // Initiates the quiz by fading out the intro and presenting the first question.
     $("#start-btn").on("click", function() {
         // prevent multiple clicks of start button
         if (startBlocked == false){
@@ -74,13 +67,12 @@ function handleClickEvents() {
     });
 
 function startGame() { // initiate the game and call showFirstQuestion function to show the first question of the game. 
-    mainContainer.fadeOut(2000, function() {   // Fade out the main container
-        // Hide the intro
+    // Fade out the main content to transition into the quiz section.
+    mainContainer.fadeOut(2000, function() {   
+        // Hide the introduction and show the quiz container for the user to start answering questions.
         $("#intro").addClass("hidden");
-        // Fade in the main container
-        mainContainer.fadeIn(1000);
-        // Show the game container
         $("#game-container").removeClass("hidden");
+        mainContainer.fadeIn(1000); // Fade in the main container
         // Call showFirstQuestion function to display the first question
         showFirstQuestion(0);
     });
@@ -98,7 +90,19 @@ function showFirstQuestion(index) { // show the first question that allows user 
     $("#answer-box").on("click", ".ans-btn", handleClickEvents);
 }
 
-  
+function handleClickEvents() {
+    const personality = $(this).data("personality");
+
+    if (personality === "hero") {
+        startHeroPath();
+    } else {
+        startVillainPath();
+    }
+
+    $('.ans-btn').prop('disabled', true); //Prevent multiple button clicks
+    $(this).addClass("selected"); // add selected class to users choice.
+}
+
 
 //Start Hero Path--------------------------------------------------------------------------
 function startHeroPath() { // initiate hero path
@@ -119,7 +123,7 @@ function nextHeroQuestion(index) { // Display the next hero question with a fade
         generateAnswerButtons(question, 'hero-ans-btn', 'character'); // For hero questions
         
 
-    // Attach event listener to handle user response
+    // Handle click events on answer buttons to navigate the quiz and tally scores and prepare the next question.
     $(".hero-ans-btn").on("click", function() {
         const character = $(this).data("character"); // store the users choice based on answer button clicked.
             
