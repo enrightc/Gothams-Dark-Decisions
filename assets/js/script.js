@@ -3,7 +3,7 @@
 // This JavaScript file drives the interactivity of the "Gotham's Dark Decisions" quiz.
 // It handles user inputs, quiz logic, question navigation, and computes the final character outcome.
 
-// fadeIn transition to quiz introduction.
+// fadeIn transition to quiz introduction, enhancing user experience with a smooth start.
 $("main").fadeIn(2500);
 
 
@@ -27,7 +27,7 @@ let startBlocked = false;
 
 
 //Commonly used functions--------------------------------------------------------------------------
-// Display the title, current question and background image.
+// Function to display the title, current question and background image.
 function displayQuestion (question) { 
     // use jQuery .text() method to set text content of question-box element to the title and text of first question
     $('#title').text(question.title);
@@ -57,7 +57,6 @@ function generateAnswerButtons(question, buttonClass, attribute) {
 
 //START GAME--------------------------------------------------------------------------
     // Event listener for the Start button
-    // Initiates the quiz by fading out the intro and presenting the first question.
     $("#start-btn").on("click", function() {
         // prevent multiple clicks of start button
         if (startBlocked == false){
@@ -66,7 +65,8 @@ function generateAnswerButtons(question, buttonClass, attribute) {
         }
     });
 
-function startGame() { // initiate the game and call showFirstQuestion function to show the first question of the game. 
+// Starts the quiz by transitioning from the intro to the first question.
+function startGame() {  
     // Fade out the main content to transition into the quiz section.
     mainContainer.fadeOut(2000, function() {   
         // Hide the introduction and show the quiz container for the user to start answering questions.
@@ -79,17 +79,16 @@ function startGame() { // initiate the game and call showFirstQuestion function 
 }
 
 //Show Branch Question--------------------------------------------------------------------------
-function showFirstQuestion(index) { // show the first question that allows user to select hero or villain path.
+// Displays the first question where the user chooses between hero and villain paths.
+function showFirstQuestion(index) { 
     const question = firstQuestion[index]; // store the current question
-    
     displayQuestion(question);
-    
     generateAnswerButtons(question, 'ans-btn', 'personality'); // For branch questions
-
     // Selects the #answer-box and attach event listener for a click event on elements with the class .ans-btn and then calls handleClickEvents()
     $("#answer-box").on("click", ".ans-btn", handleClickEvents);
 }
 
+// Function to handle click events on answer buttons, determining the path and progressing the quiz.
 function handleClickEvents() {
     const personality = $(this).data("personality");
 
@@ -105,40 +104,41 @@ function handleClickEvents() {
 
 
 //Start Hero Path--------------------------------------------------------------------------
-function startHeroPath() { // initiate hero path
+// Initiates the hero path of the quiz.
+function startHeroPath() { 
     nextHeroQuestion(currentHeroQuestionIndex); // calls the function to display the first hero question.
 }
 
-function nextHeroQuestion(index) { // Display the next hero question with a fade effect
+// Display the next hero question with a fade transition
+function nextHeroQuestion(index) { 
     // Fade out the main container before displaying the question.
     mainContainer.fadeOut(1000, function() {
-        // Retrieves the hero question object from the heroQuestions array based on the provided index
+        // Retrieves the hero question object from the heroQuestions array based on the provided index.
         const question = heroQuestions[index];
-
         displayQuestion(question);
-        
-        // Clears any previously displayed answer buttons
+        // Clears any previously displayed answer buttons.
         answerButtonsElement.empty();
+        generateAnswerButtons(question, 'hero-ans-btn', 'character'); // For hero questions.
 
-        generateAnswerButtons(question, 'hero-ans-btn', 'character'); // For hero questions
-        
+        // Handle click events on answer buttons to navigate the quiz and tally scores.
+        $(".hero-ans-btn").on("click", function() {
+            const character = $(this).data("character"); // Retrieve the 'character' data attribute from the clicked button.
+            updateCharacterScore(character);
+            $('.hero-ans-btn').prop('disabled', true); // Prevent multiple button clicks.
+            $(this).addClass("selected"); // Adds a selected class to the user's choice for styling.
+            proceedToNextQuestion();
+        });
 
-    // Handle click events on answer buttons to navigate the quiz and tally scores and prepare the next question.
-    $(".hero-ans-btn").on("click", function() {
-        const character = $(this).data("character"); // store the users choice based on answer button clicked.
-            
-         // Increments the score for the corresponding character based on the user's choice
-        if (character === "Batman") {
-            batman++; // Increment Batman score
-        } else if (character === "Robin") {
-            robin++;
-        } else if (character === "Red Hood") {
-            redHood++;
-        } else {
-            batgirl++;
-        }
-            
+        // Fades in the main container after setting up the question and answer buttons.
+        mainContainer.fadeIn(1000);
+    });
+}
+
+    
+
+
     // Move to the next hero question or end the path if there are no more questions
+    function proceedToNextQuestion() {
         currentHeroQuestionIndex++;
         if (currentHeroQuestionIndex < heroQuestions.length) {
             // Call nextHeroQuestion function recursively to display the next question with a fade-in effect
@@ -147,17 +147,26 @@ function nextHeroQuestion(index) { // Display the next hero question with a fade
              // No more hero questions, end the hero path and proceed to revelation.
             revelation();
             }
+        }
+      
 
-        $('.hero-ans-btn').prop('disabled', true); // Prevent multiple button clicks.
-        $(this).addClass("selected");  // Adds a selected class to the user's choice for styling 
-        });
-
-        // Fades in the main container after displaying the question
-        mainContainer.fadeIn(1000);
-    });
-    }
+    function updateCharacterScore(character) {
+        // Increments the score for the corresponding character based on the user's choice
+       if (character === "Batman") {
+           batman++; // Increment Batman score
+           console.log("Batman score:", batman);
+       } else if (character === "Robin") {
+           robin++;
+           console.log("Robin score:", robin);
+       } else if (character === "Red Hood") {
+           redHood++;
+           console.log("Redhood score:", redHood);
+       } else {
+           batgirl++;
+           console.log("Batgirl score:", batgirl);
+       }
+   }
     
-
 //Start Villain Path--------------------------------------------------------------------------
 function startVillainPath() { // initiate villain path
     nextVillainQuestion(currentVillainQuestionIndex); // calls the function to display the first hero question.
@@ -178,11 +187,15 @@ function nextVillainQuestion(index) { // Display the next hero question with a f
 
     // Attach event listener to handle user response
     $(".villain-ans-btn").on("click", function() {
-        const character = $(this).data("character"); // store the users choice based on answer button clicked.
+        updateCharacterScore($(this).data("character"));
+
+    
+            
         
         // Increments the score for the corresponding character based on the user's choice
         if (character === "The Joker") {
             theJoker++; // Increment score
+            console.log("The Joker score:", joker);
         } else if (character === "The Penquin") {
             thePenguin++;
         } else if (character === "Bane") {
@@ -211,7 +224,8 @@ function nextVillainQuestion(index) { // Display the next hero question with a f
 }
 
 //Revelation Function--------------------------------------------------------------------------
-function revelation() {// After all questions have been asked display the revelation
+// After all questions have been asked display the revelation
+function revelation() {
     // Fade out the main container
     mainContainer.fadeOut(1000, function() {
     // hide game-container (questions and answers)
@@ -233,7 +247,8 @@ function revelation() {// After all questions have been asked display the revela
     score();
 }
 
-function score() { // Calculate users character based on their quiz score.
+// Calculate users character based on their quiz score.
+function score() { 
     // assign the highest scoring character to maxScore variable.
     let maxScore = Math.max(batman, robin, redHood, batgirl,theJoker, thePenguin, bane, catwoman);
     // Determine the charcter the users most aligns with assign, the userCharacter varible that character.
@@ -262,7 +277,8 @@ $(".reveal-btn").on("click", function() { // Event listener to reveal the user's
     displayResult(); // Call the displayResult function to show the user's character
 });
 
-function displayResult() { // Display user's character result
+// Function to display the final result to the user.
+function displayResult() { 
     mainContainer.fadeOut(2000, function() { // Fade out the main container before displaying the result
         // Hide the revelation container and reveal the results container
         $("#revelation-container").addClass("hidden");  
@@ -309,13 +325,14 @@ function displayResult() { // Display user's character result
 }
 
 //Game Reset--------------------------------------------------------------------------
-
-$("#game-reset").on("click", function() { // Event listerner for refresh button to reset the quiz.
+ // Event listerner for refresh button to reset the quiz.
+$("#game-reset").on("click", function() {
     window.location.reload();
 });
 
 //Voiceover--------------------------------------------------------------------------
 // from Alon Zilberman on stackflow (See README)
+// Function to toggle voiceover playback.
 document.getElementById("play-pause").addEventListener("click", function(){ // Event listern to play voiceover/narration
     var audio = document.getElementById('voiceover');
     if(this.className == 'is-playing'){
