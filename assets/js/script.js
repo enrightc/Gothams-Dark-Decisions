@@ -130,7 +130,6 @@ function handleClickEvents() {
     $(this).addClass("selected"); // add selected class to users choice.
 }
 
-
 //Start Hero Path--------------------------------------------------------------------------
 // Initiates the hero path of the quiz.
 function startHeroPath() { 
@@ -154,7 +153,7 @@ function nextHeroQuestion(index) {
             updateCharacterScore(character);
             $('.hero-ans-btn').prop('disabled', true); // Prevent multiple button clicks.
             $(this).addClass("selected"); // Adds a selected class to the user's choice for styling.
-            proceedToNextQuestion();
+            proceedToNextHeroQuestion();
         });
 
         // Fades in the main container after setting up the question and answer buttons.
@@ -163,7 +162,7 @@ function nextHeroQuestion(index) {
 }
 
 // Move to the next hero question or end the path if there are no more questions
-function proceedToNextQuestion() {
+function proceedToNextHeroQuestion() {
         currentHeroQuestionIndex++;
         if (currentHeroQuestionIndex < heroQuestions.length) {
             // Call nextHeroQuestion function recursively to display the next question with a fade-in effect
@@ -174,10 +173,6 @@ function proceedToNextQuestion() {
             }
         }
       
-
-
-        
-    
 //Start Villain Path--------------------------------------------------------------------------
 function startVillainPath() { // initiate villain path
     nextVillainQuestion(currentVillainQuestionIndex); // calls the function to display the first hero question.
@@ -197,11 +192,14 @@ function nextVillainQuestion(index) { // Display the next hero question with a f
         updateCharacterScore($(this).data("character"));
         $('.villain-ans-btn').prop('disabled', true); //Prevent multiple button clicks
         $(this).addClass("selected"); // Adds a selected class to the user's choice for styling 
-        
-      
+        proceedToNextVillainQuestion();
+    });
+    // Fades in the main container after setting up the question and answer buttons.
+    mainContainer.fadeIn(1000);
+});
+}
 
-   
-        
+function proceedToNextVillainQuestion() {
     // Move to the next villain question or end the path if there are no more questions
     currentVillainQuestionIndex++;
     if (currentVillainQuestionIndex < villainQuestions.length) {
@@ -211,12 +209,9 @@ function nextVillainQuestion(index) { // Display the next hero question with a f
         // No more hero questions, end the hero path and proceed to revelation.
         revelation();
         }
-    });
+    };
 
-     // Fades in the main container after displaying the question
-     mainContainer.fadeIn(1000);
-    });
-}
+   
 
 //Revelation Function--------------------------------------------------------------------------
 // After all questions have been asked display the revelation
