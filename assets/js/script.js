@@ -25,17 +25,48 @@ let userCharacter;
 let personality;
 let startBlocked = false;
 
-//Commonly used functions--------------------------------------------------------------------------
+// Handle click events on answer buttons to navigate the quiz and tally scores.
 
+$('#answer-box').on('click', '.ans-btn', function() {
+    const personality = $(this).data("personality");
 
-$(".hero-ans-btn").on("click", function() {
-    const character = $(this).data("character"); // Retrieve the 'character' data attribute from the clicked button.
-    updateCharacterScore(character);
-    $('.hero-ans-btn').prop('disabled', true); // Prevent multiple button clicks.
-    $(this).addClass("selected"); // Adds a selected class to the user's choice for styling.
-    proceedToNextHeroQuestion();
+    if (personality === "hero") {
+        startHeroPath();
+    } else {
+        startVillainPath();
+    }
+
+    $('.ans-btn').prop('disabled', true); //Prevent multiple button clicks
+    $(this).addClass("selected"); // add selected class to users choice.
 });
 
+
+
+// Using event delegation to attach event listener to the parent element #answer-box
+$('#answer-box').on('click', '.hero-ans-btn, .villain-ans-btn', function() {
+    const character = $(this).data("character"); // Retrieve the 'character' data attribute from the clicked button.
+    updateCharacterScore(character);
+    $('.hero-ans-btn, .villain-ans-btn').prop('disabled', true); // Prevent multiple button clicks.
+    $(this).addClass("selected"); // Adds a selected class to the user's choice for styling.
+    proceedToNextHeroQuestion();
+    // Check if button clicked has a class of hero or villain (jQuery hasClass() Method) and proceed accordingly. 
+    if ($(this).hasClass('hero-ans-btn')) {
+        proceedToNextHeroQuestion();
+    } else if ($(this).hasClass('villain-ans-btn')) {
+        proceedToNextVillainQuestion();
+    }
+});
+
+  // Event listener for the Start button to begin the quiz
+  $("#start-btn").on("click", function() {
+    // prevent multiple clicks of start button
+    if (startBlocked == false){
+        startBlocked = true;  // Set startBlocked to true to prevent further clicks
+        startGame(); // Calls the startGame function when the start button is clicked
+    }
+});
+
+//Commonly used functions--------------------------------------------------------------------------
 
 // Function to display the title, current question and background image.
 function displayQuestion (question) { 
@@ -94,15 +125,7 @@ function updateCharacterScore(character) {  // Increments the score for the corr
     }
 
 //START GAME--------------------------------------------------------------------------
-    // Event listener for the Start button
-    $("#start-btn").on("click", function() {
-        // prevent multiple clicks of start button
-        if (startBlocked == false){
-            startBlocked = true;  // Set startBlocked to true to prevent further clicks
-            startGame(); // Calls the startGame function when the start button is clicked
-        }
-    });
-
+  
 // Starts the quiz by transitioning from the intro to the first question.
 function startGame() {  
     // Fade out the main content to transition into the quiz section.
@@ -123,22 +146,10 @@ function showFirstQuestion(index) {
     displayQuestion(question);
     generateAnswerButtons(question, 'ans-btn', 'personality'); // For branch questions
     // Selects the #answer-box and attach event listener for a click event on elements with the class .ans-btn and then calls handleClickEvents()
-    $("#answer-box").on("click", ".ans-btn", handleClickEvents);
+    
 }
 
 // Function to handle click events on answer buttons, determining the path and progressing the quiz.
-function handleClickEvents() {
-    const personality = $(this).data("personality");
-
-    if (personality === "hero") {
-        startHeroPath();
-    } else {
-        startVillainPath();
-    }
-
-    $('.ans-btn').prop('disabled', true); //Prevent multiple button clicks
-    $(this).addClass("selected"); // add selected class to users choice.
-}
 
 //Start Hero Path--------------------------------------------------------------------------
 // Initiates the hero path of the quiz.
@@ -157,7 +168,7 @@ function nextHeroQuestion(index) {
         answerButtonsElement.empty();
         generateAnswerButtons(question, 'hero-ans-btn', 'character'); // For hero questions.
 
-        // Handle click events on answer buttons to navigate the quiz and tally scores.
+       
        
 
         // Fades in the main container after setting up the question and answer buttons.
@@ -191,13 +202,6 @@ function nextVillainQuestion(index) { // Display the next hero question with a f
     // Clears any previously displayed answer buttons
     answerButtonsElement.empty();
     generateAnswerButtons(question, 'villain-ans-btn', 'character'); // For villain questions
-    // Attach event listener to handle user response
-    $(".villain-ans-btn").on("click", function() {
-        updateCharacterScore($(this).data("character"));
-        $('.villain-ans-btn').prop('disabled', true); //Prevent multiple button clicks
-        $(this).addClass("selected"); // Adds a selected class to the user's choice for styling 
-        proceedToNextVillainQuestion();
-    });
     // Fades in the main container after setting up the question and answer buttons.
     mainContainer.fadeIn(1000);
 });
