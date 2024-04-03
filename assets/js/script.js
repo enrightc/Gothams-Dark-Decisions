@@ -2,10 +2,10 @@
 
 // This JavaScript file drives the interactivity of the "Gotham's Dark Decisions" quiz.
 // It handles user inputs, quiz logic, question navigation, and computes the final character outcome.
+// The quiz questions are included in arrays towards the end of this file. 
 
 // fadeIn transition to quiz introduction, enhancing user experience with a smooth start.
 $("main").fadeIn(2500);
-
 
 // Essential elements-----------------------------------------------------------------
 // Declaration of essential elements and variables for quiz logic.
@@ -25,8 +25,18 @@ let userCharacter;
 let personality;
 let startBlocked = false;
 
-
 //Commonly used functions--------------------------------------------------------------------------
+
+
+$(".hero-ans-btn").on("click", function() {
+    const character = $(this).data("character"); // Retrieve the 'character' data attribute from the clicked button.
+    updateCharacterScore(character);
+    $('.hero-ans-btn').prop('disabled', true); // Prevent multiple button clicks.
+    $(this).addClass("selected"); // Adds a selected class to the user's choice for styling.
+    proceedToNextHeroQuestion();
+});
+
+
 // Function to display the title, current question and background image.
 function displayQuestion (question) { 
     // use jQuery .text() method to set text content of question-box element to the title and text of first question
@@ -148,13 +158,7 @@ function nextHeroQuestion(index) {
         generateAnswerButtons(question, 'hero-ans-btn', 'character'); // For hero questions.
 
         // Handle click events on answer buttons to navigate the quiz and tally scores.
-        $(".hero-ans-btn").on("click", function() {
-            const character = $(this).data("character"); // Retrieve the 'character' data attribute from the clicked button.
-            updateCharacterScore(character);
-            $('.hero-ans-btn').prop('disabled', true); // Prevent multiple button clicks.
-            $(this).addClass("selected"); // Adds a selected class to the user's choice for styling.
-            proceedToNextHeroQuestion();
-        });
+       
 
         // Fades in the main container after setting up the question and answer buttons.
         mainContainer.fadeIn(1000);
@@ -210,8 +214,6 @@ function proceedToNextVillainQuestion() {
         revelation();
         }
     };
-
-   
 
 //Revelation Function--------------------------------------------------------------------------
 // After all questions have been asked display the revelation
