@@ -25,8 +25,20 @@ let userCharacter;
 let personality;
 let startBlocked = false;
 
-// Handle click events on answer buttons to navigate the quiz and tally scores.
+//Event Listeners--------------------------------------------------------------------------
 
+  // Event listener for the Start button to begin the quiz
+  $("#start-btn").on("click", function() {
+    // prevent multiple clicks of start button
+    if (startBlocked == false){
+        startBlocked = true;  // Set startBlocked to true to prevent further clicks
+        startGame(); // Calls the startGame function when the start button is clicked
+    }
+});
+
+
+// Attach a click event listener to the ans-btns within the '#answer-box' container to determine users chosen path (hero or villain) based on clicked buttons data attribute.
+// Once user has made selection it initiates the corresponding path and disables all answer buttons to prevent further selections and add a class of selected to the button for visual verification.
 $('#answer-box').on('click', '.ans-btn', function() {
     const personality = $(this).data("personality");
 
@@ -43,12 +55,12 @@ $('#answer-box').on('click', '.ans-btn', function() {
 
 
 // Using event delegation to attach event listener to the parent element #answer-box
+// Handle click events on answer buttons to navigate the quiz and tally scores.
 $('#answer-box').on('click', '.hero-ans-btn, .villain-ans-btn', function() {
     const character = $(this).data("character"); // Retrieve the 'character' data attribute from the clicked button.
     updateCharacterScore(character);
     $('.hero-ans-btn, .villain-ans-btn').prop('disabled', true); // Prevent multiple button clicks.
     $(this).addClass("selected"); // Adds a selected class to the user's choice for styling.
-    proceedToNextHeroQuestion();
     // Check if button clicked has a class of hero or villain (jQuery hasClass() Method) and proceed accordingly. 
     if ($(this).hasClass('hero-ans-btn')) {
         proceedToNextHeroQuestion();
@@ -57,14 +69,7 @@ $('#answer-box').on('click', '.hero-ans-btn, .villain-ans-btn', function() {
     }
 });
 
-  // Event listener for the Start button to begin the quiz
-  $("#start-btn").on("click", function() {
-    // prevent multiple clicks of start button
-    if (startBlocked == false){
-        startBlocked = true;  // Set startBlocked to true to prevent further clicks
-        startGame(); // Calls the startGame function when the start button is clicked
-    }
-});
+
 
 //Commonly used functions--------------------------------------------------------------------------
 
@@ -96,33 +101,42 @@ function generateAnswerButtons(question, buttonClass, attribute) {
     });
 }
 
-function updateCharacterScore(character) {  // Increments the score for the corresponding character based on the user's choice
-        if (character === "Batman") {
-            batman++; // Increment Batman score
+function updateCharacterScore(character) {
+    switch (character) {
+        case "Batman":
+            batman++;
             console.log("Batman score:", batman);
-        } else if (character === "Robin") {
+            break;
+        case "Robin":
             robin++;
             console.log("Robin score:", robin);
-        } else if (character === "Red Hood") {
+            break;
+        case "Red Hood":
             redHood++;
             console.log("Red Hood score:", redHood);
-        } else if (character === "Batgirl") {
+            break;
+        case "Batgirl":
             batgirl++;
             console.log("Batgirl score:", batgirl);
-        } else if (character === "The Joker") {
-            theJoker++; // Increment Joker score
+            break;
+        case "The Joker":
+            theJoker++;
             console.log("The Joker score:", theJoker);
-        } else if (character === "The Penguin") { // Corrected "Penquin" to "Penguin"
+            break;
+        case "The Penguin":
             thePenguin++;
             console.log("The Penguin score:", thePenguin);
-        } else if (character === "Bane") {
+            break;
+        case "Bane":
             bane++;
             console.log("Bane score:", bane);
-        } else {
-            catwoman++; // Assumes any other character defaults to Catwoman
+            break;
+        default:
+            catwoman++;
             console.log("Catwoman score:", catwoman);
-        }
     }
+};
+
 
 //START GAME--------------------------------------------------------------------------
   
@@ -145,11 +159,9 @@ function showFirstQuestion(index) {
     const question = firstQuestion[index]; // store the current question
     displayQuestion(question);
     generateAnswerButtons(question, 'ans-btn', 'personality'); // For branch questions
-    // Selects the #answer-box and attach event listener for a click event on elements with the class .ans-btn and then calls handleClickEvents()
-    
-}
+};
 
-// Function to handle click events on answer buttons, determining the path and progressing the quiz.
+
 
 //Start Hero Path--------------------------------------------------------------------------
 // Initiates the hero path of the quiz.
