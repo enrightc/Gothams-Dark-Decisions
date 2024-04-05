@@ -27,37 +27,16 @@ let startBlocked = false;
 
 //Event Listeners--------------------------------------------------------------------------
 
-  // Event listener for the Start button to begin the quiz
-  $("#start-btn").on("click", function() {
-    // prevent multiple clicks of start button
-    if (startBlocked == false){
-        startBlocked = true;  // Set startBlocked to true to prevent further clicks
-        startGame(); // Calls the startGame function when the start button is clicked
-    }
+// Reveal the user's character upon clicking the reveal button.
+$(".reveal-btn").on("click", function() { 
+    displayResult(); // Call the displayResult function to show the user's character
 });
 
-// Attach a click event listener to the ans-btns within the '#answer-box' container to determine users chosen path (hero or villain) based on clicked buttons data attribute.
-// Once user has made selection it initiates the corresponding path and disables all answer buttons to prevent further selections and add a class of selected to the button for visual verification.
-$('#answer-box').on('click', '.ans-btn', function() {
-    const personality = $(this).data("personality");
-
-    // Check the selected personality (hero or villain) to filter the questions accordingly.
-    if (personality === "hero") {
-    // If the user selects "hero" the question array is filtered to include only questions with the personalityType of 'hero'.
-    filteredQuestions = questions.filter(question => question.personalityType === 'hero');
-    console.log(filteredQuestions);
-    console.log(personality);
-    } else if (personality === "villain") {
-    // If the user selects "hero" the question array is filtered to include only questions with the personalityType of 'hero'.
-    filteredQuestions = questions.filter(question => question.personalityType === 'villain');
-    }
-
-        // Call the nextQuestion function to display the first question from the filteredQuestions array.
-        nextQuestion(filteredQuestions, 0);
-
-    $('.ans-btn').prop('disabled', true); //Prevent multiple button clicks
-    $(this).addClass("selected"); // add selected class to users choice.
+ // Resets the game when refresh button clicked at the end of the quiz,
+ $("#game-reset").on("click", function() {
+    window.location.reload();
 });
+
 
 //Commonly used functions--------------------------------------------------------------------------
 
@@ -133,7 +112,15 @@ function updateCharacterScore(character) {
 
 
 //START GAME--------------------------------------------------------------------------
-  
+  // Begin the quiz when the start button is clicked.
+  $("#start-btn").on("click", function() {
+    // prevent multiple clicks of start button
+    if (startBlocked == false){
+        startBlocked = true;  // Set startBlocked to true to prevent further clicks
+        startGame(); // Calls the startGame function when the start button is clicked
+    }
+});
+
 // Starts the quiz by transitioning from the intro to the first question.
 function startGame() {  
     // Fade out the main content to transition into the quiz section.
@@ -154,6 +141,37 @@ function showFirstQuestion() {
     displayQuestion(question);
     generateAnswerButtons(question, 'ans-btn', 'personality'); // For branch questions
 };
+
+// Determine the users chosen path (hero or villain) based on the answer given to question one and proceed the quiz accordingly. 
+// Disables all answer buttons to prevent further selections and add a class of selected to the button for visual verification.
+$('#answer-box').on('click', '.ans-btn', function() {
+    const personality = $(this).data("personality");
+    checkPersonality(personality);
+    $('.ans-btn').prop('disabled', true); //Prevent multiple button clicks
+    $(this).addClass("selected"); // add selected class to users choice.
+});
+
+// function to check the personality (hero/villain) from question one and filter out the appropriate proceeding questions from the questions array. 
+function checkPersonality(personality) {
+    // Filter questions based on the selected personality
+    if (personality === "hero") {
+        // If the user selects "hero" the question array is filtered to include only questions with the personalityType of 'hero'.
+        filteredQuestions = questions.filter(question => question.personalityType === 'hero');
+        console.log(filteredQuestions);
+        console.log(personality);
+        } else if (personality === "villain") {
+        // If the user selects "hero" the question array is filtered to include only questions with the personalityType of 'hero'.
+        filteredQuestions = questions.filter(question => question.personalityType === 'villain');
+        console.log(filteredQuestions);
+        console.log(personality);
+        }
+
+    // Proceed to the next question
+    nextQuestion(filteredQuestions, 0);
+}
+
+
+
 
 //Start Hero/villain Path--------------------------------------------------------------------------
 
@@ -247,9 +265,6 @@ function score() {
 
 // Character Reveal--------------------------------------------------------------------------
 
-$(".reveal-btn").on("click", function() { // Event listener to reveal the user's character when the reveal button is clicked
-    displayResult(); // Call the displayResult function to show the user's character
-});
 
 // Function to display the final result to the user.
 function displayResult() { 
@@ -293,26 +308,19 @@ function displayResult() {
                 $('p.character-bio').text("Gotham's ruthless and formidable mercenary. With brute strength and tactical genius, you seek to impose your will upon the city, crushing anyone who dares to oppose you. Your unwavering determination and sheer physical power make you a force of nature, as you seek to establish yourself as Gotham's ultimate ruler through fear and intimidation.");
                 $('img.character-headshot').attr('src', 'assets/images/bane-headshot.webp').attr('alt', 'Banes headshot');
                 break;
-            case "Catwoman":
+            default:
                 $('h1.character-reveal').text('You Are Catwoman');
                 $('p.character-bio').text("Gotham's agile and elusive thief. With a code of honour all your own, you walk the fine line between hero and villain, using your skills to survive in Gotham's dangerous streets. Your quick wit and cunning make you a formidable adversary, as you navigate the shadows of Gotham with grace and style, always looking out for yourself above all else.");
                 $('img.character-headshot').attr('src', 'assets/images/catwoman-headshot.webp').attr('alt', 'Catwomans headshot');
                 break;
-            default:
-                // Handle an unexpected character value
-                console.log('Unexpected character:', userCharacter);
         }
-
         mainContainer.fadeIn(1000); // Fade in the main container after displaying the result
     });
 }
 
 
-//Game Reset--------------------------------------------------------------------------
- // Event listerner for refresh button to reset the quiz.
-$("#game-reset").on("click", function() {
-    window.location.reload();
-});
+
+
 
 //Voiceover--------------------------------------------------------------------------
 // from Alon Zilberman on stackflow (See README)
