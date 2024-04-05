@@ -36,40 +36,28 @@ let startBlocked = false;
     }
 });
 
-
 // Attach a click event listener to the ans-btns within the '#answer-box' container to determine users chosen path (hero or villain) based on clicked buttons data attribute.
 // Once user has made selection it initiates the corresponding path and disables all answer buttons to prevent further selections and add a class of selected to the button for visual verification.
 $('#answer-box').on('click', '.ans-btn', function() {
     const personality = $(this).data("personality");
 
+    // Check the selected personality (hero or villain) to filter the questions accordingly.
     if (personality === "hero") {
-        startHeroPath();
-    } else {
-        startVillainPath();
+    // If the user selects "hero" the question array is filtered to include only questions with the personalityType of 'hero'.
+    filteredQuestions = questions.filter(question => question.personalityType === 'hero');
+    console.log(filteredQuestions);
+    console.log(personality);
+    } else if (personality === "villain") {
+    // If the user selects "hero" the question array is filtered to include only questions with the personalityType of 'hero'.
+    filteredQuestions = questions.filter(question => question.personalityType === 'villain');
     }
+
+        // Call the nextQuestion function to display the first question from the filteredQuestions array.
+        nextQuestion(filteredQuestions, 0);
 
     $('.ans-btn').prop('disabled', true); //Prevent multiple button clicks
     $(this).addClass("selected"); // add selected class to users choice.
 });
-
-
-
-// Using event delegation to attach event listener to the parent element #answer-box
-// Handle click events on answer buttons to navigate the quiz and tally scores.
-$('#answer-box').on('click', '.hero-ans-btn, .villain-ans-btn', function() {
-    const character = $(this).data("character"); // Retrieve the 'character' data attribute from the clicked button.
-    updateCharacterScore(character);
-    $('.hero-ans-btn, .villain-ans-btn').prop('disabled', true); // Prevent multiple button clicks.
-    $(this).addClass("selected"); // Adds a selected class to the user's choice for styling.
-    // Check if button clicked has a class of hero or villain (jQuery hasClass() Method) and proceed accordingly. 
-    if ($(this).hasClass('hero-ans-btn')) {
-        proceedToNextHeroQuestion();
-    } else if ($(this).hasClass('villain-ans-btn')) {
-        proceedToNextVillainQuestion();
-    }
-});
-
-
 
 //Commonly used functions--------------------------------------------------------------------------
 
@@ -92,14 +80,20 @@ function generateAnswerButtons(question, buttonClass, attribute) {
         const button = $('<button></button>');
         // Set button text
         button.text(answer.text);
-        // Add a class to the button (ans-btn, hero-ans-btn or villain-ans-btn) for styling
+        // Check if the current question is not the first question. THe first question has button class 'ans-btn'
+        if (question.questionNumber !== 1) {
+            // Determine the button class based on the question's personality type using ternary operator
+            buttonClass = question.personalityType === 'hero' ? 'hero-ans-btn' : 'villain-ans-btn';
+        }
+        // Add the determined button class to the button, which affects its styling and event handling.
         button.addClass(buttonClass);
-        // Add personality/character attribute property to button
-        button.data(attribute, answer[attribute]); // Use square brackets notation to access answer object. If attribute is 'personality' then accesses the value of the 'personality' property i.e. hero or villain. 
+        // Add personality/character attribute property to the button
+        button.data(attribute, answer[attribute]);
         // Append the button to the answerButtonsElement
         answerButtonsElement.append(button);
     });
 }
+
 
 function updateCharacterScore(character) {
     switch (character) {
@@ -155,55 +149,58 @@ function startGame() {
 
 //Show Branch Question--------------------------------------------------------------------------
 // Displays the first question where the user chooses between hero and villain paths.
-function showFirstQuestion(index) { 
-    const question = firstQuestion[index]; // store the current question
+function showFirstQuestion() { 
+    const question = questions[0]; // store the current question
     displayQuestion(question);
     generateAnswerButtons(question, 'ans-btn', 'personality'); // For branch questions
 };
 
-
-
 //Start Hero Path--------------------------------------------------------------------------
 // Initiates the hero path of the quiz.
-function startHeroPath() { 
-    nextHeroQuestion(currentHeroQuestionIndex); // calls the function to display the first hero question.
-}
 
-// Display the next hero question with a fade transition
-function nextHeroQuestion(index) { 
-    // Fade out the main container before displaying the question.
+// Function to display the next question in the quiz
+function nextQuestion(filteredQuestions, currentIndex, buttonClass) {
+    // Fade out the main container before displaying the next question
     mainContainer.fadeOut(1000, function() {
-        // Retrieves the hero question object from the heroQuestions array based on the provided index.
-        const question = heroQuestions[index];
+        // Retrieve the current question based on the currentIndex
+        const question = filteredQuestions[currentIndex];
+
+        // Display the current question on the screen
         displayQuestion(question);
-        // Clears any previously displayed answer buttons.
+
+        // Clear any existing answer buttons before generating new ones
         answerButtonsElement.empty();
-        generateAnswerButtons(question, 'hero-ans-btn', 'character'); // For hero questions.
 
-       
-       
+        // Dynamically create answer buttons for the current question
+        generateAnswerButtons(question, buttonClass, 'character');
 
-        // Fades in the main container after setting up the question and answer buttons.
-        mainContainer.fadeIn(1000);
-    });
-}
-
-// Move to the next hero question or end the path if there are no more questions
-function proceedToNextHeroQuestion() {
-        currentHeroQuestionIndex++;
-        if (currentHeroQuestionIndex < heroQuestions.length) {
-            // Call nextHeroQuestion function recursively to display the next question with a fade-in effect
-            nextHeroQuestion(currentHeroQuestionIndex);
-        } else {
-             // No more hero questions, end the hero path and proceed to revelation.
-            revelation();
+        // Remove any previous click event handlers to prevent multiple triggers and attach a new click event handler to handle answer selection
+        $('#answer-box').off('click').on('click', '.hero-ans-btn, .villain-ans-btn', function() {
+            const character = $(this).data("character"); // Retrieve the 'character' data attribute from the clicked button to update the character's score.
+            updateCharacterScore(character);
+            $('.hero-ans-btn, .villain-ans-btn').prop('disabled', true); // Disable all answer buttons to prevent multiple selections
+            $(this).addClass("selected"); // Adds a selected class to the user's choice for styling.
+            
+            // Increment the currentIndex to move to the next question
+            currentIndex++;
+            // Check if there are more questions to display
+            if (currentIndex < filteredQuestions.length) {
+                // If there are more questions, display the next one
+                nextQuestion(filteredQuestions, currentIndex, buttonClass);
+            } else {
+                // If there are no more questions, proceed to the end of the quiz
+                revelation();
             }
-        }
-      
-//Start Villain Path--------------------------------------------------------------------------
-function startVillainPath() { // initiate villain path
-    nextVillainQuestion(currentVillainQuestionIndex); // calls the function to display the first hero question.
+        });     
+    });
+
+    // Fade in the main container to show the next question
+    mainContainer.fadeIn(1000);
 }
+
+
+//Start Villain Path--------------------------------------------------------------------------
+
 
 function nextVillainQuestion(index) { // Display the next hero question with a fade-in effect
     // Fade out the main container before displaying the question.
@@ -358,8 +355,7 @@ document.getElementById("play-pause").addEventListener("click", function(){ // E
 document.getElementById("play-pause").textContent = "▶";
 
 //QUESTIONS--------------------------------------------------------------------------
-// Branch Question
-const firstQuestion = [
+const questions = [
     {
         title: "Chapter 1: The Choice",
         questionNumber: 1,
@@ -377,13 +373,11 @@ const firstQuestion = [
                 personality: "villain"
             }
         ]
-    }
-];
-
-// Hero Questions
-const heroQuestions = [
+    },
     {
+        personalityType: "Hero",
         title: "Chapter 2: Embracing Your Past",
+        personalityType: "hero",
         questionNumber: 2,
         question: "You accept the stranger's help and follow them to a hidden room filled with newspaper clippings, photographs, and documents. They reveal that you were once a renowned detective, but your memory loss has left you vulnerable. How do you react to this revelation?",
         image: "assets/images/hero-chapter-2.webp",
@@ -419,8 +413,10 @@ const heroQuestions = [
         ]
     },
     {
+        personalityType: "Hero",
         title: "Chapter 3: Unravelling the Mystery",
         questionNumber: 3,
+        personalityType: "hero",
         question: "Unraveling the Mystery: As you delve deeper into the mystery of your identity, you uncover a trail of clues leading to a notorious criminal organisation operating in the shadows of Gotham. How do you choose to confront this threat?",
         image: "assets/images/hero-chapter-3.webp",
         answers: [
@@ -455,8 +451,10 @@ const heroQuestions = [
         ]
     },
     {
+        personalityType: "Hero",
         title: "Chapter 4: The Water Supply Threat",
         questionNumber: 4,
+        personalityType: "hero",
         question: "While investigating, you overhear a conversation revealing that a criminal gang plans to poison Gotham's water supply. How do you choose to respond?",
         image: "assets/images/hero-chapter-4.webp",
         answers: [
@@ -491,8 +489,10 @@ const heroQuestions = [
         ]
     },
     {
+        personalityType: "Hero",
         title: "Chapter 5: Infiltrating the Enemy Hideout",
         questionNumber: 5,
+        personalityType: "hero",
         question: "You learn the location of the criminal organisation's hideout and must decide how to approach it. How do you proceed?",
         image: "assets/images/hero-chapter-5.webp",
         answers: [
@@ -527,8 +527,10 @@ const heroQuestions = [
         ]
     },
     {
+        personalityType: "Hero",
         title: "Chapter 6: Rescuing the Hostages",
         questionNumber: 6,
+        personalityType: "hero",
         question: "While investigating the hideout, you discover innocent hostages being held captive by the criminals. How do you proceed?",
         image: "assets/images/hero-chapter-6.webp",
         answers: [
@@ -563,8 +565,10 @@ const heroQuestions = [
         ]
     },
     {
+        personalityType: "Hero",
         title: "Chapter 7: Escaping the Villain's Lair",
         questionNumber: 7,
+        personalityType: "hero",
         image: "assets/images/hero-chapter-7.webp",
         question: "After freeing the hostages you are captured by the villainous mastermind, you find yourself imprisoned in their elaborate and heavily guarded lair. How do you plan your daring escape?",
         answers: [
@@ -599,8 +603,10 @@ const heroQuestions = [
         ]
     },
     {
+        personalityType: "Hero",
         title: "Chapter 8: The Final Confrontation",
         questionNumber: 8,
+        personalityType: "hero",
         image: "assets/images/hero-chapter-8.webp",
         question: "After escaping you face the leader of the criminal organisation in a final showdown. How do you approach this dangerous encounter?",
         answers: [
@@ -633,12 +639,9 @@ const heroQuestions = [
                 character: "Batgirl"
             }
         ]
-    }
-];
-
-// Villain Questions
-const villainQuestions = [
+    },
     {
+        personalityType: "villain",
         title: "Chapter 2: The Rise of Darkness",
         questionNumber: 2,
         question: "As you emerge from the shadows of Gotham's underworld, you realise the potential for power and control that lies within your grasp. How do you begin your journey to ascendancy?",
@@ -675,6 +678,7 @@ const villainQuestions = [
         ]
     },
     {
+        personalityType: "villain",
         title: "Chapter 3: Hostage Crisis",
         questionNumber: 3,
         question: "You've captured a group of hostages in your latest scheme. How do you use them to further your agenda and maintain control?",
@@ -711,6 +715,7 @@ const villainQuestions = [
         ]
     },
     {
+        personalityType: "villain",
         title: "Chapter 4: Evading Capture",
         questionNumber: 4,
         question: "As law enforcement closes in on your location, how do you evade capture?",
@@ -747,6 +752,7 @@ const villainQuestions = [
         ]
     },
     {
+        personalityType: "villain",
         title: "Chapter 5: Reign of Terror",
         questionNumber: 5,
         question: "With Gotham firmly in your grip, you now seek to instill fear and obedience among its inhabitants. How do you maintain your iron rule over the city?",
@@ -783,6 +789,7 @@ const villainQuestions = [
         ]
     },
     {
+        personalityType: "villain",
         title: "Chapter 6: Final Showdown",
         questionNumber: 6,
         question: "As the heroes rally to challenge your reign of terror, you prepare for a final confrontation to determine the fate of Gotham. How do you intend to emerge victorious and solidify your legacy as the city's ultimate villain?",
@@ -815,6 +822,7 @@ const villainQuestions = [
         ]
     },
     {
+        personalityType: "villain",
         title: "Chapter 7: Subjugation",
         questionNumber: 7,
         question: "With the heroes defeated and Gotham firmly under your control, you now seek to crush any remaining resistance and assert your dominance over the city. How do you ensure that none dare oppose you?",
@@ -847,6 +855,7 @@ const villainQuestions = [
         ]
     },
     {
+        personalityType: "villain",
         title: "Chapter 8: Eternal Darkness",
         questionNumber: 8,
         question: "With your grip on power unchallenged and your dominion extending far beyond Gotham, you now seek to establish an eternal legacy of darkness and fear. How do you ensure that your reign of terror will endure for generations to come?",
