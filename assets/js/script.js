@@ -144,22 +144,27 @@ function nextQuestion(filteredQuestions, currentIndex, buttonClass) {
             $('.hero-ans-btn, .villain-ans-btn').prop('disabled', true); // Disable all answer buttons to prevent multiple selections
             $(this).addClass("selected"); // Adds a selected class to the user's choice for styling.
             
-        
-            // Increment the currentIndex to move to the next question
-            currentIndex++;
-            // Check if there are more questions to display
-            if (currentIndex < filteredQuestions.length) {
-                // If there are more questions, display the next one
-                nextQuestion(filteredQuestions, currentIndex, buttonClass);
-            } else {
-                // If there are no more questions, proceed to the end of the quiz
-                revelation();
-            }
+            incrementQuestions(currentIndex, buttonClass);
+
+          
         });     
     });
 
     // Fade in the main container to show the next question
     mainContainer.fadeIn(1000);
+}
+
+function incrementQuestions(currentIndex, buttonClass) {
+    // Increment the currentIndex to move to the next question
+    currentIndex++;
+    // Check if there are more questions to display
+    if (currentIndex < filteredQuestions.length) {
+        // If there are more questions, display the next one
+        nextQuestion(filteredQuestions, currentIndex, buttonClass);
+    } else {
+        // If there are no more questions, proceed to the end of the quiz
+        revelation();
+    }
 }
 
 // Function to update the characters score
