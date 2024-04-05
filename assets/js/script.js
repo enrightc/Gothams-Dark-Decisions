@@ -25,19 +25,6 @@ let userCharacter;
 let personality;
 let startBlocked = false;
 
-//Event Listeners--------------------------------------------------------------------------
-
-// Reveal the user's character upon clicking the reveal button.
-$(".reveal-btn").on("click", function() { 
-    displayResult(); // Call the displayResult function to show the user's character
-});
-
- // Resets the game when refresh button clicked at the end of the quiz,
- $("#game-reset").on("click", function() {
-    window.location.reload();
-});
-
-
 //Commonly used functions--------------------------------------------------------------------------
 
 // Function to display the title, current question and background image.
@@ -71,6 +58,108 @@ function generateAnswerButtons(question, buttonClass, attribute) {
         // Append the button to the answerButtonsElement
         answerButtonsElement.append(button);
     });
+}
+
+//START GAME--------------------------------------------------------------------------
+  // Begin the quiz when the start button is clicked.
+  $("#start-btn").on("click", function() {
+    // prevent multiple clicks of start button
+    if (startBlocked == false){
+        startBlocked = true;  // Set startBlocked to true to prevent further clicks
+        startGame(); // Calls the startGame function when the start button is clicked
+    }
+});
+
+// Starts the quiz by transitioning from the intro to the first question.
+function startGame() {  
+    // Fade out the main content to transition into the quiz section.
+    mainContainer.fadeOut(2000, function() {   
+        // Hide the introduction and show the quiz container for the user to start answering questions.
+        $("#intro").addClass("hidden");
+        $("#game-container").removeClass("hidden");
+        mainContainer.fadeIn(1000); // Fade in the main container
+        // Call showFirstQuestion function to display the first question
+        showFirstQuestion(0);
+    });
+}
+
+//Show Branch Question / Q.1.--------------------------------------------------------------------------
+// Displays the first question where the user chooses between hero and villain paths.
+function showFirstQuestion() { 
+    const question = questions[0]; // store the current question
+    displayQuestion(question);
+    generateAnswerButtons(question, 'ans-btn', 'personality'); // For branch questions
+};
+
+// Determine the users chosen path (hero or villain) based on the answer given to question one and proceed the quiz accordingly. 
+// Disables all answer buttons to prevent further selections and add a class of selected to the button for visual verification.
+$('#answer-box').on('click', '.ans-btn', function() {
+    const personality = $(this).data("personality");
+    checkPersonality(personality);
+    $('.ans-btn').prop('disabled', true); //Prevent multiple button clicks
+    $(this).addClass("selected"); // add selected class to users choice.
+});
+
+// function to check the personality (hero/villain) from question one and filter out the appropriate proceeding questions from the questions array. 
+function checkPersonality(personality) {
+    // Filter questions based on the selected personality
+    if (personality === "hero") {
+        // If the user selects "hero" the question array is filtered to include only questions with the personalityType of 'hero'.
+        filteredQuestions = questions.filter(question => question.personalityType === 'hero');
+        console.log(filteredQuestions);
+        console.log(personality);
+        } else if (personality === "villain") {
+        // If the user selects "hero" the question array is filtered to include only questions with the personalityType of 'hero'.
+        filteredQuestions = questions.filter(question => question.personalityType === 'villain');
+        console.log(filteredQuestions);
+        console.log(personality);
+        }
+
+    // Proceed to the next question
+    nextQuestion(filteredQuestions, 0);
+}
+
+//Start Hero/villain Path--------------------------------------------------------------------------
+
+// Function to display the next question in the quiz
+function nextQuestion(filteredQuestions, currentIndex, buttonClass) {
+    // Fade out the main container before displaying the next question
+    mainContainer.fadeOut(1000, function() {
+        // Retrieve the current question based on the currentIndex
+        const question = filteredQuestions[currentIndex];
+
+        // Display the current question on the screen
+        displayQuestion(question);
+
+        // Clear any existing answer buttons before generating new ones
+        answerButtonsElement.empty();
+
+        // Dynamically create answer buttons for the current question
+        generateAnswerButtons(question, buttonClass, 'character');
+
+        // Remove any previous click event handlers to prevent multiple triggers and attach a new click event handler to handle answer selection
+        $('#answer-box').off('click').on('click', '.hero-ans-btn, .villain-ans-btn', function() {
+            const character = $(this).data("character"); // Retrieve the 'character' data attribute from the clicked button to update the character's score.
+            updateCharacterScore(character);
+            $('.hero-ans-btn, .villain-ans-btn').prop('disabled', true); // Disable all answer buttons to prevent multiple selections
+            $(this).addClass("selected"); // Adds a selected class to the user's choice for styling.
+            
+        
+            // Increment the currentIndex to move to the next question
+            currentIndex++;
+            // Check if there are more questions to display
+            if (currentIndex < filteredQuestions.length) {
+                // If there are more questions, display the next one
+                nextQuestion(filteredQuestions, currentIndex, buttonClass);
+            } else {
+                // If there are no more questions, proceed to the end of the quiz
+                revelation();
+            }
+        });     
+    });
+
+    // Fade in the main container to show the next question
+    mainContainer.fadeIn(1000);
 }
 
 // Function to update the characters score
@@ -109,111 +198,6 @@ function updateCharacterScore(character) {
             console.log("Catwoman score:", catwoman);
     }
 };
-
-
-//START GAME--------------------------------------------------------------------------
-  // Begin the quiz when the start button is clicked.
-  $("#start-btn").on("click", function() {
-    // prevent multiple clicks of start button
-    if (startBlocked == false){
-        startBlocked = true;  // Set startBlocked to true to prevent further clicks
-        startGame(); // Calls the startGame function when the start button is clicked
-    }
-});
-
-// Starts the quiz by transitioning from the intro to the first question.
-function startGame() {  
-    // Fade out the main content to transition into the quiz section.
-    mainContainer.fadeOut(2000, function() {   
-        // Hide the introduction and show the quiz container for the user to start answering questions.
-        $("#intro").addClass("hidden");
-        $("#game-container").removeClass("hidden");
-        mainContainer.fadeIn(1000); // Fade in the main container
-        // Call showFirstQuestion function to display the first question
-        showFirstQuestion(0);
-    });
-}
-
-//Show Branch Question--------------------------------------------------------------------------
-// Displays the first question where the user chooses between hero and villain paths.
-function showFirstQuestion() { 
-    const question = questions[0]; // store the current question
-    displayQuestion(question);
-    generateAnswerButtons(question, 'ans-btn', 'personality'); // For branch questions
-};
-
-// Determine the users chosen path (hero or villain) based on the answer given to question one and proceed the quiz accordingly. 
-// Disables all answer buttons to prevent further selections and add a class of selected to the button for visual verification.
-$('#answer-box').on('click', '.ans-btn', function() {
-    const personality = $(this).data("personality");
-    checkPersonality(personality);
-    $('.ans-btn').prop('disabled', true); //Prevent multiple button clicks
-    $(this).addClass("selected"); // add selected class to users choice.
-});
-
-// function to check the personality (hero/villain) from question one and filter out the appropriate proceeding questions from the questions array. 
-function checkPersonality(personality) {
-    // Filter questions based on the selected personality
-    if (personality === "hero") {
-        // If the user selects "hero" the question array is filtered to include only questions with the personalityType of 'hero'.
-        filteredQuestions = questions.filter(question => question.personalityType === 'hero');
-        console.log(filteredQuestions);
-        console.log(personality);
-        } else if (personality === "villain") {
-        // If the user selects "hero" the question array is filtered to include only questions with the personalityType of 'hero'.
-        filteredQuestions = questions.filter(question => question.personalityType === 'villain');
-        console.log(filteredQuestions);
-        console.log(personality);
-        }
-
-    // Proceed to the next question
-    nextQuestion(filteredQuestions, 0);
-}
-
-
-
-
-//Start Hero/villain Path--------------------------------------------------------------------------
-
-// Function to display the next question in the quiz
-function nextQuestion(filteredQuestions, currentIndex, buttonClass) {
-    // Fade out the main container before displaying the next question
-    mainContainer.fadeOut(1000, function() {
-        // Retrieve the current question based on the currentIndex
-        const question = filteredQuestions[currentIndex];
-
-        // Display the current question on the screen
-        displayQuestion(question);
-
-        // Clear any existing answer buttons before generating new ones
-        answerButtonsElement.empty();
-
-        // Dynamically create answer buttons for the current question
-        generateAnswerButtons(question, buttonClass, 'character');
-
-        // Remove any previous click event handlers to prevent multiple triggers and attach a new click event handler to handle answer selection
-        $('#answer-box').off('click').on('click', '.hero-ans-btn, .villain-ans-btn', function() {
-            const character = $(this).data("character"); // Retrieve the 'character' data attribute from the clicked button to update the character's score.
-            updateCharacterScore(character);
-            $('.hero-ans-btn, .villain-ans-btn').prop('disabled', true); // Disable all answer buttons to prevent multiple selections
-            $(this).addClass("selected"); // Adds a selected class to the user's choice for styling.
-            
-            // Increment the currentIndex to move to the next question
-            currentIndex++;
-            // Check if there are more questions to display
-            if (currentIndex < filteredQuestions.length) {
-                // If there are more questions, display the next one
-                nextQuestion(filteredQuestions, currentIndex, buttonClass);
-            } else {
-                // If there are no more questions, proceed to the end of the quiz
-                revelation();
-            }
-        });     
-    });
-
-    // Fade in the main container to show the next question
-    mainContainer.fadeIn(1000);
-}
 
 //Revelation Function--------------------------------------------------------------------------
 // After all questions have been asked display the revelation
@@ -262,6 +246,12 @@ function score() {
         userCharacter = "Catwoman";
     }
 }
+
+// Reveal the user's character upon clicking the reveal button.
+$(".reveal-btn").on("click", function() { 
+    displayResult(); // Call the displayResult function to show the user's character
+});
+
 
 // Character Reveal--------------------------------------------------------------------------
 
@@ -318,11 +308,12 @@ function displayResult() {
     });
 }
 
+ // Resets the game when refresh button clicked at the end of the quiz,
+ $("#game-reset").on("click", function() {
+    window.location.reload();
+});
 
-
-
-
-//Voiceover--------------------------------------------------------------------------
+//Voiceover in intro--------------------------------------------------------------------------
 // from Alon Zilberman on stackflow (See README)
 // Function to toggle voiceover playback.
 document.getElementById("play-pause").addEventListener("click", function(){ // Event listern to play voiceover/narration
