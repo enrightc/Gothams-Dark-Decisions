@@ -202,31 +202,7 @@ function nextQuestion(filteredQuestions, currentIndex, buttonClass) {
 //Start Villain Path--------------------------------------------------------------------------
 
 
-function nextVillainQuestion(index) { // Display the next hero question with a fade-in effect
-    // Fade out the main container before displaying the question.
-    mainContainer.fadeOut(1000, function() {
-    // Retrieves the villain question object from the villainQuestions array based on the provided index
-    const question = villainQuestions[index];
-    displayQuestion(question);
-    // Clears any previously displayed answer buttons
-    answerButtonsElement.empty();
-    generateAnswerButtons(question, 'villain-ans-btn', 'character'); // For villain questions
-    // Fades in the main container after setting up the question and answer buttons.
-    mainContainer.fadeIn(1000);
-});
-}
 
-function proceedToNextVillainQuestion() {
-    // Move to the next villain question or end the path if there are no more questions
-    currentVillainQuestionIndex++;
-    if (currentVillainQuestionIndex < villainQuestions.length) {
-        // Call nextVillainQuestion function recursively to display the next question with a fade-in effect
-        nextVillainQuestion(currentVillainQuestionIndex);
-        } else {
-        // No more hero questions, end the hero path and proceed to revelation.
-        revelation();
-        }
-    };
 
 //Revelation Function--------------------------------------------------------------------------
 // After all questions have been asked display the revelation
