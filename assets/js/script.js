@@ -94,7 +94,7 @@ function showFirstQuestion() {
 // Determine the users chosen path (hero or villain) based on the answer given to question one and proceed the quiz accordingly. 
 // Disables all answer buttons to prevent further selections and add a class of selected to the button for visual verification.
 $('#answer-box').on('click', '.ans-btn', function() {
-    const personality = $(this).data("personality");
+    personality = $(this).data("personality");
     checkPersonality(personality);
     $('.ans-btn').prop('disabled', true); //Prevent multiple button clicks
     $(this).addClass("selected"); // add selected class to users choice.
@@ -232,24 +232,28 @@ function revelation() {
 function score() { 
     // assign the highest scoring character to maxScore variable.
     let maxScore = Math.max(batman, robin, redHood, batgirl,theJoker, thePenguin, bane, catwoman);
+    
+    let topScorers = []
     // Determine the charcter the users most aligns with assign, the userCharacter varible that character.
-    if (maxScore === batman) {
-        userCharacter = "Batman";
-    } else if (maxScore === robin) {
-        userCharacter = "Robin";
-    } else if (maxScore === redHood) {
-        userCharacter = "Red Hood";
-    } else if (maxScore === batgirl) {
-        userCharacter = "Batgirl";
-    } else if (maxScore === theJoker) {
-        userCharacter = "The Joker"; 
-    } else if (maxScore === thePenguin) {
-        userCharacter = "The Penguin";
-    } else if (maxScore === bane) {
-        userCharacter = "Bane";
-    } else if (maxScore === catwoman) {
-        userCharacter = "Catwoman";
+    // Check each character's score and add the character to topCharacters if their score equals maxScore. Ussing if statements to ensure each one checked independently. 
+    if (batman === maxScore) {
+        topScorers.push("Batman");
+    } if (robin === maxScore) {
+        topScorers.push("Robin");
+    } if (redHood === maxScore) {
+        topScorers.push("Red Hood");
+    } if (batgirl === maxScore) {
+        topScorers.push("Batgirl");
+    } if (theJoker === maxScore) {
+        topScorers.push("The Joker");
+    } if (thePenguin === maxScore) {
+        topScorers.push("The Penguin");
+    } if (bane === maxScore) {
+        topScorers.push("Bane");
+    } if (catwoman === maxScore) {
+        topScorers.push("Catwoman");
     }
+    console.log("Top Scorersx: ", topScorers);
 }
 
 // Reveal the user's character upon clicking the reveal button.
