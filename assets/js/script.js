@@ -4,9 +4,6 @@
 // It handles user inputs, quiz logic, question navigation, and computes the final character outcome.
 // The quiz questions are included in arrays towards the end of this file. 
 
-// fadeIn transition to quiz introduction, enhancing user experience with a smooth start.
-$("main").fadeIn(2500);
-
 // Essential elements-----------------------------------------------------------------
 // Declaration of essential elements and variables for quiz logic.
 const mainContainer = $("main");
@@ -26,160 +23,162 @@ let personality;
 let startBlocked = false;
 
 //Commonly used functions--------------------------------------------------------------------------
-
-function fadeOutEffect(element, duration, callback) {
+function fadeOutEffect(element, duration, callback) { // Transition effect
     element.fadeOut(duration, function() {
-     callback () 
+     callback (); 
     });
 }
 
-function fadeInEffect(element, duration) {
+function fadeInEffect(element, duration) { // Transition effect
     element.fadeIn(duration, function() { 
     });
 }
 
-// Function to display the title, current question and background image.
+/**
+ Displays the content of the current quiz question on the quiz.
+ This function updates the question title, question text, and the background image bassed on the passed object.
+ based on the passed question object. It also updates the display of the current
+ question number.
+*/
 function displayQuestion (question) { 
-    // use jQuery .text() method to set text content of question-box element to the title and text of first question
-    $('#title').text(question.title);
-    $('#question-box').text(question.question);
-    // Set the background image of the body
-    $('body').css('background-image', 'url("' + question.image + '")');
-    // Display current quesiton number
-    $('#currentQuestion').text(question.questionNumber + " of 8");
+    $('#title').text(question.title); // Update the text content of the question title element.
+    $('#question-box').text(question.question); // Update the text content of the question box element with the current question's text.
+    $('body').css('background-image', 'url("' + question.image + '")'); // Update the background image of the body element to the current question's image.
+    $('#currentQuestion').text(question.questionNumber + " of 8"); // Update the display of the current question number.
 }
 
-// Function to dynamically create answer buttons based on the current question.
+/**
+ Generates answer buttons dynamically for the current quiz question and appends them to the answer container.
+ The function dynamically sets the text, class, and  data attributes for each button based on the provided question details.
+ */
 function generateAnswerButtons(question, buttonClass, attribute) { 
-    // Loop through the answers and create button elements using forEach() with arrow function
-    question.answers.forEach(answer => {
-        // Create a button element with jQuery
-        const button = $('<button></button>');
-        // Set button text
-        button.text(answer.text);
-        // Check if the current question is not the first question. THe first question has button class 'ans-btn'
+    question.answers.forEach(answer => { // Iterate over the array of answers within the question object to create each button.
+        const button = $('<button></button>'); 
+        button.text(answer.text); // Set the button's text content to the current answer's text.
+        /* 
+        Check if the current question is not the first question. determine the button class based on the questions personality type.
+        The first question uses the 'ans-btn' class
+        */
         if (question.questionNumber !== 1) {
-            // Determine the button class based on the question's personality type using ternary operator
             buttonClass = question.personalityType === 'hero' ? 'hero-ans-btn' : 'villain-ans-btn';
         }
-        // Add the determined button class to the button, which affects its styling and event handling.
-        button.addClass(buttonClass);
-        // Add personality/character attribute property to the button
-        button.data(attribute, answer[attribute]);
-        // Append the button to the answerButtonsElement
-        answerButtonsElement.append(button);
+        button.addClass(buttonClass); // Apply a class to style the button based on whether the question is for a hero or villain.
+        // Store the answers associated personality or character in a data attribute on the button.
+        button.data(attribute, answer[attribute]); 
+        answerButtonsElement.append(button); 
     });
 }
 
 //START GAME--------------------------------------------------------------------------
-  // Begin the quiz when the start button is clicked.
-  $("#start-btn").on("click", function() {
-    // prevent multiple clicks of start button
-    if (startBlocked == false){
-        startBlocked = true;  // Set startBlocked to true to prevent further clicks
-        startGame(); // Calls the startGame function when the start button is clicked
+// fadeIn transition to quiz introduction, enhancing user experience with a smooth start.
+mainContainer.fadeIn(2500);  
+
+$("#start-btn").on("click", function() { // Begin the quiz when the start button is clicked.
+    if (startBlocked == false){  // prevent multiple clicks of start button
+        startBlocked = true;  
+        startGame(); 
     }
 });
 
-// Starts the quiz by transitioning from the intro to the first question.
+// Initializes the quiz by transitioning from the introductory section to the first question.
 function startGame() {  
-    // Fade out the main content to transition into the quiz section.
-    fadeOutEffect (mainContainer, 2000, function() {   
-        // Hide the introduction and show the quiz container for the user to start answering questions.
+    fadeOutEffect (mainContainer, 2000, function() {   // Transition the main content out to set the stage for the quiz. 
+        // Switch from the intro view to the quiz view.
         $("#intro").addClass("hidden");
         $("#game-container").removeClass("hidden");
-        fadeInEffect (mainContainer, 1000) // Fade in the main container
-        // Call showFirstQuestion function to display the first question
-        showFirstQuestion(0);
+        // Ensure a smooth transition into the quiz content.
+        fadeInEffect (mainContainer, 1000); 
+        showFirstQuestion(0); // Load the first question to start the quiz experience.
     });
 }
 
 //Show Branch Question / Q.1.--------------------------------------------------------------------------
-// Displays the first question where the user chooses between hero and villain paths.
+/**
+Displays the first question of the quiz, setting up the initial interaction for the user.
+This involves presenting the question and generating the corresponding answer buttons.
+ */
 function showFirstQuestion() { 
-    const question = questions[0]; // store the current question
-    displayQuestion(question);
-    generateAnswerButtons(question, 'ans-btn', 'personality'); // For branch questions
-};
+    const question = questions[0]; // Retrieve the initial question from the questions array.
+    displayQuestion(question); // Utilise the displayQuestion function to render the question details.
+    // Generate answer buttons for the first question, establishing the interactive elements for the user.
+    generateAnswerButtons(question, 'ans-btn', 'personality'); 
+}
 
-// Determine the users chosen path (hero or villain) based on the answer given to question one and proceed the quiz accordingly. 
-// Disables all answer buttons to prevent further selections and add a class of selected to the button for visual verification.
+// Set up an event listener to determine the user's chosen path (hero or villain) after the first question.
 $('#answer-box').on('click', '.ans-btn', function() {
-    personality = $(this).data("personality");
-    checkPersonality(personality);
-    $('.ans-btn').prop('disabled', true); //Prevent multiple button clicks
-    $(this).addClass("selected"); // add selected class to users choice.
+    // Retrieve and store the personality type (hero or villain) from the clicked answer button's data attribute.
+    personality = $(this).data("personality"); 
+    checkPersonality(personality); // Call the checkPersonality function to filter subsequent questions based on the chosen personality.
+    $('.ans-btn').prop('disabled', true); // Disable all answer buttons to prevent changing the answer once one has been selected.
+    $(this).addClass("selected"); // Highlight the selected answer for visual confirmation by adding a 'selected' class.
 });
 
-// function to check the personality (hero/villain) from question one and filter out the appropriate proceeding questions from the questions array. 
+/**
+ Filters the quiz questions based on the user's chosen personality type (hero or villain).
+ This function determines which set of questions will be presented to the user for the remainder of the quiz.
+ */
 function checkPersonality(personality) {
     // Filter questions based on the selected personality
     if (personality === "hero") {
-        // If the user selects "hero" the question array is filtered to include only questions with the personalityType of 'hero'.
+        // Filter the questions array to include only those designated for the 'hero' pathway.
         filteredQuestions = questions.filter(question => question.personalityType === 'hero');
         console.log(filteredQuestions);
         console.log(personality);
         } else if (personality === "villain") {
-        // If the user selects "hero" the question array is filtered to include only questions with the personalityType of 'hero'.
+        // Filter for the 'villain' pathway if that's the chosen personality.
         filteredQuestions = questions.filter(question => question.personalityType === 'villain');
         console.log(filteredQuestions);
         console.log(personality);
         }
-
-    // Proceed to the next question
-    nextQuestion(filteredQuestions, 0);
+    nextQuestion(filteredQuestions, 0);  // Proceed to the next question of the filtered questions
 }
 
 //Start Hero/villain Path--------------------------------------------------------------------------
 
-// Function to display the next question in the quiz
+/**
+Advances the quiz to the next question, updating the quiz to reflect the new question's content.
+It handles the transition effects, updates the displayed question, and sets up the necessary event handlers for the new set of answer buttons.
+ */
 function nextQuestion(filteredQuestions, currentIndex, buttonClass) {
-    // Fade out the main container before displaying the next question
-    fadeOutEffect (mainContainer, 2000, function() {
-        // Retrieve the current question based on the currentIndex
-        const question = filteredQuestions[currentIndex];
-
+    fadeOutEffect (mainContainer, 2000, function() { // Transition out the current content to prepare for the new question.
+        const question = filteredQuestions[currentIndex]; // After fading out, retrieve and display the next question.
         // Display the current question on the screen
-        displayQuestion(question);
-
-        // Clear any existing answer buttons before generating new ones
-        answerButtonsElement.empty();
-
+        displayQuestion(question); // Update the quiz with the new questions details.
+        answerButtonsElement.empty(); // Clear previous answer buttons to make room for the new set.
         // Dynamically create answer buttons for the current question
-        generateAnswerButtons(question, buttonClass, 'character');
-
-        // Remove any previous click event handlers to prevent multiple triggers and attach a new click event handler to handle answer selection
+        generateAnswerButtons(question, buttonClass, 'character'); // Generate new answer buttons that correspond to the current question.
+        // Set up event handlers for the new answer buttons to handle user interaction.
         $('#answer-box').off('click').on('click', '.hero-ans-btn, .villain-ans-btn', function() {
-            const character = $(this).data("character"); // Retrieve the 'character' data attribute from the clicked button to update the character's score.
-            updateCharacterScore(character);
-            $('.hero-ans-btn, .villain-ans-btn').prop('disabled', true); // Disable all answer buttons to prevent multiple selections
-            $(this).addClass("selected"); // Adds a selected class to the user's choice for styling.
-            
-            incrementQuestions(currentIndex, buttonClass);
-
-          
+            const character = $(this).data("character"); // Extract the character associated with the selected answer.
+            updateCharacterScore(character); // Update the score based on the users selection.
+            $('.hero-ans-btn, .villain-ans-btn').prop('disabled', true); // Prevent further interactions with the buttons.
+            $(this).addClass("selected"); // Visually indicate the selected answer.
+            incrementQuestions(currentIndex, buttonClass); // Prepare for the next question or conclude the quiz based on the current progress.
         });     
     });
-
-    // Fade in the main container to show the next question
-    fadeInEffect (mainContainer, 1000) // Fade in the main container
+    fadeInEffect (mainContainer, 1000); // Fade in the main container
 }
 
-function incrementQuestions(currentIndex, buttonClass) {
-    // Increment the currentIndex to move to the next question
-    currentIndex++;
-    // Check if there are more questions to display
-    if (currentIndex < filteredQuestions.length) {
-        // If there are more questions, display the next one
+/**
+Advances the quiz to the next question or concludes the quiz if all questions have been answered.
+It increments the current question index and checks if there are more questions to display. If there are,
+ it calls nextQuestion with the new index. If not, it triggers the quiz conclusion process.
+*/
+function incrementQuestions(currentIndex, buttonClass) { // function advances quiz to next question based on current index, or end of quiz.
+    currentIndex++; // Proceed to the next question index.
+    if (currentIndex < filteredQuestions.length) { // There are more questions to display.
         nextQuestion(filteredQuestions, currentIndex, buttonClass);
-    } else {
-        // If there are no more questions, proceed to the end of the quiz
+    } else { // No more questions are left; trigger the end-of-quiz logic.
         revelation();
-        console.log("going to revelation")
+        console.log("going to revelation");
     }
 }
 
-// Function to update the characters score
+/**
+Increments the score of the specified character based on the users answer selection.
+This function is crucial for tracking how the user's choices align with different characters,
+ultimately determining the character outcome at the end of the quiz.
+*/
 function updateCharacterScore(character) {
     switch (character) {
         case "Batman":
@@ -214,46 +213,49 @@ function updateCharacterScore(character) {
             catwoman++;
             console.log("Catwoman score:", catwoman);
     }
-};
+}
 
 //Revelation Function--------------------------------------------------------------------------
-// After all questions have been asked display the revelation
+/**
+Triggers the end-of-quiz revelation sequence, displaying the final outcome based on the user's choices.
+This function transitions the view from the quiz to the result, showing either a hero or villain revelation
+ */
 function revelation() {
-    // Fade out the main container
-    fadeOutEffect (mainContainer, 2000, function() {
-    // hide game-container (questions and answers)
-    $("#game-container").addClass("hidden");
-    // show revelation
-    $("#revelation-container").removeClass("hidden");
-    // use if statement to show either hero or villain revelation based on user personality. 
-    if (personality === "hero") {
+    fadeOutEffect (mainContainer, 2000, function() { // Begin the transition by fading out the main quiz content.
+    $("#game-container").addClass("hidden"); // Hide the quiz content to prepare for the revelation display.
+    $("#revelation-container").removeClass("hidden"); // Unhide the container that will display the quiz outcome.
+    // Determine and display the final outcome based on the user's personality choice.
+    if (personality === "hero") { // Display the hero's revelation content and background if the user followed the hero path.
         $(".hero-revelation").removeClass("hidden");
         $('body').css('background-image', 'url("assets/images/hero-revelation-background.webp")');
-    } else {
+    } else { // Display the villain's revelation content and background if the user followed the villain path.
         $(".villain-revelation").removeClass("hidden");
         $('body').css('background-image', 'url("assets/images/villain-revelation-background.webp")');
     }
-    // Fade main back in
-    fadeInEffect (mainContainer, 1000) // Fade in the main container
+    fadeInEffect (mainContainer, 1000); // Fade the revelation box into view.
     });
-
-   
 }
 
-// Reveal the user's character upon clicking the reveal button.
+/**
+ Sets up an event listener for the "reveal" button click, initiating the scoring and result display process.
+ When the user clicks the reveal button, the quiz score is calculated, and the corresponding character result
+is displayed, concluding the quiz experience.
+ */
 $(".reveal-btn").on("click", function() { 
-    score();
-    displayResult(); // Call the displayResult function to show the user's character
+    score(); // Calculate the user's quiz score and determine their character.
+    displayResult(); // Display the determined character result to the user.
 });
 
-// Calculate users character based on their quiz score.
+/**
+ Calculates the users quiz score and determines their character based on the highest score achieved.
+Handles ties by random selection if necessary.
+ */
 function score() { 
-    // assign the highest scoring character to maxScore variable.
+    // Find the maximum score among all characters to identify the leading character(s).
     let maxScore = Math.max(batman, robin, redHood, batgirl,theJoker, thePenguin, bane, catwoman);
     
-    let topScorers = []
-    // Determine the charcter the users most aligns with assign, the userCharacter varible that character.
-    // Check each character's score and add the character to topCharacters if their score equals maxScore. Ussing if statements to ensure each one checked independently. 
+    let topScorers = [];
+    // Check each character's score against maxScore and populate the topScorers array accordingly.
     if (batman === maxScore) {
         topScorers.push("Batman");
     } if (robin === maxScore) {
@@ -273,36 +275,32 @@ function score() {
     }
     console.log("Top Scorers: ", topScorers);
 
-    // if only one character is stored in the topScorers array that character will be the userCharacter
+    // Assign the character to userCharacter, resolving ties by random selection if necessary.
     if (topScorers.length === 1) {
+        // Directly assign the character if there's a single top scorer.
         userCharacter = topScorers[0];
-        console.log(userCharacter)
-    
+        console.log(userCharacter);
     // in the event of a tiebreak and more than one character is stored in the topScorers array
-    } else {
-        // create a randomCharacter varialbe and assign it random number (0 - 1), multiply by the number of characters in the array and then round the number down.
-        // This number will represent a randomly selected index in the array that will be assigned to userCharacter.
+    } else { // If there's a tie, randomly select one of the top scorers as the users character.
         let randomCharacter = Math.floor(Math.random() * topScorers.length);
         userCharacter = topScorers[randomCharacter];
         console.log("Randomly selected character is", userCharacter);
     }
-    displayResult();
 }
 
-
-
-
 // Character Reveal--------------------------------------------------------------------------
-
-
-// Function to display the final result to the user.
+/**
+Displays the final character result to the user based on the quiz scores.
+This function transitions the view to reveal the character that aligns with the users choices,
+showing a personalised message, character bio, and image.
+ */
 function displayResult() { 
-    fadeOutEffect (mainContainer, 2000, function() {
+    fadeOutEffect (mainContainer, 2000, function() { // Transition out the current content to prepare for revealing the quiz result.
+        // Hide the current quiz content to switch to the result display.
         $("#revelation-container").addClass("hidden");  
         $("#results").removeClass("hidden");
-
-        switch (userCharacter) {
-            case "Batman":
+        switch (userCharacter) { // Determine and display the result based on the user's character outcome.
+            case "Batman": // Set the content for Batman, including text and image.
                 $('h1.character-reveal').text('You Are Batman');
                 $('p.character-bio').text("You are Gotham's legendary Dark Knight. With unparalleled detective skills and unwavering determination, you tirelessly fight against the city's criminal underworld. Your commitment to justice, coupled with your strategic brilliance and advanced technology, strikes fear into the hearts of evildoers. You embody the symbol of hope for Gotham, standing as its protector against the forces of darkness");
                 $('img.character-headshot').attr('src', 'assets/images/batman-headshot.webp').attr('alt', 'Batman headshot');
@@ -343,35 +341,46 @@ function displayResult() {
                 $('img.character-headshot').attr('src', 'assets/images/catwoman-headshot.webp').attr('alt', 'Catwomans headshot');
                 break;
         }
-        fadeInEffect (mainContainer, 1000) // Fade in the main container after displaying the result
+        fadeInEffect (mainContainer, 1000); // Fade in the result to smoothly transition to the reveal.
     });
 }
 
- // Resets the game when refresh button clicked at the end of the quiz,
- $("#game-reset").on("click", function() {
+// Set up an event listener on the "game-reset" button to reload the page, effectively resetting the quiz.
+ $("#game-reset").on("click", function() { // Reload the current page to start the quiz over.
     window.location.reload();
 });
 
-//Voiceover in intro--------------------------------------------------------------------------
+// Other Functions--------------------------------------------------------------------------
 // from Alon Zilberman on stackflow (See README)
-// Function to toggle voiceover playback.
-document.getElementById("play-pause").addEventListener("click", function(){ // Event listern to play voiceover/narration
-    var audio = document.getElementById('voiceover');
+/**
+Toggles the voiceover playback state when the play-pause button is clicked.
+The function changes the button's appearance based on the audio's playing state
+and controls the playback of the voiceover audio.
+ */
+document.getElementById("play-pause").addEventListener("click", function(){ // Add an event listener to the play-pause button for click events.
+    var audio = document.getElementById('voiceover'); // Access the audio element.
+    // Toggle the play/pause state based on the current class of the button.
     if(this.className == 'is-playing'){
+        // If audio is playing, pause it and update button appearance.
         this.className = "is-paused";
-        this.textContent = "▶"; // Play symbol
-        audio.pause();
-    } else {
-        this.className = "is-playing";
-        this.textContent = "❚❚"; // Pause symbol
-        audio.play();
+        this.textContent = "▶"; // Set to play symbol.
+        audio.pause(); // Pause the audio.
+    } else {  // If audio is paused, play it and update button appearance.
+        this.className = "is-playing"; 
+        this.textContent = "❚❚"; // Set to pause symbol.
+        audio.play(); // Play the audio.
     }
 });
-
-// Set the initial content to the play symbol
+// Set the initial content to the play symbol when the page loads.
 document.getElementById("play-pause").textContent = "▶";
 
 //QUESTIONS--------------------------------------------------------------------------
+/**
+Array of questions for the quiz, each with a structure that includes the question's title, 
+question number, text, associated image, and possible answers.
+Each answer has an associated number, text content, and a personality type to help 
+determine the user's path in the quiz based on their selections.
+ */
 const questions = [
     {
         title: "Chapter 1: The Choice",
@@ -380,19 +389,16 @@ const questions = [
         image: "assets/images/chapter-1-the-choice.webp",
         answers: [
             {
-                answerNumber: 1,
                 text: "Accept their help gratefully, hoping they can shed light on your situation",
                 personality: "hero"
             },
             {
-                answerNumber: 2,
                 text: "Firmly reject the offer, wary of trusting strangers and determined to rely solely on your own cunning and resources.",
                 personality: "villain"
             }
         ]
     },
     {
-        personalityType: "Hero",
         title: "Chapter 2: Embracing Your Past",
         personalityType: "hero",
         questionNumber: 2,
@@ -400,75 +406,49 @@ const questions = [
         image: "assets/images/hero-chapter-2.webp",
         answers: [
             {
-                answerNumber: 1,
                 text: "Embrace your past and begin piecing together the clues to uncover the truth.",
-                score: 4,
-                personality: "Hero",
                 character: "Batman"
             },
             {
-                answerNumber: 2,
                 text: "Seek further proof before fully accepting your identity as a detective.",
-                score: 3,
-                personality: "Hero",
                 character: "Robin"
             },
             {
-                answerNumber: 3,
                 text: "Express gratitude for the stranger's help but make it clear that you work alone, preferring to handle matters your own way.",
-                score: 2,
-                personality: "Hero",
                 character: "Red Hood"
             },
             {
-                answerNumber: 4,
                 text: "Remain skeptical and continue searching for answers on your own.",
-                score: 1,
-                personality: "Hero",
                 character: "Batgirl"
             }
         ]
     },
     {
-        personalityType: "Hero",
         title: "Chapter 3: Unravelling the Mystery",
-        questionNumber: 3,
         personalityType: "hero",
+        questionNumber: 3,
         question: "Unraveling the Mystery: As you delve deeper into the mystery of your identity, you uncover a trail of clues leading to a notorious criminal organisation operating in the shadows of Gotham. How do you choose to confront this threat?",
         image: "assets/images/hero-chapter-3.webp",
         answers: [
             {
-                answerNumber: 1,
                 text: "Gather evidence and build a case against the organisation, using your intellect and cunning to outsmart them.",
-                score: 4,
-                personality: "Hero",
                 character: "Batman"
             },
             {
-                answerNumber: 2,
                 text: "Confront the organisation head-on, using your combat skills to dismantle them and put an end to their criminal activities.",
-                score: 3,
-                personality: "Hero",
                 character: "Red Hood"
             },
             {
-                answerNumber: 3,
                 text: "Seek assistance from trusted allies or other heroes to take down the criminal organisation.",
-                score: 2,
-                personality: "Hero",
                 character: "Robin"
             },
             {
-                answerNumber: 4,
                 text: "Infiltrate the organisation from within, using stealth and deception to dismantle it from the inside.",
-                score: 1,
-                personality: "Hero",
                 character: "Batgirl"
             }
         ]
     },
     {
-        personalityType: "Hero",
         title: "Chapter 4: The Water Supply Threat",
         questionNumber: 4,
         personalityType: "hero",
@@ -476,37 +456,24 @@ const questions = [
         image: "assets/images/hero-chapter-4.webp",
         answers: [
             {
-                answerNumber: 1,
                 text: "Immediately mobilise your resources to stop the poisoning, utilising your network and investigative skills to uncover the gang's operation and put an end to their scheme.",
-                score: 4,
-                personality: "Hero",
                 character: "Batman"
             },
             {
-                answerNumber: 2,
                 text: "Gather evidence to expose the plot and rally public support against the criminals.",
-                score: 3,
-                personality: "Hero",
                 character: "Robin"
             },
             {
-                answerNumber: 3,
                 text: "Use any force necessary to thwart their plans.",
-                score: 2,
-                personality: "Hero",
                 character: "Red Hood"
             },
             {
-                answerNumber: 4,
                 text: "Utilise your technological expertise to hack into the gang's communication channels and disrupt their operation.",
-                score: 1,
-                personality: "Hero",
                 character: "Batgirl"
             }
         ]
     },
     {
-        personalityType: "Hero",
         title: "Chapter 5: Infiltrating the Enemy Hideout",
         questionNumber: 5,
         personalityType: "hero",
@@ -514,37 +481,24 @@ const questions = [
         image: "assets/images/hero-chapter-5.webp",
         answers: [
             {
-                answerNumber: 1,
                 text: "Conduct surveillance to gather information and assess the enemy's strength before taking action.",
-                score: 4,
-                personality: "Hero",
                 character: "Batman"
             },
             {
-                answerNumber: 2,
                 text: "Formulate a strategic plan to infiltrate the hideout and neutralise the threat.",
-                score: 3,
-                personality: "Hero",
                 character: "Robin"
             },
             {
-                answerNumber: 3,
                 text: "Launch a surprise attack on the hideout, catching the criminals off guard.",
-                score: 2,
-                personality: "Hero",
                 character: "Red Hood"
             },
             {
-                answerNumber: 4,
                 text: "Utilise your agility and stealth to sneak into the hideout undetected.",
-                score: 1,
-                personality: "Hero",
                 character: "Batgirl"
             }
         ]
     },
     {
-        personalityType: "Hero",
         title: "Chapter 6: Rescuing the Hostages",
         questionNumber: 6,
         personalityType: "hero",
@@ -552,37 +506,24 @@ const questions = [
         image: "assets/images/hero-chapter-6.webp",
         answers: [
             {
-                answerNumber: 1,
                 text: "Use your agility and stealth to navigate the hideout and rescue the hostages undetected.",
-                score: 4,
-                personality: "Hero",
                 character: "Red Hood"
             },
             {
-                answerNumber: 2,
                 text: "Coordinate with your allies to execute a swift and efficient rescue operation.",
-                score: 3,
-                personality: "Hero",
                 character: "Robin"
             },
             {
-                answerNumber: 3,
                 text: "Take decisive action to neutralise the threat and free the hostages, accepting that there maybe collaleral damage.",
-                score: 2,
-                personality: "Hero",
                 character: "Red Hood"
             },
             {
-                answerNumber: 4,
                 text: "Utilize advanced hacking skills to remotely access the hideout's security systems, disabling alarms and unlocking doors to facilitate the hostages' rescue.",
-                score: 1,
-                personality: "Hero",
                 character: "Batgirl"
             }
         ]
     },
     {
-        personalityType: "Hero",
         title: "Chapter 7: Escaping the Villain's Lair",
         questionNumber: 7,
         personalityType: "hero",
@@ -590,37 +531,24 @@ const questions = [
         question: "After freeing the hostages you are captured by the villainous mastermind, you find yourself imprisoned in their elaborate and heavily guarded lair. How do you plan your daring escape?",
         answers: [
             {
-                answerNumber: 1,
                 text: "Use your keen detective skills to uncover weaknesses in the lair's security system and exploit them to break free.",
-                score: 4,
-                personality: "Hero",
                 character: "Batman"
             },
             {
-                answerNumber: 2,
                 text: "Overpower your guards with swift and decisive combat techniques, seizing their weapons and using them to fight your way out.",
-                score: 3,
-                personality: "Hero",
                 character: "Red Hood"
             },
             {
-                answerNumber: 3,
                 text: "Create a diversion by sabotaging the lair's infrastructure, causing chaos and confusion that allows you to slip away unnoticed.",
-                score: 2,
-                personality: "Hero",
                 character: "Robin"
             },
             {
-                answerNumber: 4,
                 text: "Utilise your acrobatic agility to navigate the perilous obstacles of the lair, finding hidden passages and escape routes to freedom.",
-                score: 1,
-                personality: "Hero",
                 character: "Batgirl"
             }
         ]
     },
     {
-        personalityType: "Hero",
         title: "Chapter 8: The Final Confrontation",
         questionNumber: 8,
         personalityType: "hero",
@@ -628,31 +556,19 @@ const questions = [
         question: "After escaping you face the leader of the criminal organisation in a final showdown. How do you approach this dangerous encounter?",
         answers: [
             {
-                answerNumber: 1,
                 text: "Utilise your intellect and strategic planning to outwit the leader and bring them to justice.",
-                score: 4,
-                personality: "Hero",
                 character: "Batman"
             },
             {
-                answerNumber: 2,
                 text: "Engage in a physical battle, determined to defeat the leader and end their reign of terror.",
-                score: 3,
-                personality: "Hero",
                 character: "Red Hood"
             },
             {
-                answerNumber: 3,
                 text: "Call upon your allies for support, knowing that together, you can overcome any challenge.",
-                score: 2,
-                personality: "Hero",
                 character: "Robin"
             },
             {
-                answerNumber: 4,
                 text: "Hack into the leader's security systems, gathering intel and weakening their defenses before staging a calculated ambush.",
-                score: 1,
-                personality: "Hero",
                 character: "Batgirl"
             }
         ]
@@ -665,31 +581,19 @@ const questions = [
         image: "assets/images/villain-chapter-2.webp",
         answers: [
             {
-                answerNumber: 1,
                 text: "Manipulate and deceive those around you, using their trust to further your own ambitions.",
-                score: 4,
-                personality: "Villain",
                 character: "The Joker"
             },
             {
-                answerNumber: 2,
                 text: "Assert dominance through displays of force and violence, ensuring that none dare oppose you.",
-                score: 3,
-                personality: "Villain",
                 character: "Bane"
             },
             {
-                answerNumber: 3,
                 text: "Form alliances with other emerging villains, pooling resources to strengthen your foothold in the city.",
-                score: 2,
-                personality: "Villain",
                 character: "The Penguin"
             },
             {
-                answerNumber: 4,
                 text: "Utilise your cunning and intellect to outmaneuver rivals, securing your position as a rising force in Gotham's criminal hierarchy.",
-                score: 1,
-                personality: "Villain",
                 character: "Catwoman"
             }
         ]
@@ -702,31 +606,19 @@ const questions = [
         image: "assets/images/villain-chapter-3.webp",
         answers: [
             {
-                answerNumber: 1,
                 text: "Threaten to harm the hostages unless your demands are met, instilling fear in both the authorities and the public.",
-                score: 4,
-                personality: "Villain",
                 character: "The Penguin"
             },
             {
-                answerNumber: 2,
                 text: "Publicly showcase the hostages as a display of your power, daring anyone to challenge your authority.",
-                score: 3,
-                personality: "Villain",
                 character: "Bane"
             },
             {
-                answerNumber: 3,
                 text: "Use the hostages as leverage to negotiate favourable terms with the authorities, ensuring that your interests are protected.",
-                score: 2,
-                personality: "Villain",
                 character: "The Joker"
             },
             {
-                answerNumber: 4,
                 text: "Exploit the emotional connection between the hostages and the public to manipulate public opinion and garner support for your cause.",
-                score: 1,
-                personality: "Villain",
                 character: "Catwoman"
             }
         ]
@@ -739,31 +631,19 @@ const questions = [
         image: "assets/images/villain-chapter-4.webp",
         answers: [
             {
-                answerNumber: 1,
                 text: "Use the hostages as human shields, daring the authorities to risk innocent lives in their pursuit of justice.",
-                score: 4,
-                personality: "Villain",
                 character: "The Penguin"
             },
             {
-                answerNumber: 2,
                 text: "Stage a diversionary tactic to distract the authorities while you quietly slip away with the hostages.",
-                score: 3,
-                personality: "Villain",
                 character: "Bane"
             },
             {
-                answerNumber: 3,
                 text: "Release the hostages unharmed as a sign of goodwill, buying yourself time to plan your next move without drawing unnecessary attention.",
-                score: 2,
-                personality: "Villain",
                 character: "Catwoman"
             },
             {
-                answerNumber: 4,
                 text: "Impersonate a hostage yourself, infiltrating the authorities' ranks to gather intelligence and turn the situation to your advantage.",
-                score: 1,
-                personality: "Villain",
                 character: "The Joker"
             }
         ]
@@ -776,31 +656,19 @@ const questions = [
         image: "assets/images/villain-chapter-5.webp",
         answers: [
             {
-                answerNumber: 1,
                 text: "Rule through fear and brutality, ensuring that dissenters are swiftly and ruthlessly dealt with.",
-                score: 4,
-                personality: "Villain",
                 character: "Bane"
             },
             {
-                answerNumber: 2,
                 text: "Establish a network of loyal enforcers and minions, enforcing your will through intimidation and violence.",
-                score: 3,
-                personality: "Villain",
                 character: "The Penguin"
             },
             {
-                answerNumber: 3,
                 text: "Exploit the weaknesses and vulnerabilities of Gotham's institutions, corrupting them to serve your own nefarious ends.",
-                score: 2,
-                personality: "Villain",
                 character: "Catwoman"
             },
             {
-                answerNumber: 4,
                 text: "Stay one step ahead of your enemies, using your cunning and intellect to outmaneuver any threats to your reign.",
-                score: 1,
-                personality: "Villain",
                 character: "The Joker"
             }
         ]
@@ -813,27 +681,19 @@ const questions = [
         image: "assets/images/villain-chapter-6.webp",
         answers: [
             {
-                answerNumber: 1,
                 text: "Unleash chaos and destruction upon the city, disrupting the heroes' plans and plunging Gotham into darkness.",
-                personality: "Villain",
                 character: "The Joker"
             },
             {
-                answerNumber: 2,
                 text: "Engage the heroes in a brutal showdown, using your sheer strength and combat prowess to overpower them.",
-                personality: "Villain",
                 character: "Bane"
             },
             {
-                answerNumber: 3,
                 text: "Outmaneuver the heroes at every turn, exploiting their weaknesses and vulnerabilities to gain the upper hand.",
-                personality: "Villain",
                 character: "Catwoman"
             },
             {
-                answerNumber: 4,
                 text: "Challenge the heroes to a final battle of wits and strategy, pitting your cunning intellect against their unwavering determination.",
-                personality: "Villain",
                 character: "The Penguin"
             }
         ]
@@ -846,27 +706,19 @@ const questions = [
         image: "assets/images/villain-chapter-7.webp",
         answers: [
             {
-                answerNumber: 1,
                 text: "Instill fear and obedience among the populace, ensuring that any who dare oppose you are swiftly and mercilessly dealt with.",
-                personality: "Villain",
                 character: "Bane"
             },
             {
-                answerNumber: 2,
                 text: "Establish a network of spies and informants, rooting out dissent and rebellion before it can take hold.",
-                personality: "Villain",
                 character: "The Penguin"
             },
             {
-                answerNumber: 3,
                 text: "Exploit the city's infrastructure and resources, using them to maintain your grip on power and crush any who would oppose you.",
-                personality: "Villain",
                 character: "Catwoman"
             },
             {
-                answerNumber: 4,
                 text: "Stay one step ahead of any potential threats, using your cunning and intellect to thwart any attempts to challenge your rule.",
-                personality: "Villain",
                 character: "The Joker"
             }
         ]
@@ -879,27 +731,19 @@ const questions = [
         image: "assets/images/villain-chapter-8.webp",
         answers: [
             {
-                answerNumber: 1,
                 text: "Crush any who dare oppose you with overwhelming force, ensuring that none dare challenge your authority.",
-                personality: "Villain",
                 character: "Bane"
             },
             {
-                answerNumber: 2,
                 text: "Establish a cult of personality around yourself, ensuring that your name strikes fear into the hearts of all who hear it.",
-                personality: "Villain",
                 character: "The Penguin"
             },
             {
-                answerNumber: 3,
                 text: "Exploit the fears and insecurities of the populace, using them to maintain control and suppress any who would rebel against you.",
-                personality: "Villain",
                 character: "Catwoman"
             },
             {
-                answerNumber: 4,
                 text: "Enforce your rule through ruthless displays of power, making examples of those who dare defy your supremacy.",
-                personality: "Villain",
                 character: "The Joker"
             }
         ]
