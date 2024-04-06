@@ -27,6 +27,17 @@ let startBlocked = false;
 
 //Commonly used functions--------------------------------------------------------------------------
 
+function fadeOutEffect(element, duration, callback) {
+    element.fadeOut(duration, function() {
+     callback () 
+    });
+}
+
+function fadeInEffect(element, duration) {
+    element.fadeIn(duration, function() { 
+    });
+}
+
 // Function to display the title, current question and background image.
 function displayQuestion (question) { 
     // use jQuery .text() method to set text content of question-box element to the title and text of first question
@@ -73,11 +84,11 @@ function generateAnswerButtons(question, buttonClass, attribute) {
 // Starts the quiz by transitioning from the intro to the first question.
 function startGame() {  
     // Fade out the main content to transition into the quiz section.
-    mainContainer.fadeOut(2000, function() {   
+    fadeOutEffect (mainContainer, 2000, function() {   
         // Hide the introduction and show the quiz container for the user to start answering questions.
         $("#intro").addClass("hidden");
         $("#game-container").removeClass("hidden");
-        mainContainer.fadeIn(1000); // Fade in the main container
+        fadeInEffect (mainContainer, 1000) // Fade in the main container
         // Call showFirstQuestion function to display the first question
         showFirstQuestion(0);
     });
@@ -124,7 +135,7 @@ function checkPersonality(personality) {
 // Function to display the next question in the quiz
 function nextQuestion(filteredQuestions, currentIndex, buttonClass) {
     // Fade out the main container before displaying the next question
-    mainContainer.fadeOut(1000, function() {
+    fadeOutEffect (mainContainer, 2000, function() {
         // Retrieve the current question based on the currentIndex
         const question = filteredQuestions[currentIndex];
 
@@ -151,7 +162,7 @@ function nextQuestion(filteredQuestions, currentIndex, buttonClass) {
     });
 
     // Fade in the main container to show the next question
-    mainContainer.fadeIn(1000);
+    fadeInEffect (mainContainer, 1000) // Fade in the main container
 }
 
 function incrementQuestions(currentIndex, buttonClass) {
@@ -164,6 +175,7 @@ function incrementQuestions(currentIndex, buttonClass) {
     } else {
         // If there are no more questions, proceed to the end of the quiz
         revelation();
+        console.log("going to revelation")
     }
 }
 
@@ -208,7 +220,7 @@ function updateCharacterScore(character) {
 // After all questions have been asked display the revelation
 function revelation() {
     // Fade out the main container
-    mainContainer.fadeOut(1000, function() {
+    fadeOutEffect (mainContainer, 2000, function() {
     // hide game-container (questions and answers)
     $("#game-container").addClass("hidden");
     // show revelation
@@ -222,11 +234,17 @@ function revelation() {
         $('body').css('background-image', 'url("assets/images/villain-revelation-background.webp")');
     }
     // Fade main back in
-    mainContainer.fadeIn(1000);
+    fadeInEffect (mainContainer, 1000) // Fade in the main container
     });
 
-    score();
+   
 }
+
+// Reveal the user's character upon clicking the reveal button.
+$(".reveal-btn").on("click", function() { 
+    score();
+    displayResult(); // Call the displayResult function to show the user's character
+});
 
 // Calculate users character based on their quiz score.
 function score() { 
@@ -257,7 +275,8 @@ function score() {
 
     // if only one character is stored in the topScorers array that character will be the userCharacter
     if (topScorers.length === 1) {
-        userCharacter = topScorers;
+        userCharacter = topScorers[0];
+        console.log(userCharacter)
     
     // in the event of a tiebreak and more than one character is stored in the topScorers array
     } else {
@@ -270,10 +289,7 @@ function score() {
     displayResult();
 }
 
-// Reveal the user's character upon clicking the reveal button.
-$(".reveal-btn").on("click", function() { 
-    displayResult(); // Call the displayResult function to show the user's character
-});
+
 
 
 // Character Reveal--------------------------------------------------------------------------
@@ -281,7 +297,7 @@ $(".reveal-btn").on("click", function() {
 
 // Function to display the final result to the user.
 function displayResult() { 
-    mainContainer.fadeOut(2000, function() { 
+    fadeOutEffect (mainContainer, 2000, function() {
         $("#revelation-container").addClass("hidden");  
         $("#results").removeClass("hidden");
 
@@ -327,7 +343,7 @@ function displayResult() {
                 $('img.character-headshot').attr('src', 'assets/images/catwoman-headshot.webp').attr('alt', 'Catwomans headshot');
                 break;
         }
-        mainContainer.fadeIn(1000); // Fade in the main container after displaying the result
+        fadeInEffect (mainContainer, 1000) // Fade in the main container after displaying the result
     });
 }
 
