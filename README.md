@@ -472,7 +472,9 @@ Results:
 | Feature                  |      Expected              |                                              Testing |                                 Outcome |
 | ------------------------|:-----------------------: | ------------------------------------------------------: | -------------------------------------: | 
 | Character display information             |    Relevant character information (name, bio, image) displayed based on user alignment.   |  Complete the quiz with different alignments and review displayed character information. | The correct character information is presented, reflecting the user's alignment and providing personalised results.
+| Tie break   |     In the event of a tiebreak (i.e. The user aligns with more than one character) a randomly selected character from the top results will be selected.    |        Run the quiz ensuring that a tiebreak is reached. Repeat this multiple times using the same pattern of answers ensuring a randlomy selected character is allocated from the top scoring characters, | Each time the quiz was concluded with a tie break a randomly selected character from the top scores was allocated.
 | Refresh   |     Clicking the button should refresh the window, allowing users to retake the quiz.    |        Click the button and verify window refresh. | The window successfully refreshes, returning users to the intro section for quiz retake, ensuring a seamless user experience.
+
 
 404 Error Page: 
 | Feature    |      Expected    |       Testing |                                 Outcome |

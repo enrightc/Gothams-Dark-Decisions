@@ -253,7 +253,21 @@ function score() {
     } if (catwoman === maxScore) {
         topScorers.push("Catwoman");
     }
-    console.log("Top Scorersx: ", topScorers);
+    console.log("Top Scorers: ", topScorers);
+
+    // if only one character is stored in the topScorers array that character will be the userCharacter
+    if (topScorers.length === 1) {
+        userCharacter = topScorers;
+    
+    // in the event of a tiebreak and more than one character is stored in the topScorers array
+    } else {
+        // create a randomCharacter varialbe and assign it random number (0 - 1), multiply by the number of characters in the array and then round the number down.
+        // This number will represent a randomly selected index in the array that will be assigned to userCharacter.
+        let randomCharacter = Math.floor(Math.random() * topScorers.length);
+        userCharacter = topScorers[randomCharacter];
+        console.log("Randomly selected character is", userCharacter);
+    }
+    displayResult();
 }
 
 // Reveal the user's character upon clicking the reveal button.
