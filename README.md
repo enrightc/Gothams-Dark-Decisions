@@ -4,55 +4,45 @@
 
 # TABLE OF CONTENTS
 - [Gotham's Dark Decisions](#gothams-dark-decisions)
-- [TABLE OF CONTENTS](#table-of-contents)
-- [INTRODUCTION](#introduction)
+- [Table of Contents](#table-of-contents)
+- [Introduction](#introduction)
+  - [About](#about)
+  - [Experience](#experience)
+  - [Project Rationale](#project-rationale)
   - [Overall Website Aim](#overall-website-aim)
   - [External User Goals](#external-user-goals)
   - [Website Owners Goals](#website-owners-goals)
+  - [Target Audience](#target-audience)
   - [User Story](#user-story)
-- [DESIGN](#design)
+- [Design](#design)
   - [Wireframes](#wireframes)
   - [Imagery](#imagery)
   - [Colours](#colours)
   - [Fonts](#fonts)
   - [Accessibility](#accessibility)
   - [Design Feedback](#design-feedback)
-- [FEATURES](#features)
+- [Game Functionality](#game-functionality)
+  - [Logic Overview](#logic-overview)
+  - [Workflow Diagram](#workflow-diagram)
+- [Features](#features)
   - [Existing Features](#existing-features)
-    - [**Navigation:**](#navigation)
-    - [**Hero Images:**](#hero-images)
-    - [**Landing Page:**](#landing-page)
-    - [**Cake of the Month Page:**](#cake-of-the-month-page)
-    - [**Baking Tips Page**](#baking-tips-page)
-    - [**Sign Up**](#sign-up)
-    - [**Footer**](#footer)
-    - [**404 Error Page**](#404-error-page)
-  - [Future Website Enhancements](#future-website-enhancements)
-- [BUGS](#bugs)
+  - [Future Enhancements](#future-enhancements)
+- [Bugs](#bugs)
   - [Fixed Bugs](#fixed-bugs)
-    - [Hero Image Rendering Issue on Mobile Devices](#hero-image-rendering-issue-on-mobile-devices)
-    - [Navigation Bar Overlaps Section Headings](#navigation-bar-overlaps-section-headings)
-    - [Sign-Up Button Not Visible on Small devices in Landscape Orientation](#sign-up-button-not-visible-on-small-devices-in-landscape-orientation)
-  - [Known Bugs (unresolved)](#known-bugs-unresolved)
-    - [Hover State Reset After Modal Closure](#hover-state-reset-after-modal-closure)
-- [TECHNOLOGY](#technology)
-  - [Languages Used:](#languages-used)
+  - [Known Bugs (Unresolved)](#known-bugs-unresolved)
+- [Technology](#technology)
+  - [Languages Used](#languages-used)
   - [Frameworks, Libraries and Programs Used](#frameworks-libraries-and-programs-used)
-- [TESTING](#testing)
+- [Testing](#testing)
   - [Manual Testing](#manual-testing)
-    - [Feature testing:](#feature-testing)
-    - [Browser Compatibility:](#browser-compatibility)
-    - [Responsiveness Test:](#responsiveness-test)
-  - [Validator Testing](#validator-testing)
-    - [HTML](#html)
-    - [CSS](#css)
-    - [Light House Analysis](#light-house-analysis)
-- [DEPLOYMENT](#deployment)
-- [CREDITS](#credits)
+  - [Automated Testing](#automated-testing)
+- [Deployment](#deployment)
+- [Credits](#credits)
   - [Content](#content)
   - [Images](#images)
   - [Resources](#resources)
   - [Acknowledgements](#acknowledgements)
+
 
 # INTRODUCTION
 ## About
@@ -82,7 +72,7 @@ To further immerse players in the world of Gotham City, the quiz incorporates el
 The ultimate goal of "Gotham's Dark Decisions" is to captivate players and provide them with an unforgettable experience that resonates with fans of the Dark Knight. By combining interactive elements, storytelling techniques, and engaging visuals, the quiz aims to leave a lasting impression and foster a deeper connection with the iconic characters of Gotham.
 
 ## Overall Website Aim
-Gotham's Dark Decisions aims to truly immerse users in the captivating world of Batman, providing an interactive platform that responds dynamically, allowing users to exploring their own heroic or villainous nature. Through engaging and thought-provoking questions, users will embark on a journey of self-discovery within the rich and atmospheric backdrop of Gotham City. The primary goal is to entertain and engage Batman enthusiasts, offering them a unique and immersive experience that celebrates the iconic characters and themes of the Batman universe. Additionally, it aims to provide users with valuable insights into their own personalities and the complex dynamics of heroism and villainy, all while fostering a sense of excitement and intrigue through engagment. Whether users are long time fans or newcomers to the world of Batman, Gotham's Dark Decisions invites them to explore, discover, and embrace their inner hero or villain.
+Gotham's Dark Decisions aims to truly immerse users in the captivating world of Batman, providing an interactive platform that responds dynamically, allowing users to explore their own heroic or villainous nature. Through engaging and thought-provoking questions, users will embark on a journey of self-discovery within the rich and atmospheric backdrop of Gotham City. The primary goal is to entertain and engage Batman enthusiasts, offering them a unique and immersive experience that celebrates the iconic characters and themes of the Batman universe. Additionally, it aims to provide users with valuable insights into their own personalities and the complex dynamics of heroism and villainy, all while fostering a sense of excitement and intrigue through engagment. Whether users are long time fans or newcomers to the world of Batman, Gotham's Dark Decisions invites them to explore, discover, and embrace their inner hero or villain.
 
 ## External User Goals
   - Take part in a quiz that responds dynamically to user input.
@@ -131,19 +121,19 @@ This iterative process allowed for flexibility in adapting to evolving project r
 </details>
 <details>
   <summary>Questions (Desktop)</summary>
-  <img src="docs/readme-images/wireframe-questions-desktop.png)" alt="Questions (Desktop)">
+  <img src="docs/readme-images/wireframe-questions-desktop.png" alt="Questions (Desktop)">
 </details>
 <details>
   <summary>Questions (Mobile)</summary>
-  <img src="docs/readme-images/wireframe-questions-mobile.png)" alt="Questions (Mobile)">
+  <img src="docs/readme-images/wireframe-questions-mobile.png" alt="Questions (Mobile)">
 </details>
 <details>
   <summary>Results (Desktop)</summary>
-  <img src="docs/readme-images/wireframe-results-desktop.png)" alt="Results (Desktop)">
+  <img src="docs/readme-images/wireframe-results-desktop.png" alt="Results (Desktop)">
 </details>
 <details>
   <summary>Results (Mobile)</summary>
-  <img src="docs/readme-images/wireframe-results-mobile.png)" alt="Results (Mobile)">
+  <img src="docs/readme-images/wireframe-results-mobile.png" alt="Results (Mobile)">
 </details>
 
 ## Imagery
@@ -174,7 +164,7 @@ Accessibility is a key consideration in the design of this quiz project, ensurin
 
 Colour Contrast: The chosen colour scheme offers a strong contrast, enhancing readability and ensuring that text and content are easily distinguishable against the background. This deliberate choice promotes a visually accessible experience for all users.
 
-Font Selection: Prioritizing simplicity and readability, clear and straightforward fonts have been selected. This ensures that the content remains legible for users with varying visual abilities, contributing to an inclusive user experience.
+Font Selection: Prioritising simplicity and readability, clear and straightforward fonts have been selected. This ensures that the content remains legible for users with varying visual abilities, contributing to an inclusive user experience.
 
 Background Images: Background images are purely decorative and serve no functional purpose within the quiz. Removing them would not affect the meaning or functionality of the quiz, thus maintaining accessibility for all users.
 
@@ -244,6 +234,7 @@ The Gotham's Dark Decision quiz is a JavaScript-powered frontend website designe
 <img src="docs/readme-images/workflow-diagram.png" alt="Logic overview illustrated in a workflow diagram">
 </details>
 
+
 # FEATURES
 ## Existing Features
 The following information provides an overview of the features found within the quiz.
@@ -260,16 +251,13 @@ Section Elements:
 
 4. Background Image: Setting a captivating scene, the background showcases the iconic Gotham cityscape illuminated by the iconic bat signal, captivating users from the moment they arrive on the page.
 
-<details>
-  <summary>Results (Mobile)</summary>
-  <img src="docs/readme-images/start-page.png" alt="Start Page">
-</details>
-
+![Start Page](docs/readme-images/start-page.png)
 
 **The Choice:**
 A pivotal moment of the quiz, the first question provides the user with a choice that will determine if they take the path of a hero or villain for the rest of the game. 
 
 Section Elements:
+
 5. Title: Each question is accompanied by a title to provide context.
 
 6. Question: This section acts as a placeholder for the initial question, setting the stage for the user's pivotal choice.
@@ -280,7 +268,7 @@ Section Elements:
 
 ![The Choice](docs/readme-images/the-choice.png)
 
-**The Questions**
+**The Questions:**
 Both the hero and villain paths consist of seven questions each, providing users with a distinct narrative journey based on their initial choice.
 
 Section Elements:
@@ -310,6 +298,7 @@ Section Elements:
 This final section reveals the character the user most closely aligns with.
 
 Section Elements:
+
 15. Character: This is the character the user aligns with.
 
 16. Character Bio: A short description of the character.
@@ -379,18 +368,23 @@ The Gotham's Dark Decisions quiz underwent comprehensive testing to ensure funct
 Manual testing focused on real-world user interactions, ensuring each quiz feature functioned as intended and provided a seamless user experience. This hands-on approach helped identify and rectify any issues, ensuring the quiz aligns with user expectations and stories.
 
 ### Feature testing:
-For each feature the expected outcomes and actual outcomes are clearly defined for each feature, making it easy to assess whether the application meets the requirements. This process makes it easier to identify and address any issues or discrepancies that may arise and also serves as a reference point for other developers to understand the expected behaviour of a feature. 
+For each feature the expected outcomes and actual outcomes are clearly defined for each feature, making it easy to assess whether the application meets the requirements. This process makes it easier to identify and address any issues or discrepancies that may arise and also serves as a reference point for other developers to understand the expected behaviour of a feature. The results are recorded in the following tables:
 
-Features that appear throughout quiz:
-| Feature                  |      Expected              |                                              Testing |                                 Outcome |
+<details>
+  <summary>Common Features</summary>
+
+  | Feature                  |      Expected              |                                              Testing |                                 Outcome |
 | ------------------------|:-----------------------: | ------------------------------------------------------: | -------------------------------------: | 
 | Favicon              |    The favicon should be visible in the browser tab.   |   Checked the visibility of the favicon in various browsers. | The favicon appeared as expected, ensuring brand consistency and recognition in the browser tab.
 | Background images    |      Background images dynamically change as quiz progresses      |        Ran through the quiz from start to finish, observing background changes. | Backgrounds changed as expected, enhancing the visual experience and immersing the user further into the quiz environment.
 | Transition effects             |     Sections of the quiz should fade in and out to provide smooth transitions between content.  |  Ran through the quiz from start to finish, paying attention to transition effects. | Transitions occurred as expected, contributing to a polished user experience and maintaining engagement.
 | Progress             |    The progress indicator should show the current question number out of the total number of questions.  |  Ran through the quiz from start to finish to check if progress updates.| The progress indicator updated with the current question number as expected, providing users with clear feedback on their quiz progression.
 | Console            |    No errors should be logged in the browser console during the quiz.  |  Checked the console in the browser's developer tools while running the quiz. | No console errors were logged, indicating that the quiz functions smoothly without encountering any unexpected issues.
+</details>
 
-Intro: 
+
+<details>
+  <summary>Intro</summary>
 
 | Feature                  |      Expected              |                                              Testing |                                 Outcome |
 | ------------------------|:-----------------------: | ------------------------------------------------------: | -------------------------------------: | 
@@ -399,9 +393,12 @@ Intro:
 | Start Button      |   Should be clearly visible   |   User feedback    |     The start button is prominently displayed and clearly labeled |
 | Start Button      |   Hover effect   |     Hovered on start button  |     Hovering over the start button changes its appearance to indicate interactivity. |
 | Start Button      |   Clicking the start button should initiate the quiz, transitioning the user to the first question.   |     Test functionality across various browsers and devices.  |  When clicked, the start button effectively transitions the user from the intro section to the quiz section |
+</details>
 
 
-The Quiz (Questions and Answers): 
+<details>
+  <summary>The Quiz (Questions and Answers)</summary>
+
 | Feature    |      Expected    |       Testing |                                 Outcome |
 | ------------------------|:-----------------------: | ------------------------------------------------------: | -------------------------------------: | 
 | Title       |   The title dynamically changes with each question, providing context for the user.   |  Run through the quiz to ensure the title updates accordingly. |  The title consistently changes to reflect the context of each question, guiding users through the quiz progression. |
@@ -414,27 +411,35 @@ The Quiz (Questions and Answers):
 | personality/character     |   Each answer is correctly assigned a personality/character, influencing quiz outcomes.   |   Review console logs to confirm character assignments for each answer.  |     Answers are accurately associated with the corresponding personality/character, influencing quiz progression and results.|
 | Score      |   Scores for characters increment based on user selections aligned with those characters.   |    Monitor console logs to track score changes for each character.  |  Scores increment correctly for characters based on user selections, contributing to personalised quiz results. |
 | Final Question (Q.8)      |   Submitting the final answer transitions the quiz to the revelation section.   |     Complete the quiz and verify transition after submitting the final answer.  |     Upon submitting the final answer, the quiz concludes and transitions to the revelation section, revealing the user's character alignment.|
+</details>
 
-Revelation:
+<details>
+  <summary>Revelation</summary>
+
 | Feature                  |      Expected              |                                              Testing |                                 Outcome |
 | ------------------------|:-----------------------: | ------------------------------------------------------: | -------------------------------------: | 
 | Concluding text             |    Relevant conclusion based on the hero or villain path chosen by the user.   |  Complete the quiz for both paths and review the conclusion text. | The conclusion text appropriately reflects the user's chosen path, providing a personalised narrative conclusion.
 | "Click to reveal"    |      The button should be visible and responsive, leading to the character reveal upon click.      |    Interact with the button and verify functionality. | The button is prominently displayed, responsive to hover, and successfully progresses to the character reveal section upon click.
+</details>
 
+<details>
+  <summary>Results</summary>
 
-Results:
 | Feature                  |      Expected              |                                              Testing |                                 Outcome |
 | ------------------------|:-----------------------: | ------------------------------------------------------: | -------------------------------------: | 
 | Character display information             |    Relevant character information (name, bio, image) displayed based on user alignment.   |  Complete the quiz with different alignments and review displayed character information. | The correct character information is presented, reflecting the user's alignment and providing personalised results.
 | Tie break   |     In the event of a tiebreak (i.e. The user aligns with more than one character) a randomly selected character from the top results will be selected.    |        Run the quiz ensuring that a tiebreak is reached. Repeat this multiple times using the same pattern of answers ensuring a randlomy selected character is allocated from the top scoring characters, | Each time the quiz was concluded with a tie break a randomly selected character from the top scores was allocated.
 | Refresh   |     Clicking the button should refresh the window, allowing users to retake the quiz.    |        Click the button and verify window refresh. | The window successfully refreshes, returning users to the intro section for quiz retake, ensuring a seamless user experience.
+</details>
 
+<details>
+  <summary>404 Error Page</summary>
 
-404 Error Page: 
 | Feature    |      Expected    |       Testing |                                 Outcome |
 | ------------------------|:-----------------------: | ------------------------------------------------------: | -------------------------------------: | 
 | 404 error page      |   Error page displayed when user attempts to reach a non existent page   |     intentionally navigate to new existent page  |     The 404 error page loads informing users they have landed on a non existent page. |
 | Restart quiz button      |   Clicking the button should return the user to the start of the quiz   |     Navigate to the 404 error page and click the button to verify it returns the user to the start of the quiz.  |     Upon clicking the button the user is sucessfully returned to the start of the quiz. |
+</details>
 
 ### Browser Compatibility:
 
@@ -499,6 +504,7 @@ Automated testing was undertaken using a range of open-source developer tools in
 ### HTML
 To test the markup validity [HTML Validator](https://validator.w3.org/) was used to assess markup validity and compliance with accessibility standards.
 The following warning/errors were identified and addressed:
+
 **Possible Misuse of Aria-label:** The aria-label attribute was originally attached to a div element, which is not considered an interactive element and therefore cannot have aria-label attributes.
 
 To resolve this issue and ensure compliance with accessibility standards, the div element was replaced with a button element. Buttons are interactive elements and are suitable for adding aria-label attributes.
@@ -524,9 +530,13 @@ A [CSS Validator](https://validator.w3.org/) was used to check the validity of t
 A [JSHint](https://jshint.com/) was used to check the validity of the JavaScript code of the quiz. Any identified errors were addressed.
 
 Metrics:
+
 There are 28 functions in this file.
+
 Function with the largest signature take 3 arguments, while the median is 0.
+
 Largest function has 25 statements in it, while the median is 2.5.
+
 The most complex function has a cyclomatic complexity value of 10 while the median is 1.
 
 ### Light House Analysis
@@ -552,11 +562,11 @@ To launch the project, GitHub Pages was employed as the deployment platform. The
  - Questions and Answers generated by ChatGPT 3.5
 
 ### Images
-Images of characters are from the Animated Batman Series. [Batman the Animated Series Wiki](https://batmantheanimatedseries.fandom.com/wiki/Batman:The_Animated_Series_Wiki). [Accessed 11th March, 2024].
+- Images of characters are from the Animated Batman Series. [Batman the Animated Series Wiki](https://batmantheanimatedseries.fandom.com/wiki/Batman:The_Animated_Series_Wiki). [Accessed 11th March, 2024].
 
-Red Hood image [Batman Fandom](https://batman.fandom.com/wiki/Jason_Todd_(Under_the_Red_Hood)). [Accessed 11th March, 2024].
+- Red Hood image [Batman Fandom](https://batman.fandom.com/wiki/Jason_Todd_(Under_the_Red_Hood)). [Accessed 11th March, 2024].
 
-Background images generated by ChatGPT DALL.E
+- Background images generated by ChatGPT DALL.E
 
 ## Resources
 - Code Institute learning material:
