@@ -570,10 +570,10 @@ A [CSS Validator](https://validator.w3.org/) was used to check the validity of t
 A [JSHint](https://jshint.com/) was used to check the validity of the JavaScript code of the quiz. Any identified errors were addressed.
 
 Metrics:
-There are 25 functions in this file.
-Function with the largest signature take 1 arguments, while the median is 0.
-Largest function has 28 statements in it, while the median is 5.
-The most complex function has a cyclomatic complexity value of 9 while the median is 1.
+There are 28 functions in this file.
+Function with the largest signature take 3 arguments, while the median is 0.
+Largest function has 25 statements in it, while the median is 2.5.
+The most complex function has a cyclomatic complexity value of 10 while the median is 1.
 
 ### Light House Analysis
 Lighthouse in Chrome Developer Tools was used to assess the performance, accessibility, best practice and SEO rating of the website. 

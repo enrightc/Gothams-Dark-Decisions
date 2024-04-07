@@ -16,11 +16,11 @@ let theJoker = 0;
 let thePenguin = 0;
 let bane = 0;
 let catwoman = 0;
-let currentHeroQuestionIndex = 0;
-let currentVillainQuestionIndex = 0;
 let userCharacter;
 let personality;
 let startBlocked = false;
+let filteredQuestions = [];
+
 
 //Commonly used functions--------------------------------------------------------------------------
 function fadeOutEffect(element, duration, callback) { // Transition effect
@@ -253,7 +253,6 @@ Handles ties by random selection if necessary.
 function score() { 
     // Find the maximum score among all characters to identify the leading character(s).
     let maxScore = Math.max(batman, robin, redHood, batgirl,theJoker, thePenguin, bane, catwoman);
-    
     let topScorers = [];
     // Check each character's score against maxScore and populate the topScorers array accordingly.
     if (batman === maxScore) {
