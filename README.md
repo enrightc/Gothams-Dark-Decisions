@@ -1,6 +1,6 @@
 # GOTHAM'S DARK DECISIONS
 
-![Gotham's Dark Decisions Am I Responsive Image](docs/readme-images/Mockup.png)
+![Gotham's Dark Decisions Am I Responsive Image](docs/readme-images/mockup.png)
 
 # TABLE OF CONTENTS
 - [Gotham's Dark Decisions](#gothams-dark-decisions)
@@ -56,9 +56,9 @@
 
 # INTRODUCTION
 ## About
-Welcome to Gotham's Dark Decisions, an interactive frontend website that immerses you in the captivating world of Batman. In this experience, users embark on a thrilling journey of self-discovery, exploring their inner hero or villain through a series of thought-provoking questions.
+Welcome to Gotham's Dark Decisions, an interactive frontend web experience that immerses you in the captivating world of Batman. In this unique experience, users embark on a thrilling journey of self-discovery, exploring their inner hero or villain through a series of thought-provoking questions.
 
-More than just a personality quiz, Gotham's Dark Decisions serves as a portal to the heart of Gotham City, where shadows reign and the line between good and evil is constantly blurred. Inspired by the rich lore of Batman, this project invites users to explore their own identity within Gotham's complex universe.
+More than just a personality quiz, Gotham's Dark Decisions serves as a portal to the heart of Gotham City, where shadows reign and the line between good and evil is constantly blurred. Drawing inspiration from Batman's rich narrative, the quiz challenges you to explore your identity within this complex world.
 
 To get started with Gotham's Dark Decisions, simply visit the website and click on the "START" button. Follow the prompts to navigate through the quiz and discover your fate within the Batman universe.
 
@@ -71,7 +71,7 @@ Visit Gotham's Dark Decisions website here [Gothams Dark Decisions](https://enri
   - Engaging Experience: Immerse yourself in the dark and atmospheric world of Gotham City, brought to life through intriguing questions and stunning visuals.
   
 ## Project Rationale
-The purpose of the "Gotham's Dark Decisions" project is to create an immersive front-end interactive site that responds dynamically to users' actions, offering them a unique experience within the Batman universe.
+The purpose of the "Gotham's Dark Decisions" project is to create an immersive front-end interactive site that responds dynamically to users actions, offering them a unique experience within the Batman universe.
 
 Traditionally, personality quizzes can feel static and detached. "Gotham's Dark Decisions" seeks to redefine this experience by offering an interactive journey for players. Through a series of thought-provoking questions, players actively shape their own narrative within the Batman universe.
 
@@ -101,7 +101,6 @@ Gotham's Dark Decisions aims to truly immerse users in the captivating world of 
   - Personality quiz enthusiasts.
 
 ## User Story
-- As a first-time user
   - I want to be able to start the quiz by clicking on a "Begin Quiz" button.
   - I want to be presented with a question asking if I prefer to be a hero or a villain in the Batman universe.
   - If I choose "hero," I want to be presented with questions that help determine which member of the Batfamily I am most like.
@@ -170,7 +169,6 @@ To maintain consistency and legibility, a Sans Serif font serves as the backup o
 
 This consistency provides a seamless and visually pleasing experience for users.
 
-
 ## Accessibility
 Accessibility is a key consideration in the design of this quiz project, ensuring that all users, regardless of ability, can fully engage with the content.
 
@@ -198,64 +196,53 @@ The Gotham's Dark Decisions quiz  has undergone thoughtful design reviews from f
 - **Engaging Audio Narration:** Users appreciate the immersive audio narration at the quiz's start. It sets the tone, enhancing the storytelling and leaving a memorable impact.
 
 # GAME FUNCTIONALITY
-## Structure
-The quiz is designed to be engaging and interactive, comprising eight questions that lead the user on a journey through the Batman universe.
-
-**Question Structure:** The quiz consists of eight questions, each with four answer options for the user to choose from. The first question serves as a pivotal point, with two possible answers determining whether the user takes the hero or villain path. Subsequent questions (2 - 8) each have four answer options tailored to align with either heroes (Batman, Robin, Red Hood, and Batgirl) or villains (The Joker, Penguin, Bane, and Catwoman), depending on the chosen path.
-
-**Character Alignment:** With each answer selected, the quiz builds a profile of the character the user most aligns with. This process culminates in presenting the user with their character alignment at the end of the quiz.
-
-**Section Layout:** The quiz is contained within a single page structured into four sections: Introduction, Questions, Revelation, and Reveal. As the user progresses through the quiz, smooth transitions seamlessly guide them from one section to the next.
-
 ## Logic Overview
-The Gotham's Dark Decision quiz is a JavaScript-powered frontend website designed to immerse users in the captivating world of Batman. However, to ensure accessibility and comprehension for a broader audience, the code has been translated into plain English. This transparency provides users with insight into the application's functionality and structure without requiring programming knowledge, fostering trust and engagement.
+The Gotham's Dark Decision quiz is a JavaScript-powered frontend website designed to immerse users in the captivating world of Batman. However, to ensure accessibility and comprehension for a broader audience, the code has been translated into plain English. This transparency provides users with insight into the application's functionality and structure without requiring programming knowledge, fostering trust and engagement. THe logic is also illustrated in the workflow diagram.
 
-1. Fade In Transition: When the document is ready, the main content fades in gradually over 2.5 seconds using jQuery.
+1. **Initialization:**
+   - The quiz initialises by fading in the main container, setting the stage for user interaction.
+   - Essential variables and elements are declared, including scores for each character, the main container, the answer buttons element, user character, personality, and a boolean to prevent multiple starts.
 
-2. Essential Elements:
-   - Key elements such as answer buttons, character scores, and current question indexes are initialized.
-   - Initial scores for Batman, Robin, Red Hood, Batgirl, The Joker, The Penguin, Bane, and Catwoman are set to 0.
-   - Variables for current hero and villain question indexes, user character, and personality are declared.
-
-3. Start Game Function: Clicking the start button initiates the game by hiding the start button and intro, displaying the game container, and showing the first question.
-
-4. showFirstQuestion Function: Responsible for displaying the first quiz question, allowing users to choose between hero or villain paths.
-    - Sets the text of question title and box elements to match the first question.
-    - Creates answer buttons for each option, associating personality data with each button.
-    - Attaches event listeners to handle user responses, initiating either the hero or villain path.
-
-5. Start Hero/Villain Path Functions: Initiates the hero or villain path based on the user's choice.
-
-6. Next Hero/Villain Question Functions: Displays subsequent hero or villain questions, updates scores based on user answers, and progresses through the quiz.
-    - Retrieves the next question object and sets question text elements accordingly. 
-    - Clears previous answer buttons and displays new answer options.
-    - Handles user responses, incrementing corresponding character scores and advancing to the next question or displaying the revelation if no more questions. 
-
-7. Revelation Function: Shows the revelation container for either a hero or villain.
-    - Hides the game container and reveals the revelation container.
-    - Displays specific content based on whether the user's personality is hero or villain.
-    - Calls the score function to determine the user's character. 
+2. **Starting the Quiz:**
+   - From the introduction users can access a "Help" feature that opens as a modal providing clear instructions. 
+   - An optional audio narration of the introductory text is also available.
+   - The quiz begins when the user clicks the "Start" button. A check ensures the button isn't activated multiple times.
+   - The introductory section fades out, and the first question is introduced through a transition effect, smoothly transitioning the user from the introduction to the quiz.
    
-8. Score Function: Calculates the user's character based on the highest score and assigns the corresponding character name.
-    - Determines the maximum score among character variables and assigns the corresponding character name to the user.
+3. **Displaying the First Question:**
+   - The first question serves as a branching point, asking users to choose between a hero or villain path.
+   - Answer buttons for the first question are dynamically generated and displayed, with each button containing data attributes that signify the user's personality choice (hero or villain).
 
-9. Character Reveal:
-    - Event handler calls the displayResult function when reveal button is clicked.
-    - DisplayResult function hides the revelation container and reveals the results container.
-    - It determines the user's character based on the userCharacter variable and displays the appropriate heading, character description, and picture in the results container.
-      - It appends a heading indicating the character's name (You Are [Character]).
-      - It appends a paragraph with a description of the character's traits, motivations, and role in Gotham.
-      - It sets the src attribute of an <img> element to display the character's headshot.
+4. **Path Selection and Question Filtering:**
+   - Upon selecting an answer to the first question, an event listener captures the user's personality choice and filters the subsequent questions accordingly.
+   - The quiz filters questions into hero and villain sets, dynamically adjusting the flow based on the user's initial choice.
 
-10. Game Reset:
-    - Causes the game to reset by reloading the browser in the same way the refresh button on your browser reloads the page. 
+5. **Question and Answer Interaction:**
+   - As the quiz progresses, each question is displayed one at a time, with corresponding answer buttons allowing the user to interact and make choices.
+   - User selections are captured, influencing the narrative path and contributing to the character score tally.
 
-11. Voiceover Function: Toggles the play/pause button for an audio voiceover.
+6. **Score Calculation and Progression:**
+   - Scores are calculated based on the user's selections, incrementally adjusting the tally for the character aligned with the chosen answers.
+   - The quiz tracks the user's progression through the questions, with each selection leading to the next step in the narrative journey.
 
-12. Questions: Define arrays containing hero and villain questions, each with titles, questions, and multiple-choice answers, tailored to each character's path. The showFirstQuestion 
-    function directs users down either the hero or villain path based on their initial response.
-    - If the user's answer leads to the hero path, subsequent questions are drawn from the heroQuestions array.
-    - Conversely, if the user's answer leads to the villain path, questions are drawn from the villainQuestions array.
+7. **Revelation and Character Outcome:**
+   - After answering all the questions, users enter the revelation phase, where they can unveil their character alignment by clicking the "Reveal" button.
+   - If the user aligns with one character predominantly, that character is revealed as their alignment.
+   - In instances of a tie, where no single character has a clear lead, a random selection from the top-scoring characters is made to determine the user's alignment.
+
+8. **Final Character Display:**
+   - The result is a personalised character reveal, displaying the user's aligned character with a description and image, offering insight into their role within the Batman universe.
+
+9. **Quiz Reset and Replay:**
+   - Users have the option to reset the quiz, allowing them to explore different narrative outcomes and character alignments by starting the journey anew.
+
+11. **Content Structure:**
+    - The quiz questions and answers are structured in arrays, defining the narrative path and interactive elements that guide the user through their journey within the quiz.
+
+<details>
+<summary>Workflow Diagram</summary>
+<img src="docs/readme-images/workflow-diagram.png" alt="Logic overview illustrated in a workflow diagram">
+</details>
 
 # FEATURES
 ## Existing Features
@@ -273,7 +260,11 @@ Section Elements:
 
 4. Background Image: Setting a captivating scene, the background showcases the iconic Gotham cityscape illuminated by the iconic bat signal, captivating users from the moment they arrive on the page.
 
-![Start Page](docs/readme-images/start-page.png)
+<details>
+  <summary>Results (Mobile)</summary>
+  <img src="docs/readme-images/start-page.png" alt="Start Page">
+</details>
+
 
 **The Choice:**
 A pivotal moment of the quiz, the first question provides the user with a choice that will determine if they take the path of a hero or villain for the rest of the game. 
@@ -298,7 +289,7 @@ Section Elements:
 
 10. Question: From questions two to eight, the quiz delves deeper into the user's chosen path, whether heroic or villainous.
 
-11. Answers: Users are presented with four multiple-choice answers for each question. Answers along the hero's path are highlighted in a soothing blue color scheme, while those along the villain's path are accentuated with a striking red. Additionally, Additionally, each answer includes a data attribute that identifies the character it aligns with, though this attribute is not visible to the user.
+11. Answers: Users are presented with four multiple-choice answers for each question. Answers along the hero's path are highlighted in a soothing blue color scheme, while those along the villain's path are accentuated with a striking red.  Additionally, each answer includes a data attribute that identifies the character it aligns with, though this attribute is not visible to the user.
 
 12. Progress bar: A progress bar is included to indicate the user's advancement through the quiz, providing visual feedback on their progress.
 
@@ -336,68 +327,31 @@ Section Elements:
 
 **Accessibility and Usability Features:** Implementing accessibility and usability features can make the quiz more inclusive and user-friendly. This may involve optimising the quiz interface for screen readers, ensuring compatibility with assistive technologies, and incorporating features such as keyboard navigation and adjustable font sizes to accommodate users with additional needs.
 
-**Refactoring Code:** Instead of having three separate arrays for questions, they could be consolidated into a single array of objects. Each object can represent a question, containing properties such as the question itself, answer options, and other relevant data. When the user makes a choice, it can filter this array to display the appropriate questions based on their path (hero or villain).
-
+**Refined Tiebreaker Mechanism:** To enhance the user experience and provide a more definitive outcome, the current random selection method in the event of a tiebreaker can be improved. Instead of randomly selecting a character from the top scorers, the quiz could introduce bonus questions that continue until a clear highest-scoring character emerges. This approach ensures that the users final character alignment is the result of their choices, adding depth and personalisation to the quiz results.
 
 # BUGS
-
 ## Fixed Bugs
-### Title: Incorrect Access of Answer Personality Types
 
-#### Issue:
-When clicking on an answer button in the first question of the quiz, both hero and villain personality types are being accessed, resulting in incorrect behaviour and progression through the quiz.
+### Incorrect Access of Answer Personality Types
 
-#### Description:
-During testing of the quiz functionality, it was observed that clicking on an answer button in the first question did not accurately reflect the selected personality type (Hero or villain). Instead of distinguishing between hero and villain personalities, both types were being accessed simultaneously.
+**Issue:** Selecting an answer in the first question incorrectly triggered both hero and villain paths.
 
-#### Expected Behavior:
-When clicking on an answer button, only the corresponding personality type (hero or villain) should be accessed and used to determine the next steps in the quiz. This ensures that the quiz accurately reflects the user's choices and progresses accordingly.
+**Solution:** Modified the `showFirstQuestion` function and utilised jQuery's `.data()` method to ensure the correct personality type is associated with each answer button.
 
-#### Steps to Reproduce:
-1. Access the quiz application.
-2. Start the quiz.
-3. Click on an answer button for a question that presents hero or villain personality options.
-4. Note that both hero and villain paths are triggered simultaneously.
+**Outcome:** The quiz now correctly progresses based on the user's selected personality type, eliminating the previous incorrect behaviour.
 
-#### Investigation and Solution:
-1. Reviewed the `showFirstQuestion` function responsible for displaying the hero or villain branch question of the quiz quiz.
-2. Added jQuery's .data() method to attach the data property "personality" from the array to the button element. 
-3. Addeed '$(this).data("personality") to the event listenter  to retreive the value property "personality" from the specfic button element that was clicked and store it in the personality variable to be used in the if/else statement.
-4. Tested the modified code using console.log toto verify that only the correct personality type is accessed, resolving the issue of incorrect quiz progression.
+### Hover Effect Persisting on Mobile Devices
 
-#### Result:
-The bug related to the incorrect access of answer personality types has been fixed. Now, when clicking an answer button in the first question, only the corresponding hero or villain personality type is accessed, ensuring accurate quiz progression based on user choices.
+**Issue:** Hover effect on answer buttons remained active on mobile devices after selection and progressing to the next question, causing confusion.
 
-### Title: Hover Effect Persisting on Mobile Devices
+**Solution:** Updated CSS with media queries to remove the hover effect on mobile devices once an answer is selected.
 
-#### Issue:
-Hover effect on answer buttons persists on mobile devices, leading to an inconsistent user experience.
+**Outcome:** Hover effects on mobile devices are now cleared after answer selection, ensuring a consistent and intuitive user experience.
 
-#### Description:
-During testing of the quiz application on mobile devices, it was observed that after selecting an answer and progressing to the next question, the last selected answer button maintained its hover appearance. This behavior was inconsistent with the expected behavior and caused confusion among users.
+## Known Bugs (Unresolved)
 
-#### Expected Behavior:
-On mobile devices, the hover effect should not persist after an answer button is selected and the user progresses to the next question. This ensures a consistent and intuitive user experience across different devices.
+No unresolved bugs are currently identified, indicating the application is functioning as expected without any noted issues affecting user experience or quiz integrity.
 
-#### Steps to Reproduce:
-1. Access the quiz application on a mobile device.
-2. Start the quiz.
-3. Select an answer by tapping an answer button.
-4. Progress to the next question.
-5. Note that the last selected answer button maintains its hover appearance.
-
-#### Investigation and Solution:
-1. Reviewed the CSS styles for answer buttons to identify the source of the hover effect.
-2. Added media queries to the CSS file targeting smaller devices (e.g., mobile devices).
-3. Within the media queries, removed the hover effect for answer buttons to ensure it doesn't persist on mobile devices.
-4. Tested the modified CSS on various mobile devices to verify that the hover effect no longer persists after selecting an answer.
-
-#### Result:
-The issue related to the hover effect persisting on mobile devices has been resolved. Now, when selecting an answer and progressing to the next question on mobile devices, the hover appearance of the answer buttons is correctly removed, providing a consistent user experience.
-
-
-### Known Bugs (unresolved)
-There are currently no known bugs identified. 
 
 # TECHNOLOGY
 
@@ -418,12 +372,12 @@ There are currently no known bugs identified.
 - Github pages: Used for hosting the deployed website.
 - Gitpod: Used for development as a cloud-based Integrtated Development Environment (IDE).
 
-
 # TESTING
-various aspects of the quiz application have undergone robust testing, including functionality, user interaction, appearence and performance through manual and automated testing methods.
+The Gotham's Dark Decisions quiz underwent comprehensive testing to ensure functionality, user engagement, and compatibility across various platforms. Both manual and automated testing methods were employed to scrutinise every aspect of the quiz.
 
 ## Manual Testing
-Manual testing, which fundamentally focuses on human interaction, provided an opportunity to identify and correct bugs, whilst providing an insight to how users interact with and perceive the quiz. During the manual testing process, each feature of the quiz was thoroughly inspected, its browser compatibility assessed, the quiz's responsiveness across a range of devices was evaluated as well as the user stories.
+Manual testing focused on real-world user interactions, ensuring each quiz feature functioned as intended and provided a seamless user experience. This hands-on approach helped identify and rectify any issues, ensuring the quiz aligns with user expectations and stories.
+
 ### Feature testing:
 For each feature the expected outcomes and actual outcomes are clearly defined for each feature, making it easy to assess whether the application meets the requirements. This process makes it easier to identify and address any issues or discrepancies that may arise and also serves as a reference point for other developers to understand the expected behaviour of a feature. 
 
@@ -594,9 +548,8 @@ To launch the project, GitHub Pages was employed as the deployment platform. The
 - Successful deployment will be confirmed with a message on a green background stating, "Your site is published at," followed by the corresponding web address.
 
 # CREDITS
-
 ### Content
-Questions and Answers generated by ChatGPT 3.5
+ - Questions and Answers generated by ChatGPT 3.5
 
 ### Images
 Images of characters are from the Animated Batman Series. [Batman the Animated Series Wiki](https://batmantheanimatedseries.fandom.com/wiki/Batman:The_Animated_Series_Wiki). [Accessed 11th March, 2024].
@@ -604,7 +557,6 @@ Images of characters are from the Animated Batman Series. [Batman the Animated S
 Red Hood image [Batman Fandom](https://batman.fandom.com/wiki/Jason_Todd_(Under_the_Red_Hood)). [Accessed 11th March, 2024].
 
 Background images generated by ChatGPT DALL.E
-
 
 ## Resources
 - Code Institute learning material:
@@ -668,7 +620,5 @@ Background images generated by ChatGPT DALL.E
 
    - [Best Practices For Comments in JavaScript](https://blog.bitsrc.io/best-practices-for-using-comments-in-javascript-4c4cd8619c18). [Accessed 6th April, 2024].
 
-
-
 ## Acknowledgements
-
+Many Thanks to my mentor, Antonio Rodriguez, for his invaluable help and advice throughout this project. I also extend my appreciation to Ami Richardson, Course Facilitator at Code Institute, for her inspiring weekly stand-up meetings. Special thanks to James Williams for his patience and dedication in repeatedly testing the quiz. Finally, I'd like to express my gratitude to the creators of Batman for developing such a rich and compelling universe that continues to inspire fans around the world.
