@@ -449,7 +449,7 @@ For each feature the expected outcomes and actual outcomes are clearly defined f
 
 | Feature    |      Expected    |       Testing |                                 Outcome |
 | ------------------------|:-----------------------: | ------------------------------------------------------: | -------------------------------------: | 
-| 404 error page      |   Error page displayed when user attempts to reach a non existent page   |     intentionally navigate to new existent page  |     The 404 error page loads informing users they have landed on a non existent page. |
+| 404 error page      |   Error page displayed when user attempts to reach a non existent page   |     Intentionally navigate to a nonexistent page, e.g. by adding additional characters to the web address  |     The 404 error page loads informing users they have landed on a non existent page. |
 | Restart quiz button      |   Clicking the button should return the user to the start of the quiz   |     Navigate to the 404 error page and click the button to verify it returns the user to the start of the quiz.  |     Upon clicking the button the user is sucessfully returned to the start of the quiz. |
 </details>
 
