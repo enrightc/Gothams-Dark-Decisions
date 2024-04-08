@@ -21,7 +21,6 @@ let personality;
 let startBlocked = false;
 let filteredQuestions = [];
 
-
 //Commonly used functions--------------------------------------------------------------------------
 function fadeOutEffect(element, duration, callback) { // Transition effect
     element.fadeOut(duration, function() {
@@ -122,13 +121,9 @@ function checkPersonality(personality) {
     if (personality === "hero") {
         // Filter the questions array to include only those designated for the 'hero' pathway.
         filteredQuestions = questions.filter(question => question.personalityType === 'hero');
-        console.log(filteredQuestions);
-        console.log(personality);
         } else if (personality === "villain") {
         // Filter for the 'villain' pathway if that's the chosen personality.
         filteredQuestions = questions.filter(question => question.personalityType === 'villain');
-        console.log(filteredQuestions);
-        console.log(personality);
         }
     nextQuestion(filteredQuestions, 0);  // Proceed to the next question of the filtered questions
 }
@@ -170,7 +165,6 @@ function incrementQuestions(currentIndex, buttonClass) { // function advances qu
         nextQuestion(filteredQuestions, currentIndex, buttonClass);
     } else { // No more questions are left; trigger the end-of-quiz logic.
         revelation();
-        console.log("going to revelation");
     }
 }
 
@@ -183,35 +177,27 @@ function updateCharacterScore(character) {
     switch (character) {
         case "Batman":
             batman++;
-            console.log("Batman score:", batman);
             break;
         case "Robin":
             robin++;
-            console.log("Robin score:", robin);
             break;
         case "Red Hood":
             redHood++;
-            console.log("Red Hood score:", redHood);
             break;
         case "Batgirl":
             batgirl++;
-            console.log("Batgirl score:", batgirl);
             break;
         case "The Joker":
             theJoker++;
-            console.log("The Joker score:", theJoker);
             break;
         case "The Penguin":
             thePenguin++;
-            console.log("The Penguin score:", thePenguin);
             break;
         case "Bane":
             bane++;
-            console.log("Bane score:", bane);
             break;
         default:
             catwoman++;
-            console.log("Catwoman score:", catwoman);
     }
 }
 
@@ -272,18 +258,15 @@ function score() {
     } if (catwoman === maxScore) {
         topScorers.push("Catwoman");
     }
-    console.log("Top Scorers: ", topScorers);
 
     // Assign the character to userCharacter, resolving ties by random selection if necessary.
     if (topScorers.length === 1) {
         // Directly assign the character if there's a single top scorer.
         userCharacter = topScorers[0];
-        console.log(userCharacter);
     // in the event of a tiebreak and more than one character is stored in the topScorers array
     } else { // If there's a tie, randomly select one of the top scorers as the users character.
         let randomCharacter = Math.floor(Math.random() * topScorers.length);
         userCharacter = topScorers[randomCharacter];
-        console.log("Randomly selected character is", userCharacter);
     }
 }
 

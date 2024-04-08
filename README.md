@@ -189,7 +189,7 @@ The Gotham's Dark Decisions quiz  has undergone thoughtful design reviews from f
 ## Logic Overview
 The Gotham's Dark Decision quiz is a JavaScript-powered frontend website designed to immerse users in the captivating world of Batman. However, to ensure accessibility and comprehension for a broader audience, the code has been translated into plain English. This transparency provides users with insight into the application's functionality and structure without requiring programming knowledge, fostering trust and engagement. THe logic is also illustrated in the workflow diagram.
 
-1. **Initialization:**
+1. **Initialisation:**
    - The quiz initialises by fading in the main container, setting the stage for user interaction.
    - Essential variables and elements are declared, including scores for each character, the main container, the answer buttons element, user character, personality, and a boolean to prevent multiple starts.
 
@@ -336,6 +336,17 @@ Section Elements:
 **Solution:** Updated CSS with media queries to remove the hover effect on mobile devices once an answer is selected.
 
 **Outcome:** Hover effects on mobile devices are now cleared after answer selection, ensuring a consistent and intuitive user experience.
+
+### Persistent Hover Effect on Touchscreen Devices
+
+**Issue:** Despite implementing the solution above (Hover Effect Persisting on Mobile Devices), it was noted that hover effects intended for cursor-based interactions were persisting on some touchscreen devices, causing user interface inconsistencies and confusion.
+
+**Solution:** Implemented CSS media queries to detect devices that do not support hover functionality. Within these queries, the hover styles were overridden to prevent persistent hover states on touchscreen devices.
+
+**Source:**
+The solution was adapted from a discussion on a Stack Overflow forum about using media queries to detect if a device is touchscreen ("Media Query to Detect if device is touchsreen).
+
+**Outcome:** After implementing the media queries, the hover effects no longer persist on touchscreen devices, enhancing the user experience by ensuring the user interface behaves consistently across various devices.
 
 ## Known Bugs (Unresolved)
 
@@ -628,7 +639,9 @@ To launch the project, GitHub Pages was employed as the deployment platform. The
 
   - [JavaScript Comments](https://www.w3schools.com/js/js_comments.asp). [Accessed 6th April, 2024].
 
-   - [Best Practices For Comments in JavaScript](https://blog.bitsrc.io/best-practices-for-using-comments-in-javascript-4c4cd8619c18). [Accessed 6th April, 2024].
+  - [Best Practices For Comments in JavaScript](https://blog.bitsrc.io/best-practices-for-using-comments-in-javascript-4c4cd8619c18). [Accessed 6th April, 2024].
+
+  - [Media Query To Detect if Device is TouchSreen](https://stackoverflow.com/questions/11387805/media-query-to-detect-if-device-is-touchscreen). [Accessed 7th April, 2024].
 
 ## Acknowledgements
-Many Thanks to my mentor, Antonio Rodriguez, for his invaluable help and advice throughout this project. I also extend my appreciation to Ami Richardson, Course Facilitator at Code Institute, for her inspiring weekly stand-up meetings. Special thanks to James Williams for his patience and dedication in repeatedly testing the quiz. Finally, I'd like to express my gratitude to the creators of Batman for developing such a rich and compelling universe that continues to inspire fans around the world.
+Many Thanks to my mentor, Antonio Rodriguez, for his invaluable help and advice throughout this project. I also extend my appreciation to Ami Richardson, Course Facilitator at Code Institute, for her inspiring weekly stand-up meetings. Special thanks to James Williams for his patience and dedication in repeatedly testing the quiz, and all my other testers. Finally, I'd like to express my gratitude to the creators of Batman for developing such a rich and compelling universe that continues to inspire fans around the world.

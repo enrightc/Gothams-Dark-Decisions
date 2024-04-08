@@ -110,7 +110,7 @@ button {
 .game-control-btn {
     padding: 10px 50px;
     background-color: #FFD700;
-    font-size:13px;
+    font-size:20px;
     font-weight:bold;
     letter-spacing:0.5px;
     border:none;
@@ -247,6 +247,28 @@ button {
 }
 
 /* ----------------------------------------------------- Media Queries */
+
+/*  from Starx stackflow user, 2012 (see references) */
+@media (hover: none) {
+    .hero-ans-btn:hover , .villain-ans-btn:hover, .ans-btn:hover, .play-btn:hover, .is-playing:hover, .is-paused:hover{
+        border-color: #666666;
+        background-color:transparent;
+    }
+    .hero-ans-btn.selected {
+        background-color: #0056b3; 
+    }
+    .villain-ans-btn.selected {
+        background-color: #cc0000; 
+    }
+    .ans-btn.selected {
+        background-color: #FFD700; 
+        color: #000000; 
+    }
+    .help-btn:hover {
+        background-color:transparent;
+    }
+}
+
 @media (max-width: 768px) {
     body {
         justify-content: start;
@@ -277,49 +299,6 @@ button {
     }
 }
 
-@media (max-width: 768px) {
-    .ans-btn:hover {
-        border-color: #666666;
-        background-color:transparent;
-    }
-    .ans-btn.selected {
-        background-color: #FFD700; 
-        color: #000000; 
-    }
-}
-
-@media (max-width: 768px) {
-    .hero-ans-btn:hover {
-        border-color: #666666;
-        background-color:transparent;
-    }
-    .hero-ans-btn.selected {
-        background-color: #0056b3; 
-    }
-}
-
-@media (max-width: 768px) {
-    .villain-ans-btn:hover {
-        border-color:  #666666;
-        background-color:transparent;
-    }
-    .villain-ans-btn.selected {
-        background-color: #cc0000; 
-    }
-}
-
-@media (max-width: 768px) {
-    .help-btn:hover {
-        background-color:transparent;
-    }
-}
-
-@media (max-width: 768px) {
-    .play-btn:hover, .is-playing:hover, .is-paused:hover {
-        border-color: #666666;
-        background-color:transparent; 
-    }
-}
 
 
 
